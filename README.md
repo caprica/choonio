@@ -323,11 +323,12 @@ configuration on the frontend package it is possible to rebuild the frontend aft
 It seems like this should actually just work with IntelliJ, in that it should be smart enough to copy the necessary
 build resources based on information already present in the Maven pom files - but it does not.
 
-### Client test and coverage (move this)
+### Client tests and coverage
 
+```shell
 yarn test
-yarn test --coverage --coverageDirectory='coverage'
 yarn test --coverage --coverageDirectory='coverage' --watchAll=false
+```
 
 ### Running as a service
 
