@@ -169,10 +169,10 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${basedir}/target/classes/static</outputDirectory>
+                            <outputDirectory>${project.build.directory}/classes/static</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${basedir}/../choonio-ui/build</directory>
+                                    <directory>${project.parent.basedir}/choonio-ui/build</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>
