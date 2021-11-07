@@ -300,6 +300,29 @@ this repository infringes on the copyrights of any third parties.
 
 ## Developer notes
 
+### Intellij integration
+
+This project uses the frontend-maven-plugin to integrate the frontend React application build.
+
+When rebuilding the backend application, it is necessary to copy the frontend build into the backend static resources
+directory for bundling into the application jar file. When using Maven on its own this will just work as expected.
+
+With IntelliJ this will _not_ happen automatically - this means that when running inside IntelliJ the frontend
+application will fail to run (or update if you rebuild the frontend).
+
+You need to play around with the IntelliJ Maven life-cycle/plugins window to come up with a configuration that will work
+for your own workflow. In my case it is enough the configre the "generate-resources" lifecycle to run after every IDE
+build command.
+
+<a href="https://github.com/caprica/choonio/blob/master/etc/doc/intellij-frontend-resources.png"><img alt="IntelliJ Maven resources build configuration" src="https://github.com/caprica/choonio/blob/master/etc/doc/intellij-frontend-resources.png?raw=true" width="180"></a>
+
+This will only work once you have built the frontend for the first time. With this configuration, it will _not_ rebuild
+the frontend each time you rebuild the backend (it can be quite slow building the frontend), but with other similar
+configuration on the frontend package it is possible to rebuild the frontend after every IDE build command.
+
+It seems like this should actually just work with IntelliJ, in that it should be smart enough to copy the necessary
+build resources based on information already present in the Maven pom files - but it does not.
+
 ### Client test and coverage (move this)
 
 yarn test
