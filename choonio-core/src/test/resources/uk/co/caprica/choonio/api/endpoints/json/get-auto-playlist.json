@@ -1,0 +1,20 @@
+{
+  "id" : "1",
+  "mediaId" : {
+    "playlistName" : "Thumbs up",
+    "type" : "PLAYLIST"
+  },
+  "description" : "All tracks rated thumbs up",
+  "items" : [ {
+    "id" : "101",
+    "mediaId" : {
+      "albumArtistName" : "Absolute Valentine",
+      "albumName" : "Police Heartbreaker",
+      "trackName" : "In the 42nd Street",
+      "type" : "TRACK"
+    }
+  } ],
+  "duration" : 8916,
+  "created" : "2021-09-01T05:05:05.555Z",
+  "updated" : "2021-09-02T06:06:06.666Z"
+}

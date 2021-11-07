@@ -1,0 +1,17 @@
+[ {
+  "mediaId" : {
+    "artistName" : "Neon Nox",
+    "type" : "ARTIST"
+  },
+  "albums" : 2,
+  "tracks" : 21,
+  "duration" : 5197
+}, {
+  "mediaId" : {
+    "artistName" : "Signal Void",
+    "type" : "ARTIST"
+  },
+  "albums" : 1,
+  "tracks" : 12,
+  "duration" : 2956
+} ]

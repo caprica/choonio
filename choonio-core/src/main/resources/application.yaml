@@ -1,0 +1,109 @@
+#
+# This file is part of Choonio.
+#
+# Choonio is free software: you can redistribute it and/or modify it under the
+# terms of the GNU Affero General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your option)
+# any later version.
+#
+# Choonio is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for
+# more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with Choonio.  If not, see <https://www.gnu.org/licenses/>.
+#
+
+spring:
+##  cache:
+##    type: none
+  output:
+    ansi:
+      enabled: ALWAYS
+  webflux:
+    format:
+      date: yyyy-MM-dd
+
+server:
+  compression:
+    enabled: true
+    min-response-size: 2048
+    mime-types: application/json
+  error:
+    include-stacktrace: on_param
+  http2:
+    enabled: true
+
+app:
+  art:
+    covers:
+      sourceCoverFilename: cover.jpg
+      directory: .choonio/art
+      imageFormat: jpg
+      cacheControl: public, max-age=86400, immutable
+      bufferSize: 196608
+    playlists:
+      maxGridCells: 3
+  backup:
+    dateFormat: yyyy-MM-dd
+    directory: .choonio/backup
+    enableOnSchedule: true
+    enableOnShutdown: true
+    fileTemplate: choonio-data-%s.json.gz
+    fixedDelaySeconds: 1800
+    initialDelaySeconds: 10
+    timestampFormat: yyyyMMdd-HHmmss
+  highlights:
+    maximumHighlights: 9
+    refresh:
+      autoRefreshCron: 0 */5 * * * *
+      autoRefreshThresholdMinutes: 2
+    providers:
+      added:
+        enabled: true
+        days: 14
+      dayOfWeek:
+        albumEnabled: true
+        artistEnabled: true
+        playlistEnabled: true
+      favourite:
+        albumEnabled: true
+        artistEnabled: true
+        playlistEnabled: true
+      partOfDay:
+        albumEnabled: true
+        artistEnabled: true
+        playlistEnabled: true
+      random:
+        enabled: true
+        sampleSize: 10
+      recent:
+        albumEnabled: true
+        artistEnabled: true
+        playlistEnabled: true
+        days: 30
+  library:
+    defaultAlwaysExcludeThumbsDown: false
+    defaultCoverFilename: cover.jpg
+    defaultFileExtensions: [ "mp3", "flac" ]
+    defaultLibvlcArgs: []
+    defaultMediaRoots: []
+  meta-errors:
+    dateFormat: yyyy-MM-dd
+    directory: .choonio/meta-errors
+    enable: true
+    fileTemplate: choonio-meta-errors-%s.csv
+    timestampFormat: yyyyMMdd-HHmmss
+  player:
+    recordPlayThreshold: 5
+    skipBackThreshold: 3
+    factoryOptions:
+      --no-sout-all,
+      --sout-shout-mp3,
+      --sout-keep
+  plays:
+    maxLimit: 50
+  search:
+    maxLimit: 100
+    minTermLength: 3

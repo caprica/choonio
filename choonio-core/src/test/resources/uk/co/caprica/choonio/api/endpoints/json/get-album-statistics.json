@@ -1,0 +1,10 @@
+{
+  "albumArtists" : 123,
+  "albums" : 456,
+  "tracks" : 789,
+  "years" : [ 2020, 2021 ],
+  "genres" : [ "Synthwave", "Dance/Electronic" ],
+  "duration" : 54321,
+  "fromYear" : 2018,
+  "toYear" : 2021
+}

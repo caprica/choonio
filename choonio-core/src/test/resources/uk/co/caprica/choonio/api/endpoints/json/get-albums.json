@@ -1,0 +1,21 @@
+[ {
+  "mediaId" : {
+    "albumArtistName" : "Cassetter",
+    "albumName" : "Robot Era"
+  },
+  "year" : 2021,
+  "genre" : "Synthwave",
+  "duration" : 4399,
+  "tracks" : [ {
+    "number" : 2,
+    "mediaId" : {
+      "type" : "TRACK",
+      "albumArtistName" : "Cassetter",
+      "albumName" : "Robot Era",
+      "trackName" : "The Cube"
+    },
+    "artistName" : "Cassetter",
+    "duration" : 2498
+  } ],
+  "rgb" : [ 1, 2, 3 ]
+} ]

@@ -1,0 +1,52 @@
+[
+    {
+        "id": "1",
+        "mediaId": { "albumArtistName": "Kick Puncher", "albumName": "LiveDieRepeat", "type": "ALBUM" },
+        "timestamp": "2021-10-30T18:36:09.601Z"
+    },
+    {
+        "id": "2",
+        "mediaId": { "playlistName": "Synthwave", "type": "PLAYLIST" },
+        "timestamp": "2021-10-27T18:40:44.759Z"
+    },
+    {
+        "id": "3",
+        "mediaId": {
+            "albumArtistName": "Ray Gun Hero",
+            "albumName": "Plethora",
+            "trackName": "I Didn't Know She Was an Android",
+            "type": "TRACK"
+        },
+        "timestamp": "2021-10-26T18:36:14.852Z"
+    },
+    {
+        "id": "4",
+        "mediaId": { "artistName": "Neon Nox", "type": "ARTIST" },
+        "timestamp": "2021-10-26T18:31:56.399Z"
+    },
+    {
+        "id": "5",
+        "mediaId": { "albumArtistName": "Wayfloe", "albumName": "Neon West Zero", "type": "ALBUM" },
+        "timestamp": "2021-10-26T13:27:45.796Z"
+    },
+    {
+        "id": "6",
+        "mediaId": { "playlistName": "More synthwave", "type": "PLAYLIST" },
+        "timestamp": "2021-10-24T08:20:59.882Z"
+    },
+    {
+        "id": "7",
+        "mediaId": {
+            "albumArtistName": "W O L F C L U B",
+            "albumName": "Just Drive - Part 2",
+            "trackName": "Flashbacks (feat. Dora Pereli)",
+            "type": "TRACK"
+        },
+        "timestamp": "2021-10-23T19:50:26.343Z"
+    },
+    {
+        "id": "8",
+        "mediaId": { "albumArtistName": "STRNGR & Destryur", "albumName": "Night at the Grindhouse", "type": "ALBUM" },
+        "timestamp": "2021-10-21T19:06:58.411Z"
+    }
+]

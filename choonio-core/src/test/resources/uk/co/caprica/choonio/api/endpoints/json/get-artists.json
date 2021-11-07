@@ -1,0 +1,9 @@
+[ {
+  "mediaId" : {
+    "artistName" : "3FORCE",
+    "type" : "ARTIST"
+  },
+  "albums" : 4,
+  "tracks" : 26,
+  "duration" : 3244
+} ]

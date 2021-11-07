@@ -1,0 +1,32 @@
+[ {
+  "id" : "1",
+  "mediaId" : {
+    "type" : "ARTIST",
+    "artistName" : "Oscillian"
+  },
+  "timestamp" : "2021-09-01T05:05:05.555Z"
+}, {
+  "id" : "2",
+  "mediaId" : {
+    "type" : "ALBUM",
+    "albumArtistName" : "DEADLIFE",
+    "albumName" : "God In The Machine"
+  },
+  "timestamp" : "2021-09-02T06:06:06.666Z"
+}, {
+  "id" : "3",
+  "mediaId" : {
+    "type" : "TRACK",
+    "albumArtistName" : "W O L F C L U B",
+    "albumName" : "Just Drive - Part 2",
+    "trackName" : "Flashbacks"
+  },
+  "timestamp" : "2021-09-03T07:07:07.777Z"
+}, {
+  "id" : "4",
+  "mediaId" : {
+    "type" : "PLAYLIST",
+    "playlistName" : "Synthwave"
+  },
+  "timestamp" : "2021-09-04T08:08:08.888Z"
+} ]
