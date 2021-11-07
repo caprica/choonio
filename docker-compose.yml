@@ -1,0 +1,60 @@
+#
+# Specification file for docker compose.
+#
+# Notes:
+#
+#  The database credentials are externalised via environment properties and a ".env" file, see
+#  https://docs.docker.com/compose/environment-variables/ for more details.
+#
+#  Example contents for a .env file:
+#
+#    DB_NAME=mydb
+#    DB_ROOT_USERNAME=myuser
+#    DB_ROOT_PASSWORD=mypassword
+#    DB_HOST_VOLUME_PATH=/disks/container-volumes/mongodb
+#    DB_PORTS=27017-27019
+#
+#  For database initialisation scripts, any file contained in the "/docker-entrypoint-initdb.d" directory on the
+#  container will be executed at container creation time. It is possible to copy individual files to the container
+#  directory, or in fact mount a local directory with multiple files to the container directory.
+#
+#  When copying a file, the syntax is "local-file:container-file:ro", here the suffix ":ro" means to copy the file as
+#  read-only.
+#
+#  To persist the database storage between container redeployments, a local directory can be mounted as a volume, e.g:
+#
+#    - /disks/container-volumes/mongodb:/data/db
+#
+#  In this example "/disks/container-volumes/mongodb" is a local directory, and "/data/db" is the mount point in the
+#  container.
+#
+#  For the MongoDB images, "/data/db" is a pre-defined directory already known to the image.
+#
+#  The database will not be re-initialised with the init scripts if a persistent volume is used and the database has
+#  already been initialised.
+#
+#  Providing a mapping for the ports exposes the ports to the local machine - specifying the ports without a mapping
+#  would cause them to be exposed only to the containers themselves.
+#
+#  It is easy to forget when manually rebuilding the Docker images to be used in the deployment, that you may need to
+#  rebuild the application with Maven first. You can then use "docker-compose up --build" to rebuild the Docker image
+#  before deployment. If the application has not changed, then "docker-compose up" by itself would be fine.
+#
+#  It is also possible to use "docker-compose build" to rebuild the images without redeploying them.
+#
+
+version: '3.8'
+
+services:
+
+  db:
+    image: mongo
+    environment:
+      - MONGO_INITDB_DATABASE=${DB_NAME}
+      - MONGO_INITDB_ROOT_USERNAME=${DB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+    volumes:
+      - ./etc/docker-entrypoint-initdb.d/seed-database.js:/docker-entrypoint-initdb.d/seed-database.js:ro
+      - ${DB_HOST_VOLUME_PATH}:/data/db
+    ports:
+      - "${DB_PORTS}:27017-27019"

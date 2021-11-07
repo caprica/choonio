@@ -1,0 +1,87 @@
+{
+    "name": "choonio",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@dnd-kit/core": "^4.0.1",
+        "@dnd-kit/modifiers": "^4.0.0",
+        "@dnd-kit/sortable": "^5.0.0",
+        "@emotion/react": "^11.5.0",
+        "@emotion/styled": "^11.3.0",
+        "@mui/icons-material": "^5.0.4",
+        "@mui/lab": "^5.0.0-alpha.51",
+        "@mui/material": "^5.0.4",
+        "@mui/styles": "^5.0.1",
+        "axios": "^0.24.0",
+        "dayjs": "^1.10.3",
+        "framer-motion": "^4.1.17",
+        "html-to-image": "^1.7.0",
+        "lodash": "^4.17.20",
+        "moment": "^2.29.1",
+        "notistack": "^2.0.2",
+        "prettier": "^2.2.1",
+        "pretty": "^2.0.0",
+        "react": "^17.0.2",
+        "react-cool-img": "^1.2.9",
+        "react-dom": "^17.0.2",
+        "react-highlight-words": "^0.17.0",
+        "react-hotkeys-hook": "^3.4.1",
+        "react-icons": "^4.3.1",
+        "react-moment": "^1.1.1",
+        "react-query": "^3.3.4",
+        "react-router-dom": "^5.2.0",
+        "react-transition-group": "^4.4.1",
+        "typeface-roboto": "^1.1.13",
+        "typescript": "^4.3.5",
+        "use-persisted-state": "^0.3.3"
+    },
+    "devDependencies": {
+        "@testing-library/jest-dom": "^5.11.6",
+        "@testing-library/react": "^12.1.0",
+        "@testing-library/user-event": "^13.1.9",
+        "@types/i18n": "^0.13.1",
+        "@types/jest": "^27.0.1",
+        "@types/lodash": "^4.14.167",
+        "@types/material-ui": "^0.21.8",
+        "@types/node": "^16.6.1",
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0",
+        "@types/react-highlight-words": "^0.16.1",
+        "@types/react-router-dom": "^5.1.7",
+        "@types/streamsaver": "^2.0.1",
+        "@types/use-persisted-state": "^0.3.0",
+        "@typescript-eslint/eslint-plugin": "^4.11.0",
+        "@typescript-eslint/parser": "^4.11.0",
+        "cypress": "^8.7.0",
+        "eslint": "^7.16.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^3.3.0",
+        "eslint-plugin-react": "^7.25.0",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "mockdate": "^3.0.5",
+        "react-scripts": "4.0.3"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "prettier": "prettylint --check src/**/*.{js,jsx,css,json}"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "proxy": "http://localhost:8080"
+}

@@ -1,0 +1,122 @@
+[
+    {
+        "id": "1",
+        "mediaId": { "playlistName": "Synthwave", "type": "PLAYLIST" },
+        "description": "My Playlist",
+        "items": [
+            {
+                "id": "101",
+                "mediaId": {
+                    "albumArtistName": "Fury Weekend",
+                    "albumName": "Escape From Neon City",
+                    "trackName": "Sleepless Nights (feat. PRIZM)",
+                    "type": "TRACK"
+                },
+                "track": {
+                    "mediaId": {
+                        "albumArtistName": "Fury Weekend",
+                        "albumName": "Escape From Neon City",
+                        "trackName": "Sleepless Nights (feat. PRIZM)",
+                        "type": "TRACK"
+                    },
+                    "number": 9,
+                    "artistName": "Fury Weekend",
+                    "duration": 312,
+                    "stats": { "listens": 36, "rating": "THUMBS_UP" }
+                }
+            },
+            {
+                "id": "102",
+                "mediaId": {
+                    "albumArtistName": "Ray Gun Hero",
+                    "albumName": "Plethora",
+                    "trackName": "I Didn't Know She Was an Android",
+                    "type": "TRACK"
+                },
+                "track": {
+                    "mediaId": {
+                        "albumArtistName": "Ray Gun Hero",
+                        "albumName": "Plethora",
+                        "trackName": "I Didn't Know She Was an Android",
+                        "type": "TRACK"
+                    },
+                    "number": 2,
+                    "artistName": "Ray Gun Hero",
+                    "duration": 487,
+                    "stats": { "listens": 17, "rating": "THUMBS_UP" }
+                }
+            },
+            {
+                "id": "103",
+                "mediaId": {
+                    "albumArtistName": "Cassetter",
+                    "albumName": "Entropy",
+                    "trackName": "The Haunted Train",
+                    "type": "TRACK"
+                },
+                "track": {
+                    "mediaId": {
+                        "albumArtistName": "Cassetter",
+                        "albumName": "Entropy",
+                        "trackName": "The Haunted Train",
+                        "type": "TRACK"
+                    },
+                    "number": 14,
+                    "artistName": "Cassetter",
+                    "duration": 296,
+                    "stats": { "listens": 67, "rating": "THUMBS_UP" }
+                }
+            }
+        ],
+        "duration": 333,
+        "created": "2021-09-07T17:21:27.421Z",
+        "updated": "2021-09-19T08:38:51.589Z"
+    },
+    {
+        "id": "2",
+        "mediaId": { "playlistName": "More Synthwave", "type": "PLAYLIST" },
+        "description": "My Playlist",
+        "items": [
+            {
+                "id": "201",
+                "mediaId": { "albumArtistName": "Neon Nox", "albumName": "Last Stand", "trackName": "Recon", "type": "TRACK" },
+                "track": {
+                    "mediaId": {
+                        "albumArtistName": "Neon Nox",
+                        "albumName": "Last Stand",
+                        "trackName": "Recon",
+                        "type": "TRACK"
+                    },
+                    "number": 5,
+                    "artistName": "Neon Nox",
+                    "duration": 235,
+                    "stats": { "listens": 22, "rating": "THUMBS_UP" }
+                }
+            },
+            {
+                "id": "202",
+                "mediaId": {
+                    "albumArtistName": "Midnight Danger",
+                    "albumName": "Chapter 2: Endless Nightmare",
+                    "trackName": "One Last Goodbye",
+                    "type": "TRACK"
+                },
+                "track": {
+                    "mediaId": {
+                        "albumArtistName": "Midnight Danger",
+                        "albumName": "Chapter 2: Endless Nightmare",
+                        "trackName": "One Last Goodbye",
+                        "type": "TRACK"
+                    },
+                    "number": 11,
+                    "artistName": "Midnight Danger",
+                    "duration": 293,
+                    "stats": { "listens": 25, "rating": "THUMBS_UP" }
+                }
+            }
+        ],
+        "duration": 739,
+        "created": "2021-09-19T12:25:53.221Z",
+        "updated": "2021-09-25T18:23:58.396Z"
+    }
+]

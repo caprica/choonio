@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1",
+        "type": "Favourite",
+        "message": "Destryur is a favourite artist",
+        "mediaId": { "artistName": "Destryur", "type": "ARTIST" },
+        "rgb": [29, 27, 30],
+        "timestamp": "2021-11-02T15:40:00.046Z"
+    },
+    {
+        "id": "2",
+        "type": "Recent",
+        "message": "You've listened to Robot Era recently",
+        "mediaId": { "albumArtistName": "Cassetter", "albumName": "Robot Era", "type": "ALBUM" },
+        "rgb": [41, 10, 87],
+        "timestamp": "2021-11-02T15:40:00.046Z"
+    },
+    {
+        "id": "3",
+        "type": "Part of day",
+        "message": "You've listened to Last Stand in the afternoon",
+        "mediaId": { "albumArtistName": "Neon Nox", "albumName": "Last Stand", "type": "ALBUM" },
+        "rgb": [47, 43, 54],
+        "timestamp": "2021-11-02T15:40:00.046Z"
+    }
+]
