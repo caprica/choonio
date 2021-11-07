@@ -1,0 +1,47 @@
+[
+    {
+        "id": "1",
+        "mediaId": { "playlistName": "W O L F C L U B - Just Drive", "type": "PLAYLIST" },
+        "timestamp": "2021-11-02T15:44:00.544Z"
+    },
+    {
+        "id": "2",
+        "mediaId": {
+            "albumArtistName": "Midnight Danger",
+            "albumName": "Chapter 2: Endless Nightmare",
+            "trackName": "One Last Goodbye",
+            "type": "TRACK"
+        },
+        "timestamp": "2021-08-22T17:24:37.021Z"
+    },
+    {
+        "id": "3",
+        "mediaId": { "albumArtistName": "Fury Weekend", "albumName": "Escape From Neon City", "type": "ALBUM" },
+        "timestamp": "2021-08-15T17:48:23.860Z"
+    },
+    {
+        "id": "4",
+        "mediaId": {
+            "albumArtistName": "W O L F C L U B",
+            "albumName": "Just Drive - Part 2",
+            "trackName": "Flashbacks (feat. Dora Pereli)",
+            "type": "TRACK"
+        },
+        "timestamp": "2021-08-15T12:37:15.323Z"
+    },
+    {
+        "id": "5",
+        "mediaId": { "artistName": "Dana Jean Phoenix", "type": "ARTIST" },
+        "timestamp": "2021-03-28T09:05:59.648Z"
+    },
+    {
+        "id": "6",
+        "mediaId": { "artistName": "Cobra Wipeout", "type": "ARTIST" },
+        "timestamp": "2021-03-28T09:02:45.873Z"
+    },
+    {
+        "id": "7",
+        "mediaId": { "albumArtistName": "Midnight Danger", "albumName": "Malignant Force", "type": "ALBUM" },
+        "timestamp": "2021-03-27T18:16:57.617Z"
+    }
+]

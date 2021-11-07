@@ -1,0 +1,12 @@
+[Unit]
+Description=choonio
+After=networking.target
+Requires=mongod.service
+
+[Service]
+User=choonio
+ExecStart=java -Dserver.port=9080 -jar /disks/data/install/choonio/choonio.jar
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target

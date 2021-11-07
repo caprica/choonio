@@ -1,0 +1,70 @@
+{
+  "query" : "neon",
+  "limit" : 10,
+  "artists" : {
+    "hits" : 1,
+    "results" : [ {
+      "mediaId" : {
+        "artistName" : "Neon Nox",
+        "type" : "ARTIST"
+      },
+      "score" : 0.5
+    } ]
+  },
+  "albums" : {
+    "hits" : 2,
+    "results" : [ {
+      "mediaId" : {
+        "albumArtistName" : "D-Noise",
+        "albumName" : "Neon Drive",
+        "type" : "ALBUM"
+      },
+      "score" : 0.39999998
+    }, {
+      "mediaId" : {
+        "albumArtistName" : "Wayfloe",
+        "albumName" : "Neon West Zero",
+        "type" : "ALBUM"
+      },
+      "score" : 0.28571427
+    } ]
+  },
+  "tracks" : {
+    "hits" : 3,
+    "results" : [ {
+      "mediaId" : {
+        "albumArtistName" : "F.O.O.L",
+        "albumName" : "Time Spender",
+        "trackName" : "Neon",
+        "type" : "TRACK"
+      },
+      "score" : 1.0
+    }, {
+      "mediaId" : {
+        "albumArtistName" : "Lazerhawk",
+        "albumName" : "Dreamrider",
+        "trackName" : "Neon Dawn",
+        "type" : "TRACK"
+      },
+      "score" : 0.44444442
+    }, {
+      "mediaId" : {
+        "albumArtistName" : "Timecop1983",
+        "albumName" : "Night Drive",
+        "trackName" : "Neon Lights",
+        "type" : "TRACK"
+      },
+      "score" : 0.36363637
+    } ]
+  },
+  "playlists" : {
+    "hits" : 1,
+    "results" : [ {
+      "mediaId" : {
+        "playlistName" : "Neon, Midnight, Synths",
+        "type" : "PLAYLIST"
+      },
+      "score" : 0.18181819
+    } ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "id" : "123",
+  "mediaRoots" : [ "/home/music1", "/home/music2" ],
+  "fileExtensions" : [ "mp3", "flac" ],
+  "coverFilename" : "cover.jpg",
+  "alwaysExcludeThumbsDown" : true
+}

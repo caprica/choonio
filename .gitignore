@@ -1,0 +1,11 @@
+junk
+target
+build
+node_modules
+.env
+.idea
+.vscode
+*.iml
+*.log
+.eslintcache
+/application.yaml

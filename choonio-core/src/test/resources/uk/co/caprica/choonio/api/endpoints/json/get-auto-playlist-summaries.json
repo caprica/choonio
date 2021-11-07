@@ -1,0 +1,9 @@
+[ {
+  "id" : "1",
+  "mediaId" : {
+    "playlistName" : "Thumbs up",
+    "type" : "PLAYLIST"
+  },
+  "created" : "2021-10-28T19:22:07.331Z",
+  "updated" : "2021-10-28T19:22:07.982Z"
+} ]

@@ -1,0 +1,15 @@
+[ {
+  "mediaId" : {
+    "albumArtistName" : "NINA",
+    "albumName" : "Sleepwalking",
+    "type" : "ALBUM"
+  },
+  "listens" : 123
+}, {
+  "mediaId" : {
+    "albumArtistName" : "Ray Gun Hero",
+    "albumName" : "Plethora",
+    "type" : "ALBUM"
+  },
+  "listens" : 87
+} ]

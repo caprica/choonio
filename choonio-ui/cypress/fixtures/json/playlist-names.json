@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1",
+        "mediaId": { "playlistName": "Synthwave", "type": "PLAYLIST" },
+        "created": "2021-09-12T17:20:45.366Z",
+        "updated": "2021-10-31T12:56:49.503Z"
+    },
+    {
+        "id": "2",
+        "mediaId": { "playlistName": "More Synthwave", "type": "PLAYLIST" },
+        "created": "2021-09-05T19:05:17.275Z",
+        "updated": "2021-10-30T10:02:07.689Z"
+    }
+]

@@ -1,0 +1,9 @@
+[ {
+  "id" : "1",
+  "mediaId" : {
+    "playlistName" : "Synthwave",
+    "type" : "PLAYLIST"
+  },
+  "created" : "2021-09-01T05:05:05.555Z",
+  "updated" : "2021-09-02T06:06:06.666Z"
+} ]

@@ -1,0 +1,51 @@
+{
+  "version" : "1.0",
+  "favourites" : [ {
+    "id" : "1",
+    "mediaId" : {
+      "artistName" : "Dana Jean Phoenix",
+      "type" : "ARTIST"
+    },
+    "timestamp" : "2020-04-24T10:20:30.456Z"
+  }, {
+    "id" : "2",
+    "mediaId" : {
+      "albumArtistName" : "DEADLIFE",
+      "albumName" : "God in the Machine",
+      "type" : "ALBUM"
+    },
+    "timestamp" : "2020-10-02T20:30:40.789Z"
+  } ],
+  "recents" : [ {
+    "id" : "3",
+    "mediaId" : {
+      "albumArtistName" : "New Arcades",
+      "albumName" : "In the Deepest of Dreams",
+      "type" : "ALBUM"
+    },
+    "timestamp" : "2020-11-26T08:09:10.111Z"
+  } ],
+  "playlists" : [ ],
+  "plays" : [ {
+    "id" : "5",
+    "mediaId" : {
+      "albumArtistName" : "Oscillian",
+      "albumName" : "Escape from Antarctica",
+      "trackName" : "Shapeshifter",
+      "type" : "TRACK"
+    },
+    "timestamp" : "2021-04-24T12:11:10.987Z"
+  } ],
+  "ratings" : [ {
+    "id" : "6",
+    "mediaId" : {
+      "albumArtistName" : "Fury Weekend",
+      "albumName" : "Escape from Neon City",
+      "trackName" : "Sleepless Nights",
+      "type" : "TRACK"
+    },
+    "value" : 1,
+    "timestamp" : "2021-03-15T18:19:20.890Z"
+  } ],
+  "timestamp" : "2021-10-16T12:34:56.789Z"
+}

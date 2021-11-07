@@ -1,0 +1,13 @@
+[ {
+  "mediaId" : {
+    "artistName" : "NINA",
+    "type" : "ARTIST"
+  },
+  "listens" : 123
+}, {
+  "mediaId" : {
+    "artistName" : "Ray Gun Hero",
+    "type" : "ARTIST"
+  },
+  "listens" : 87
+} ]
