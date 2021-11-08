@@ -218,7 +218,7 @@ A specific directory structure is expected, for example if the media root direct
 /home/music/Some Cool Artist/Some Cool Album/cover.jpg
 /home/music/Some Cool Artist/Another Cool Album
 /home/music/Some Cool Artist/Another Cool Album/01 Yet Another Cool Track.mp3
-/home/music/Some Cool Artist/Some Cool Album/cover.jpg
+/home/music/Some Cool Artist/Another Cool Album/cover.jpg
 ```
 
 Within each album directory, your media files and a base cover art file.
