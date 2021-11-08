@@ -17,15 +17,15 @@ It uses LibVLC and vlcj to play media files on your own computer.
 
 Here are some screenshots to give an idea of what this project is...
 
-<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/01%20Home.png?raw=true"><img alt="Home" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/01%20Home.png?raw=true" width="180"></a>
-<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/02%20Recents.png?raw=true"><img alt="Recents" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/02%20Recents.png?raw=true" width="180"></a>
-<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/03%20Favourites.png?raw=true"><img alt="Favourites" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/03%20Favourites.png?raw=true" width="180"></a>
-<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/04%20Playlists.png?raw=true"><img alt="Playlists" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/04%20Playlists.png?raw=true" width="180"></a>
-<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/05%20Artists.png?raw=true"><img alt="Artists" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/05%20Artists.png?raw=true" width="180"></a>
-<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/06%20Highlights.png?raw=true"><img alt="Highlights" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/06%20Highlights.png?raw=true" width="180"></a>
-<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/07%20Top%20Tracks.png?raw=true"><img alt="Top" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/07%20Top%20Tracks.png?raw=true" width="180"></a>
-<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/08%20Top%20Artists.png?raw=true"><img alt="Top" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/08%20Top%20Artists.png?raw=true" width="180"></a>
-<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/09%20Queue.png?raw=true"><img alt="Queue" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/09%20Queue.png?raw=true" width="180"></a>
+<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/01%20Home.png?raw=true"><img alt="Home" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/t01%20Home.png?raw=true" width="180"></a>
+<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/02%20Recents.png?raw=true"><img alt="Recents" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/t02%20Recents.png?raw=true" width="180"></a>
+<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/03%20Favourites.png?raw=true"><img alt="Favourites" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/t03%20Favourites.png?raw=true" width="180"></a>
+<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/04%20Playlists.png?raw=true"><img alt="Playlists" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/t04%20Playlists.png?raw=true" width="180"></a>
+<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/05%20Artists.png?raw=true"><img alt="Artists" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/t05%20Artists.png?raw=true" width="180"></a>
+<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/06%20Highlights.png?raw=true"><img alt="Highlights" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/t06%20Highlights.png?raw=true" width="180"></a>
+<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/07%20Top%20Tracks.png?raw=true"><img alt="Top" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/t07%20Top%20Tracks.png?raw=true" width="180"></a>
+<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/08%20Top%20Artists.png?raw=true"><img alt="Top" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/t08%20Top%20Artists.png?raw=true" width="180"></a>
+<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/09%20Queue.png?raw=true"><img alt="Queue" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/t09%20Queue.png?raw=true" width="180"></a>
 
 There are also some short videos at <a href="https://www.youtube.com/playlist?list=PL6S442tu09UCo4z6xvnp-Zh1pN9MnZf_l">YouTube</a>
 
