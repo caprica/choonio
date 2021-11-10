@@ -33,11 +33,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class MediaInfoMetaProviderTest {
+class JaudioTaggerMetaProviderTest {
 
     private static final Path mediaRoot = Path.of(
         "src/test/resources",
-        MediaInfoMetaProviderTest.class.getPackageName().replaceAll("\\.", File.separator)
+        JaudioTaggerMetaProviderTest.class.getPackageName().replaceAll("\\.", File.separator)
     );
 
     @Test
@@ -48,11 +48,11 @@ class MediaInfoMetaProviderTest {
         Path samplePath = mediaRoot.resolve("meta-sample.mp3");
         assertTrue(samplePath.toFile().setLastModified(Instant.parse("2021-10-24T20:40:13Z").toEpochMilli()));
 
-        MediaInfoMetaProvider metaProvider = new MediaInfoMetaProvider();
+        JaudiotaggerMetaProvider metaProvider = new JaudiotaggerMetaProvider();
         MediaEntry entry = new MediaEntry(samplePath, new MediaTitle("Meta Sample"));
 
         metaProvider.addMeta(entry, null);
-        AudioMeta result = entry.value(MediaInfoMetaProvider.AUDIO_META, AudioMeta.class);
+        AudioMeta result = entry.value(JaudiotaggerMetaProvider.AUDIO_META, AudioMeta.class);
 
         assertNotNull(result);
         assertEquals("Various Artists", result.getAlbumArtistName());
@@ -62,7 +62,7 @@ class MediaInfoMetaProviderTest {
         assertEquals("Dance/Electronic", result.getGenre());
         assertEquals(3, result.getTrackNumber());
         assertEquals(2021, result.getYear());
-        assertEquals(15490, result.getDuration());
+        assertEquals(15000, result.getDuration());
         assertEquals("meta-sample.mp3", Path.of(result.getFileName()).getFileName().toString());
         assertEquals(Instant.parse("2021-10-24T20:40:13Z"), result.getTimestamp());
     }
@@ -71,11 +71,11 @@ class MediaInfoMetaProviderTest {
     void itSkipsMetaWhenNoMediaFile() {
         Path missingPath = Paths.get("src/test/resources/uk/co/caprica/choonio/service/catalog/meta/missing.mp3");
 
-        MediaInfoMetaProvider metaProvider = new MediaInfoMetaProvider();
+        JaudiotaggerMetaProvider metaProvider = new JaudiotaggerMetaProvider();
         MediaEntry entry = new MediaEntry(missingPath, new MediaTitle("Meta Sample"));
 
         metaProvider.addMeta(entry, null);
-        AudioMeta result = entry.value(MediaInfoMetaProvider.AUDIO_META, AudioMeta.class);
+        AudioMeta result = entry.value(JaudiotaggerMetaProvider.AUDIO_META, AudioMeta.class);
         assertNull(result);
     }
 }

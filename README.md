@@ -87,11 +87,7 @@ A goal of this project is to pretty much use the latest available versions of ev
 
  - A Java 17 runtime environment, or JDK
  - MongoDB 4.4.x, earlier versions are NOT supported
- - [MediaInfo](https://mediaarea.net/en/MediaInfo)
  - VLC 4.x, using vlcj 5.0.0
-
-In theory, it should be possible to remove MediaInfo and use a pure Java library for parsing media metadata - but for
-now MediaInfo is required.
 
 VLC 4.x is currently in `pre-release` status - you will need to build it yourself or use a nightly build from VideoLAN.
 
