@@ -109,7 +109,7 @@ public class ServerSentEventManager {
     }
 
     public boolean emit(StatusChanged statusChanged) {
-        log.info("emit(statusChanged={})", statusChanged);
+        log.debug("emit(statusChanged={})", statusChanged);
         return statusChangedSink.tryEmitNext(
             ServerSentEvent.<StatusChanged>builder()
                 .id(hashids.encode(messageCounter.getAndIncrement()))
