@@ -129,7 +129,7 @@ public final class Library {
 
     private static int[] albumRgb(AudioMeta meta) {
         Path coverArtPath = Path.of(meta.getFileName()).getParent().resolve("cover.jpg");
-        log.info("coverArtPath={}", coverArtPath);
+        log.debug("coverArtPath={}", coverArtPath);
         try {
             BufferedImage image = ImageIO.read(coverArtPath.toFile());
             MMCQ.CMap colours = ColorThief.getColorMap(image, COLOUR_COUNT);
