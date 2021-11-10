@@ -32,13 +32,17 @@ import uk.co.caprica.choonio.service.art.ArtService;
 import uk.co.caprica.choonio.service.catalog.meta.model.AudioMeta;
 import uk.co.caprica.choonio.service.configuration.Configuration;
 import uk.co.caprica.mediascanner.MediaScanner;
+import uk.co.caprica.mediascanner.domain.MediaEntry;
 import uk.co.caprica.mediascanner.domain.MediaSet;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
+import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
 import static reactor.core.scheduler.Schedulers.boundedElastic;
 
@@ -94,8 +98,10 @@ public class CatalogService implements Catalog.Service {
             List<AudioMeta> meta = mediaSet.entries()
                 .stream()
                 .map(entry -> entry.value("audioMeta", AudioMeta.class))
+                .sorted(comparing(AudioMeta::getFileName))
                 .collect(toList());
             List<AudioMeta> validMetas = validateMeta(meta);
+            log.info("Building library from meta data...");
             Library library = new Library(validMetas);
             log.info("Finished collecting meta data.");
             long end = System.currentTimeMillis();
@@ -154,13 +160,13 @@ public class CatalogService implements Catalog.Service {
     }
 
     private void logMetaErrors(List<MetaValidation> errors) {
-        if (log.isInfoEnabled()) {
+        if (log.isWarnEnabled()) {
             log.info("Meta validation errors:");
             if (errors.isEmpty()) {
                 log.info(" none");
             } else {
                 for (MetaValidation metaValidation : errors) {
-                    log.info(" {} -> {}", metaValidation.getMeta().getFileName(), metaValidation.getErrors());
+                    log.warn(" {} -> {}", metaValidation.getMeta().getFileName(), metaValidation.getErrors());
                 }
             }
         }

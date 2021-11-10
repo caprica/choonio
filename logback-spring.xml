@@ -13,7 +13,7 @@
     </appender>
 
     <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOGS}/spring-boot-logger.log</file>
+        <file>${LOGS}/choonio.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
         </encoder>
@@ -31,7 +31,10 @@
         <appender-ref ref="Console" />
     </root>
 
-    <logger name="uk.co.caprica" level="debug" additivity="false">
+    <logger name="org.jaudiotagger" level="error" additivity="false">
+    </logger>
+
+    <logger name="uk.co.caprica" level="info" additivity="false">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </logger>
