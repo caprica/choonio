@@ -6,6 +6,10 @@ Well, it's dead now.
 
 I really liked it, so I made this.
 
+## Status
+
+![Project build](https://github.com/caprica/choonio/actions/workflows/maven.yml/badge.svg)
+
 ## What is this?
 
 This project is a **local** media player for desktops, using a web browser with a UI that is very similar to the Google
