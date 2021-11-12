@@ -46,8 +46,10 @@ app:
     playlists:
       maxGridCells: 3
   backup:
-    directory: .choonio/backup
     dateFormat: yyyy-MM-dd
+    directory: .choonio/backup
+    enableOnSchedule: true
+    enableOnShutdown: true
     fileTemplate: choonio-data-%s.json.gz
     fixedDelaySeconds: 1800
     initialDelaySeconds: 10
