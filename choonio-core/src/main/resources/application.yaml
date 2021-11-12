@@ -87,6 +87,12 @@ app:
     defaultFileExtensions: [ "mp3", "flac" ]
     defaultLibvlcArgs: []
     defaultMediaRoots: []
+  meta-errors:
+    dateFormat: yyyy-MM-dd
+    directory: .choonio/meta-errors
+    enable: true
+    fileTemplate: choonio-meta-errors-%s.csv
+    timestampFormat: yyyyMMdd-HHmmss
   player:
     recordPlayThreshold: 5
     skipBackThreshold: 3

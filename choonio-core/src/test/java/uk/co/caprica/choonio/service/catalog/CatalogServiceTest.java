@@ -40,7 +40,9 @@ import java.io.File;
 import java.nio.file.Path;
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -55,6 +57,9 @@ class CatalogServiceTest {
 
     @Mock
     private Configuration.Service configurationService;
+
+    @Mock
+    private MetaErrors metaErrors;
 
     @Mock
     private AlbumsRepository albumsRepository;
@@ -78,6 +83,8 @@ class CatalogServiceTest {
                 "cover.jpg",
                 false
             )));
+
+        doNothing().when(metaErrors).saveMetaErrors(any());
 
         when(albumsRepository.deleteAll()).thenReturn(Mono.create(MonoSink::success));
         when(albumsRepository.saveAll(ArgumentMatchers.<Iterable<Album>>any())).thenReturn(Flux.empty());

@@ -61,6 +61,8 @@ public class CatalogService implements Catalog.Service {
 
     private final Configuration.Service configurationService;
 
+    private final MetaErrors metaErrors;
+
     @Override
     public Mono<Void> loadLibrary() {
         log.info("loadLibrary()");
@@ -170,5 +172,6 @@ public class CatalogService implements Catalog.Service {
                 }
             }
         }
+        metaErrors.saveMetaErrors(errors);
     }
 }
