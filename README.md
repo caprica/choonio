@@ -50,7 +50,7 @@ for my day job:
 
  * Java
  * Spring Boot
- * Spring WebFlow
+ * Spring WebFlux
  * Reactor
  * Jetty
  * MongoDB
