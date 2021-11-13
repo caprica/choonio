@@ -124,6 +124,7 @@ export default function ItemGridMenu({ items, anchorEl, open, onClose }: ItemGri
             onClose={handleClose}
             keepMounted
             onClick={ignoreClick}
+            BackdropProps={{ style: { opacity: 0 } }}
         >
             {components}
         </Menu>
