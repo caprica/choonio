@@ -1,0 +1,19 @@
+[ {
+  "mediaId" : {
+    "artistName" : "STRNGR & Destryur",
+    "type" : "ARTIST"
+  },
+  "listens" : 752
+}, {
+  "mediaId" : {
+    "artistName" : "Neon Nox",
+    "type" : "ARTIST"
+  },
+  "listens" : 403
+}, {
+  "mediaId" : {
+    "artistName" : "Ray Gun Hero",
+    "type" : "ARTIST"
+  },
+  "listens" : 388
+} ]
