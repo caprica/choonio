@@ -17,14 +17,20 @@
 
 package uk.co.caprica.choonio.service.statistics;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import uk.co.caprica.choonio.api.model.plays.ArtistListenStats;
 import uk.co.caprica.choonio.api.model.statistics.AlbumStatistics;
 import uk.co.caprica.choonio.api.model.statistics.ListenStatistics;
+
+import java.time.LocalDate;
 
 public interface Statistics {
 
     interface Service {
         Mono<AlbumStatistics> getAlbumStatistics();
         Mono<ListenStatistics> getListenStatistics();
+        Flux<ArtistListenStats> getListensByArtist(Integer minimumListens);
+        Flux<ArtistListenStats> getListensByArtistForPeriod(LocalDate fromDateInclusive, LocalDate toDateExclusive, Integer minimumListens);
     }
 }
