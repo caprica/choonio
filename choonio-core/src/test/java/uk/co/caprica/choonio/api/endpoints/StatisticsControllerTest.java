@@ -23,13 +23,20 @@ import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import uk.co.caprica.choonio.api.model.identity.ArtistId;
+import uk.co.caprica.choonio.api.model.plays.ArtistListenStats;
 import uk.co.caprica.choonio.api.model.statistics.AlbumStatistics;
 import uk.co.caprica.choonio.api.model.statistics.ListenStatistics;
 import uk.co.caprica.choonio.service.statistics.Statistics;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 import static uk.co.caprica.choonio.test.TestResourceUtils.readJsonResource;
 
@@ -62,6 +69,47 @@ class StatisticsControllerTest {
         ));
         webTestClient.get()
             .uri("/api/statistics/listens")
+            .accept(MediaType.APPLICATION_JSON)
+            .exchange()
+            .expectStatus().isOk()
+            .expectBody().json(expected);
+    }
+
+    @Test
+    void itReturnsListenStatisticsByArtist() {
+        String expected = readJsonResource(getClass(), "get-listen-statistics-by-artist.json");
+        when(statisticsService.getListensByArtist(any())).thenReturn(Flux.fromIterable(
+            List.of(
+                new ArtistListenStats(new ArtistId("STRNGR & Destryur"), 752),
+                new ArtistListenStats(new ArtistId("Neon Nox"), 403),
+                new ArtistListenStats(new ArtistId("Ray Gun Hero"), 388)
+            )
+        ));
+        webTestClient.get()
+            .uri("/api/statistics/listens/by-artist")
+            .accept(MediaType.APPLICATION_JSON)
+            .exchange()
+            .expectStatus().isOk()
+            .expectBody().json(expected);
+    }
+
+    @Test
+    void itReturnsListenStatisticsByArtistInPeriod() {
+        String expected = readJsonResource(getClass(), "get-listen-statistics-by-artist-in-period.json");
+        when(statisticsService.getListensByArtistForPeriod(eq(LocalDate.parse("2021-11-13")), eq(LocalDate.parse("2021-11-14")), any())).thenReturn(Flux.fromIterable(
+            List.of(
+                new ArtistListenStats(new ArtistId("STRNGR & Destryur"), 752),
+                new ArtistListenStats(new ArtistId("Neon Nox"), 403),
+                new ArtistListenStats(new ArtistId("Ray Gun Hero"), 388)
+            )
+        ));
+        webTestClient.get()
+            .uri(uriBuilder -> uriBuilder
+                .path("/api/statistics/listens/by-artist")
+                .queryParam("from", LocalDate.parse("2021-11-13"))
+                .queryParam("to", LocalDate.parse("2021-11-14"))
+                .build()
+            )
             .accept(MediaType.APPLICATION_JSON)
             .exchange()
             .expectStatus().isOk()

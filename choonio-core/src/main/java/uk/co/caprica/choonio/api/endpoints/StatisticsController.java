@@ -21,11 +21,16 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import uk.co.caprica.choonio.api.model.plays.ArtistListenStats;
 import uk.co.caprica.choonio.api.model.statistics.AlbumStatistics;
 import uk.co.caprica.choonio.api.model.statistics.ListenStatistics;
 import uk.co.caprica.choonio.service.statistics.Statistics;
+
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("statistics")
@@ -45,5 +50,17 @@ public class StatisticsController {
     public Mono<ListenStatistics> getListenStatistics() {
         log.info("getListenStatistics");
         return statisticsService.getListenStatistics();
+    }
+
+    @GetMapping(value = "listens/by-artist")
+    public Flux<ArtistListenStats> getListensByArtist(@RequestParam(value = "min", required = false, defaultValue = "0") Integer minimumListens) {
+        log.info("getListensByArtist(minimumListens={})", minimumListens);
+        return statisticsService.getListensByArtist(minimumListens);
+    }
+
+    @GetMapping(value = "listens/by-artist", params = { "from", "to" })
+    public Flux<ArtistListenStats> getListensByArtistForPeriod(@RequestParam(value = "from", required = false) LocalDate fromDateInclusive, @RequestParam(value = "to", required = false) LocalDate toDateExclusive, @RequestParam(value = "min", required = false, defaultValue = "0") Integer minimumListens) {
+        log.info("getListensByArtistForPeriod(fromDateInclusive={}, toDateExclusive={}, minimumListens={})", fromDateInclusive, toDateExclusive, minimumListens);
+        return statisticsService.getListensByArtistForPeriod(fromDateInclusive, toDateExclusive, minimumListens);
     }
 }
