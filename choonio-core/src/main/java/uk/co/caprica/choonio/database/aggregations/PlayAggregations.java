@@ -23,9 +23,7 @@ import org.springframework.data.mongodb.core.aggregation.ProjectionOperation;
 import org.springframework.data.mongodb.core.aggregation.SortOperation;
 import org.springframework.data.mongodb.core.aggregation.TypedAggregation;
 import uk.co.caprica.choonio.api.model.identity.AlbumId;
-import uk.co.caprica.choonio.api.model.plays.AlbumListenStats;
-import uk.co.caprica.choonio.api.model.plays.ArtistListenStats;
-import uk.co.caprica.choonio.api.model.plays.TrackListenStats;
+import uk.co.caprica.choonio.api.model.plays.Play;
 
 import java.time.LocalDate;
 
@@ -41,9 +39,9 @@ import static org.springframework.data.mongodb.core.query.Criteria.where;
 
 public final class PlayAggregations {
 
-    public static TypedAggregation<ArtistListenStats> topArtistListensAggregation(int limit) {
+    public static TypedAggregation<Play> topArtistListensAggregation(int limit) {
         return newAggregation(
-            ArtistListenStats.class,
+            Play.class,
             groupArtist(),
             projectArtist(),
             sortArtist(),
@@ -51,9 +49,9 @@ public final class PlayAggregations {
         );
     }
 
-    public static TypedAggregation<ArtistListenStats> topArtistListensAggregation(LocalDate fromDateInclusive, LocalDate toDateExclusive, int limit) {
+    public static TypedAggregation<Play> topArtistListensAggregation(LocalDate fromDateInclusive, LocalDate toDateExclusive, int limit) {
         return newAggregation(
-            ArtistListenStats.class,
+            Play.class,
             matchTimestamp(fromDateInclusive, toDateExclusive),
             groupArtist(),
             projectArtist(),
@@ -62,9 +60,9 @@ public final class PlayAggregations {
         );
     }
 
-    public static TypedAggregation<AlbumListenStats> topAlbumListensAggregation(int limit) {
+    public static TypedAggregation<Play> topAlbumListensAggregation(int limit) {
         return newAggregation(
-            AlbumListenStats.class,
+            Play.class,
             groupAlbum(),
             projectAlbum(),
             sortAlbum(),
@@ -72,9 +70,9 @@ public final class PlayAggregations {
         );
     }
 
-    public static TypedAggregation<AlbumListenStats> topAlbumListensAggregation(LocalDate fromDateInclusive, LocalDate toDateExclusive, int limit) {
+    public static TypedAggregation<Play> topAlbumListensAggregation(LocalDate fromDateInclusive, LocalDate toDateExclusive, int limit) {
         return newAggregation(
-            AlbumListenStats.class,
+            Play.class,
             matchTimestamp(fromDateInclusive, toDateExclusive),
             groupAlbum(),
             projectAlbum(),
@@ -83,9 +81,9 @@ public final class PlayAggregations {
         );
     }
 
-    public static TypedAggregation<TrackListenStats> topTrackListensAggregation(int limit) {
+    public static TypedAggregation<Play> topTrackListensAggregation(int limit) {
         return newAggregation(
-            TrackListenStats.class,
+            Play.class,
             groupTrack(),
             projectTrack(),
             sortTrack(),
@@ -93,9 +91,9 @@ public final class PlayAggregations {
         );
     }
 
-    public static TypedAggregation<TrackListenStats> topTrackListensAggregation(LocalDate fromDateInclusive, LocalDate toDateExclusive, int limit) {
+    public static TypedAggregation<Play> topTrackListensAggregation(LocalDate fromDateInclusive, LocalDate toDateExclusive, int limit) {
         return newAggregation(
-            TrackListenStats.class,
+            Play.class,
             matchTimestamp(fromDateInclusive, toDateExclusive),
             groupTrack(),
             projectTrack(),
@@ -104,9 +102,9 @@ public final class PlayAggregations {
         );
     }
 
-    public static TypedAggregation<TrackListenStats> albumTrackListensAggregation(AlbumId albumIdentity) {
+    public static TypedAggregation<Play> albumTrackListensAggregation(AlbumId albumIdentity) {
         return newAggregation(
-            TrackListenStats.class,
+            Play.class,
             matchAlbum(albumIdentity),
             groupTrack(),
             projectTrack()
