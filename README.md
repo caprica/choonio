@@ -30,6 +30,7 @@ Here are some screenshots to give an idea of what this project is...
 <a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/07%20Top%20Tracks.png?raw=true"><img alt="Top" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/t07%20Top%20Tracks.png?raw=true" width="180"></a>
 <a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/08%20Top%20Artists.png?raw=true"><img alt="Top" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/t08%20Top%20Artists.png?raw=true" width="180"></a>
 <a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/09%20Queue.png?raw=true"><img alt="Queue" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/t09%20Queue.png?raw=true" width="180"></a>
+<a href="https://github.com/caprica/choonio/blob/master/etc/screenshots/10%20Visualisation.png?raw=true"><img alt="Visualisation" src="https://github.com/caprica/choonio/blob/master/etc/screenshots/t10%20Visualisation.png?raw=true" width="180"></a>
 
 There are also some short videos at <a href="https://www.youtube.com/playlist?list=PL6S442tu09UCo4z6xvnp-Zh1pN9MnZf_l">YouTube</a>,
 including a <a href="https://www.youtube.com/watch?v=7TpvnedUEDM">two-minute video</a> showing going from scratch

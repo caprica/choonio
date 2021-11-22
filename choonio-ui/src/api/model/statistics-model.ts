@@ -15,6 +15,8 @@
  * along with Choonio.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { ArtistPlaysData } from './plays-model'
+
 export interface AlbumStatisticsData {
     readonly albumArtists: number
     readonly albums: number
@@ -24,4 +26,15 @@ export interface AlbumStatisticsData {
     readonly duration: number
     readonly fromYear: number
     readonly toYear: number
+}
+
+export interface ListensMeta {
+    readonly listens: number
+    readonly from: number
+    readonly to: number
+}
+
+export interface ArtistListenStatsResult {
+    readonly meta: ListensMeta
+    readonly data: Array<ArtistPlaysData>
 }

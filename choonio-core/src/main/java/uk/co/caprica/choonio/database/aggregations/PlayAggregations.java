@@ -111,6 +111,16 @@ public final class PlayAggregations {
         );
     }
 
+    public static TypedAggregation<Play> listensMetaAggregation() {
+        return newAggregation(
+            Play.class,
+            group()
+                .count().as("listens")
+                .min("timestamp").as("from")
+                .max("timestamp").as("to")
+        );
+    }
+
     private static GroupOperation groupArtist() {
         return group("mediaId.albumArtistName")
             .count().as("listens");

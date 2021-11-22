@@ -35,7 +35,9 @@ import uk.co.caprica.choonio.api.model.identity.TrackId;
 import uk.co.caprica.choonio.api.model.plays.ArtistListenStats;
 import uk.co.caprica.choonio.api.model.plays.Play;
 import uk.co.caprica.choonio.api.model.statistics.AlbumStatistics;
+import uk.co.caprica.choonio.api.model.statistics.ArtistListenStatsResult;
 import uk.co.caprica.choonio.api.model.statistics.ListenStatistics;
+import uk.co.caprica.choonio.api.model.statistics.ListenStatsMeta;
 import uk.co.caprica.choonio.database.repositories.AlbumsRepository;
 import uk.co.caprica.choonio.database.repositories.PlaysRepository;
 
@@ -175,8 +177,14 @@ class StatisticsServiceTest {
 
     @Test
     void itReturnsListenByArtist() {
+        ListenStatsMeta meta = new ListenStatsMeta(3, LocalDate.parse("2021-01-01"), LocalDate.parse("2021-11-17"));
         ArtistListenStats stats1 = new ArtistListenStats(new ArtistId("Signal Void"), 32);
         ArtistListenStats stats2 = new ArtistListenStats(new ArtistId("Absolute Valentine"), 11);
+
+        when(mongoTemplate.aggregate(any(), eq(ListenStatsMeta.class)))
+            .thenReturn(Flux.just(
+                meta
+            ));
 
         when(mongoTemplate.aggregate(any(), eq(ArtistListenStats.class)))
             .thenReturn(Flux.just(
@@ -185,16 +193,22 @@ class StatisticsServiceTest {
                 new ArtistListenStats(new ArtistId("Perturbator"), 9)
             ));
 
-        Flux<ArtistListenStats> source = statisticsService.getListensByArtist(10);
+        Mono<ArtistListenStatsResult> source = statisticsService.getListensByArtist(10);
         StepVerifier.create(source)
-            .expectNext(stats1, stats2)
+            .expectNext(new ArtistListenStatsResult(meta, List.of(stats1, stats2)))
             .verifyComplete();
     }
 
     @Test
     void itReturnsListensByArtistForPeriod() {
+        ListenStatsMeta meta = new ListenStatsMeta(3, LocalDate.parse("2021-01-01"), LocalDate.parse("2021-11-17"));
         ArtistListenStats stats1 = new ArtistListenStats(new ArtistId("Signal Void"), 32);
         ArtistListenStats stats2 = new ArtistListenStats(new ArtistId("Absolute Valentine"), 11);
+
+        when(mongoTemplate.aggregate(any(), eq(ListenStatsMeta.class)))
+            .thenReturn(Flux.just(
+                meta
+            ));
 
         when(mongoTemplate.aggregate(any(), eq(ArtistListenStats.class)))
             .thenReturn(Flux.just(
@@ -203,9 +217,9 @@ class StatisticsServiceTest {
                 new ArtistListenStats(new ArtistId("Perturbator"), 9)
             ));
 
-        Flux<ArtistListenStats> source = statisticsService.getListensByArtistForPeriod(LocalDate.parse("2021-11-13"), LocalDate.parse("2021-11-14"), 10);
+        Mono<ArtistListenStatsResult> source = statisticsService.getListensByArtistForPeriod(LocalDate.parse("2021-11-13"), LocalDate.parse("2021-11-14"), 10);
         StepVerifier.create(source)
-            .expectNext(stats1, stats2)
+            .expectNext(new ArtistListenStatsResult(meta, List.of(stats1, stats2)))
             .verifyComplete();
     }
 }

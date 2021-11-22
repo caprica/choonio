@@ -1,19 +1,26 @@
-[ {
-  "mediaId" : {
-    "artistName" : "STRNGR & Destryur",
-    "type" : "ARTIST"
+{
+  "meta" : {
+    "listens" : 3,
+    "from" : "2021-01-01",
+    "to" : "2021-11-17"
   },
-  "listens" : 752
-}, {
-  "mediaId" : {
-    "artistName" : "Neon Nox",
-    "type" : "ARTIST"
-  },
-  "listens" : 403
-}, {
-  "mediaId" : {
-    "artistName" : "Ray Gun Hero",
-    "type" : "ARTIST"
-  },
-  "listens" : 388
-} ]
+  "data" : [ {
+    "mediaId" : {
+      "artistName" : "STRNGR & Destryur",
+      "type" : "ARTIST"
+    },
+    "listens" : 752
+  }, {
+    "mediaId" : {
+      "artistName" : "Neon Nox",
+      "type" : "ARTIST"
+    },
+    "listens" : 403
+  }, {
+    "mediaId" : {
+      "artistName" : "Ray Gun Hero",
+      "type" : "ARTIST"
+    },
+    "listens" : 388
+  } ]
+}

@@ -31,12 +31,13 @@ import uk.co.caprica.choonio.api.model.identity.TrackId;
 import uk.co.caprica.choonio.api.model.plays.ArtistListenStats;
 import uk.co.caprica.choonio.api.model.plays.Play;
 import uk.co.caprica.choonio.api.model.statistics.AlbumStatistics;
+import uk.co.caprica.choonio.api.model.statistics.ArtistListenStatsResult;
 import uk.co.caprica.choonio.api.model.statistics.ListenStatistics;
+import uk.co.caprica.choonio.api.model.statistics.ListenStatsMeta;
 import uk.co.caprica.choonio.database.repositories.AlbumsRepository;
 import uk.co.caprica.choonio.database.repositories.PlaysRepository;
 
 import java.time.LocalDate;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -44,6 +45,7 @@ import java.util.Set;
 
 import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.toSet;
+import static uk.co.caprica.choonio.database.aggregations.PlayAggregations.listensMetaAggregation;
 import static uk.co.caprica.choonio.database.aggregations.PlayAggregations.topArtistListensAggregation;
 import static uk.co.caprica.choonio.database.aggregations.StatisticsAggregations.albumStatistics;
 
@@ -78,24 +80,28 @@ public class StatisticsService implements Statistics.Service {
     }
 
     @Override
-    public Flux<ArtistListenStats> getListensByArtist(Integer minimumListens) {
+    public Mono<ArtistListenStatsResult> getListensByArtist(Integer minimumListens) {
         log.info("getListensByArtistForPeriod(minimumListens={})", minimumListens);
         TypedAggregation<Play> aggregation = topArtistListensAggregation(Integer.MAX_VALUE);
         return getListensByArtist(aggregation, minimumListens);
     }
 
     @Override
-    public Flux<ArtistListenStats> getListensByArtistForPeriod(LocalDate fromDateInclusive, LocalDate toDateExclusive, Integer minimumListens) {
+    public Mono<ArtistListenStatsResult> getListensByArtistForPeriod(LocalDate fromDateInclusive, LocalDate toDateExclusive, Integer minimumListens) {
         log.info("getListensByArtistForPeriod(fromDateInclusive={}, toDateExclusive={}, minimumListens={})", fromDateInclusive, toDateExclusive, minimumListens);
         TypedAggregation<Play> aggregation = topArtistListensAggregation(fromDateInclusive, toDateExclusive, Integer.MAX_VALUE);
         return getListensByArtist(aggregation, minimumListens);
     }
 
-    private Flux<ArtistListenStats> getListensByArtist(TypedAggregation<Play> aggregation, int minimumListens) {
+    private Mono<ArtistListenStatsResult> getListensByArtist(TypedAggregation<Play> listensAggregation, int minimumListens) {
         log.info("getListensByArtist(minimumListens={})", minimumListens);
-        return mongoTemplate.aggregate(aggregation, ArtistListenStats.class)
+        Mono<ListenStatsMeta> metaAggregation = mongoTemplate.aggregate(listensMetaAggregation(), ListenStatsMeta.class).next();
+        Mono<List<ArtistListenStats>> dataAggregation = mongoTemplate.aggregate(listensAggregation, ArtistListenStats.class)
             .filter(stat -> stat.getListens() >= minimumListens)
-            .sort(comparingInt(ArtistListenStats::getListens).reversed());
+            .sort(comparingInt(ArtistListenStats::getListens).reversed())
+            .collectList();
+        return Mono.zip(metaAggregation, dataAggregation)
+            .map(result -> new ArtistListenStatsResult(result.getT1(), result.getT2()));
     }
 
     private Mono<List<TrackId>> getPlayedTrackIds() {

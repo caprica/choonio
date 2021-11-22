@@ -43,7 +43,8 @@ import {
     topAlbumsUrl,
     topArtistsUrl,
     topTracksUrl,
-    tracksUrl
+    tracksUrl,
+    listensByArtistUrl
 } from '../service-endpoints'
 
 describe('Artists endpoints', () => {
@@ -247,6 +248,18 @@ describe('Rating endpoints', () => {
     it('returns track rating endpoint', () => {
         expect(rateTrackUrl('STRNGR & Destryur', 'Night at the Grindhouse', 'Corpse Boogie')).toBe(
             '/api/ratings/STRNGR%20%26%20Destryur/Night%20at%20the%20Grindhouse/Corpse%20Boogie'
+        )
+    })
+})
+
+describe('Listens by artist endpoints', () => {
+    it('returns listens by artist endpoint', () => {
+        expect(listensByArtistUrl(10)).toBe('/api/statistics/listens/by-artist?min=10')
+    })
+
+    it('returns listens by artist for period endpoint', () => {
+        expect(listensByArtistUrl(5, dayjs('2021-11-13'), dayjs('2021-11-14'))).toBe(
+            '/api/statistics/listens/by-artist?min=5&from=2021-11-13&to=2021-11-14'
         )
     })
 })

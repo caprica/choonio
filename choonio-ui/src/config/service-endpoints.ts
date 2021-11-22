@@ -15,6 +15,7 @@
  * along with Choonio.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { Dayjs } from 'dayjs'
 import { ArtSize } from '../api/model/art-model'
 import { MediaType } from '../api/model/identity-model'
 import { API_DATE_FORMAT } from '../lib/date-format/date-format'
@@ -157,6 +158,19 @@ export function highlightsUrl() {
 
 export function configurationUrl() {
     return '/api/configuration'
+}
+
+export function listensByArtistUrl(minimumListens: number, fromDateInclusive?: string, toDateExclusive?: string) {
+    let url = `/api/statistics/listens/by-artist?min=${minimumListens}`
+    if (fromDateInclusive) {
+        // url += `&from=${fromDateInclusive.format(API_DATE_FORMAT)}`
+        url += `&from=${fromDateInclusive}`
+    }
+    if (toDateExclusive) {
+        // url += `&to=${toDateExclusive.format(API_DATE_FORMAT)}`
+        url += `&to=${toDateExclusive}`
+    }
+    return url
 }
 
 export const eventsUrl = () => 'http://localhost:8080/api/events'
