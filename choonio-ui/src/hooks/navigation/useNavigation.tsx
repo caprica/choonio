@@ -47,6 +47,7 @@ export const useNavigation = () => {
     const gotoFavourites = () => history.push('/favourites')
     const gotoGenres = () => history.push('genres')
     const gotoStatistics = () => history.push('/stats')
+    const gotoVisualisation = () => history.push('/visualisation')
     const gotoSettings = () => history.push('/settings')
     const gotoAbout = () => history.push('/about')
 
@@ -94,6 +95,7 @@ export const useNavigation = () => {
         gotoGenres,
         gotoMedia,
         gotoStatistics,
+        gotoVisualisation,
         gotoSettings,
         gotoAbout,
         gotoArtist,

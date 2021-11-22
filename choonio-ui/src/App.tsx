@@ -35,6 +35,7 @@ import { Redirect, Route, Switch, useLocation } from 'react-router'
 import TransitionRoute from './main/TransitionRoute'
 import ExpoPage from './ui/pages/expo/ExpoPage'
 import MainPageTemplate from './main/MainPageTemplate'
+import VisualisationPage from './ui/pages/visualisation/VisualisationPage'
 
 declare module '@mui/styles/defaultTheme' {
     // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -76,6 +77,7 @@ function App() {
                                         <Redirect to='/home' />
                                     </Route>
                                     <TransitionRoute exact path='/expo' component={ExpoPage} />
+                                    <TransitionRoute exact path='/visualisation' component={VisualisationPage} />
                                     <MainPageTemplate />
                                 </Switch>
                             </StatusInterstitial>

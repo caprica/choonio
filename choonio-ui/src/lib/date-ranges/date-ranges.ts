@@ -68,7 +68,7 @@ export const thisYear = (): DateRange => ({
     toExclusive: dayjs().startOf('year').add(1, 'year')
 })
 
-export const dateRangeForPeriod = (period: string) => {
+export const dateRangeForPeriod = (period: string): DateRange | undefined => {
     switch (period as TopPeriod) {
         case TopPeriod.AllTime:
             return undefined
