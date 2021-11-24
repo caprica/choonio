@@ -18,7 +18,7 @@
 package uk.co.caprica.choonio.config;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler;
 import org.springframework.boot.web.reactive.error.ErrorAttributes;
 import org.springframework.context.ApplicationContext;
@@ -113,7 +113,7 @@ public class SinglePageApplicationErrorHandler extends AbstractErrorWebException
         .and(pathExtension("woff2").negate());
 
     public SinglePageApplicationErrorHandler(ErrorAttributes errorAttributes, ApplicationContext applicationContext, ServerCodecConfigurer serverCodecConfigurer) {
-        super(errorAttributes, new ResourceProperties(), applicationContext);
+        super(errorAttributes, new WebProperties.Resources(), applicationContext);
         super.setMessageReaders(serverCodecConfigurer.getReaders());
         super.setMessageWriters(serverCodecConfigurer.getWriters());
     }
