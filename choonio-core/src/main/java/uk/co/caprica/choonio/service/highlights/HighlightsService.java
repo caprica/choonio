@@ -32,7 +32,6 @@ import uk.co.caprica.choonio.database.repositories.HighlightsRepository;
 import uk.co.caprica.choonio.events.ServerSentEventManager;
 import uk.co.caprica.choonio.events.model.CollectionChanged;
 import uk.co.caprica.choonio.events.model.CollectionType;
-import uk.co.caprica.choonio.service.albums.Albums;
 import uk.co.caprica.choonio.service.art.Art;
 import uk.co.caprica.choonio.service.clock.Clock;
 
@@ -52,7 +51,6 @@ public class HighlightsService implements Highlights.Service {
 
     private static final int COLOUR_COUNT = 5;
 
-    private final Albums.Service albumsService;
     private final Art.Service artService;
     private final Clock.Service clockService;
 
@@ -62,7 +60,7 @@ public class HighlightsService implements Highlights.Service {
 
     private final ServerSentEventManager eventManager;
 
-    @Value("${app.highlights.maxmimumHighlights:9}")
+    @Value("${app.highlights.maximumHighlights:9}")
     private int maximumHighlights;
 
     @Value("${app.highlights.refresh.autoRefreshThresholdMinutes:2}")
