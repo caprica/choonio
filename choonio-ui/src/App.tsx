@@ -36,6 +36,8 @@ import TransitionRoute from './main/TransitionRoute'
 import ExpoPage from './ui/pages/expo/ExpoPage'
 import MainPageTemplate from './main/MainPageTemplate'
 import VisualisationPage from './ui/pages/visualisation/VisualisationPage'
+import { useHotkeys } from 'react-hotkeys-hook'
+import { useNavigation } from './hooks/navigation/useNavigation'
 
 declare module '@mui/styles/defaultTheme' {
     // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -55,6 +57,16 @@ function App() {
     const classes = useStyles()
 
     const location = useLocation()
+
+    const { gotoFavourites, gotoHome, gotoLibrary, gotoPlaylists, gotoQueue, gotoRecent, gotoVisualisation } = useNavigation()
+
+    useHotkeys('shift+f', () => gotoFavourites())
+    useHotkeys('shift+h, shift+home', () => gotoHome())
+    useHotkeys('shift+l', () => gotoLibrary())
+    useHotkeys('shift+p', () => gotoPlaylists())
+    useHotkeys('shift+q', () => gotoQueue())
+    useHotkeys('shift+r', () => gotoRecent())
+    useHotkeys('shift+v', () => gotoVisualisation())
 
     return (
         <QueryClientProvider client={queryClient}>
