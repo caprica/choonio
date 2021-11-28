@@ -16,6 +16,7 @@
  */
 
 import makeStyles from '@mui/styles/makeStyles'
+import { useHotkeys } from 'react-hotkeys-hook'
 import { MdPlayCircleFilled } from 'react-icons/md'
 import { MdPauseCircleFilled } from 'react-icons/md'
 import { usePlayerControls } from '../../hooks/player/usePlayerControls'
@@ -37,6 +38,17 @@ export default function PlayPauseButton() {
     const { playing } = usePlayerState()
 
     const { play, pause } = usePlayerControls()
+
+    useHotkeys(
+        'space',
+        event => {
+            event.preventDefault()
+            if (playing) pause()
+            else play()
+        },
+        {},
+        [playing]
+    )
 
     if (playing) {
         return (
