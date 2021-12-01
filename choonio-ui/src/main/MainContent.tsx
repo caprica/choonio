@@ -24,6 +24,7 @@ import AlbumPage from '../ui/pages/album/AlbumPage'
 import ArtistPage from '../ui/pages/artist/ArtistPage'
 import ArtistsPage from '../ui/pages/artists/ArtistsPage'
 import EditPlaylistPage from '../ui/pages/playlist-edit/EditPlaylistPage'
+import EqualizerPage from '../ui/pages/equalizer/EqualizerPage'
 import ExpoPage from '../ui/pages/expo/ExpoPage'
 import FavouritesPage from '../ui/pages/favourites/FavouritesPage'
 import HomePage from '../ui/pages/home/HomePage'
@@ -59,6 +60,7 @@ export default function MainContent() {
             <TransitionRoute path='/favourites' component={FavouritesPage} />
             <TransitionRoute path='/playlists' component={PlaylistsPage} />
             <TransitionRoute path='/recent' component={RecentsPage} />
+            <TransitionRoute path='/equalizer' component={EqualizerPage} />
             <TransitionRoute component={NotFoundPage} />
         </Switch>
     )

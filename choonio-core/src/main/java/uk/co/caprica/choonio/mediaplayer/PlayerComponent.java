@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import reactor.core.Disposable;
 import uk.co.caprica.choonio.api.model.albums.AlbumTrack;
+import uk.co.caprica.choonio.api.model.equalizer.EqualizerPreset;
 import uk.co.caprica.choonio.api.model.identity.TrackId;
 import uk.co.caprica.choonio.api.model.playlists.Playlist;
 import uk.co.caprica.choonio.api.model.queue.QueueMode;
@@ -32,12 +33,18 @@ import uk.co.caprica.choonio.events.ServerSentEventManager;
 import uk.co.caprica.choonio.events.model.NowPlaying;
 import uk.co.caprica.choonio.service.clock.Clock;
 import uk.co.caprica.choonio.service.plays.Plays;
+import uk.co.caprica.vlcj.player.base.Equalizer;
 import uk.co.caprica.vlcj.player.component.AudioPlayerComponent;
 
 import javax.annotation.PostConstruct;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+
+import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.toList;
 
 /**
  * Encapsulation of a single media player and a playlist.
@@ -65,6 +72,8 @@ public class PlayerComponent extends BaseReadWriteLock {
 
     private Disposable recordPlayDisposable;
 
+    private Equalizer equalizer;
+
     @PostConstruct
     private void postConstruct() {
         playerComponentState = new PlayerComponentState(
@@ -77,6 +86,7 @@ public class PlayerComponent extends BaseReadWriteLock {
             }
         );
         playerComponentQueue = new PlayerComponentQueue(clockService);
+        equalizer = playerComponent.mediaPlayerFactory().equalizer().newEqualizer();
     }
 
     public void repeat(RepeatMode repeatMode) {
@@ -171,6 +181,36 @@ public class PlayerComponent extends BaseReadWriteLock {
     public void setPosition(float position) {
         log.info("setPosition(position={})", position);
         withWriteLock(() -> playerComponent.mediaPlayer().controls().setPosition(position));
+    }
+
+    public Equalizer getEqualizer() {
+        log.info("getEqualizer()");
+        return playerComponent.mediaPlayer().audio().equalizer();
+    }
+
+    public void enableEqualizer(boolean enable) {
+        log.info("enableEqualizer(enable={})", enable);
+        playerComponent.mediaPlayer().audio().setEqualizer(enable ? equalizer : null);
+    }
+
+    public void setEqualizer(float preamp, float[] bands) {
+        log.info("setEqualizer(preamp={}, bands={})", preamp, Arrays.toString(bands));
+        equalizer.setPreamp(preamp);
+        equalizer.setAmps(bands);
+    }
+
+    public List<EqualizerPreset> getEqualizerPresets() {
+        log.info("getEqualizerPresets()");
+        Map<String, Equalizer> equalizers = playerComponent.mediaPlayerFactory().equalizer().allPresetEqualizers();
+        return equalizers.entrySet()
+            .stream()
+            .map(entry -> new EqualizerPreset(
+                entry.getKey(),
+                entry.getValue().preamp(),
+                entry.getValue().amps()
+            ))
+            .sorted(comparing(EqualizerPreset::getName))
+            .collect(toList());
     }
 
     private void playFirst() {
