@@ -193,6 +193,7 @@ public class ArtService implements Art.Service {
                         return Mono.just(artCompositor.compose(list, artSize.size(), maxGridCells));
                     }
                 } catch (IOException e) {
+                    log.error("Failed to get image for {}", mediaId);
                     return Mono.error(e);
                 }
             });
