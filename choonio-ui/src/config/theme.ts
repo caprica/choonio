@@ -51,6 +51,15 @@ const theme = createTheme({
                     backgroundColor: 'rgba(255, 255, 255, 0.6)'
                 }
             }
+        },
+        MuiDrawer: {
+            defaultProps: {
+                BackdropProps: {
+                    style: {
+                        opacity: 0
+                    }
+                }
+            }
         }
     }
 })

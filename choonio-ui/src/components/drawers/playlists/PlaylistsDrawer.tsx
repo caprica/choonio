@@ -89,7 +89,7 @@ export default function PlaylistsDrawer({ open, onClose }: PlaylistDrawerProps) 
     const playlistNames: Array<string> = playlists.map((d: any) => d.mediaId.playlistName)
 
     return (
-        <Drawer anchor='right' open={open} onClose={onClose} BackdropProps={{ style: { opacity: 0 } }}>
+        <Drawer anchor='right' open={open} onClose={onClose}>
             <div className={classes.root}>
                 <AppBar className={classes.appBar} elevation={0} position='relative'>
                     <Toolbar>
