@@ -148,6 +148,18 @@ export function playerControlsUrl() {
     return '/api/player/controls'
 }
 
+export function equalizerUrl() {
+    return '/api/equalizer'
+}
+
+export function equalizerAmpsUrl() {
+    return '/api/equalizer/amps'
+}
+
+export function equalizerPresetsUrl() {
+    return '/api/equalizer/presets'
+}
+
 export function rateTrackUrl(artist: string, album: string, track: string) {
     return `/api/ratings/${encodeURIComponent(artist)}/${encodeURIComponent(album)}/${encodeURIComponent(track)}`
 }

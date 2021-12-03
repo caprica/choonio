@@ -45,8 +45,9 @@ export const useNavigation = () => {
     const gotoQueue = () => history.push('/queue')
     const gotoRecent = () => history.push('/recent')
     const gotoFavourites = () => history.push('/favourites')
-    const gotoGenres = () => history.push('genres')
+    const gotoGenres = () => history.push('/genres')
     const gotoStatistics = () => history.push('/stats')
+    const gotoEqualizer = () => history.push('/equalizer')
     const gotoVisualisation = () => history.push('/visualisation')
     const gotoSettings = () => history.push('/settings')
     const gotoAbout = () => history.push('/about')
@@ -95,6 +96,7 @@ export const useNavigation = () => {
         gotoGenres,
         gotoMedia,
         gotoStatistics,
+        gotoEqualizer,
         gotoVisualisation,
         gotoSettings,
         gotoAbout,

@@ -24,7 +24,7 @@ import List from '@mui/material/List'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 
-import { MdFavorite, MdHelp, MdImage, MdViewList } from 'react-icons/md'
+import { MdEqualizer, MdFavorite, MdHelp, MdImage, MdViewList } from 'react-icons/md'
 import { MdHistory } from 'react-icons/md'
 import { MdHome } from 'react-icons/md'
 import { MdLibraryMusic } from 'react-icons/md'
@@ -69,6 +69,7 @@ export default function NavigationDrawer({ open, onClose }: NavigationDrawerProp
         gotoFavourites,
         gotoStatistics,
         gotoSettings,
+        gotoEqualizer,
         gotoVisualisation,
         gotoAbout
     } = useNavigation()
@@ -110,6 +111,7 @@ export default function NavigationDrawer({ open, onClose }: NavigationDrawerProp
                     <Divider />
                     <NavigationDrawerListItem icon={MdImage} text='Visualisation' onClick={select(gotoVisualisation)} />
                     <Divider />
+                    <NavigationDrawerListItem icon={MdEqualizer} text='Audio Equalizer' onClick={select(gotoEqualizer)} />
                     <NavigationDrawerListItem icon={MdSettings} text='Settings' onClick={select(gotoSettings)} />
                     <NavigationDrawerListItem icon={MdHelp} text='Help &amp; feedback' onClick={select(gotoAbout)} />
                 </List>
