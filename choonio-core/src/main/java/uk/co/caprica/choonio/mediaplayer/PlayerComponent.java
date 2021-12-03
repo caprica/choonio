@@ -195,8 +195,7 @@ public class PlayerComponent extends BaseReadWriteLock {
 
     public void setEqualizer(float preamp, float[] bands) {
         log.info("setEqualizer(preamp={}, bands={})", preamp, Arrays.toString(bands));
-        equalizer.setPreamp(preamp);
-        equalizer.setAmps(bands);
+        equalizer.setAmps(preamp, bands);
     }
 
     public List<EqualizerPreset> getEqualizerPresets() {
