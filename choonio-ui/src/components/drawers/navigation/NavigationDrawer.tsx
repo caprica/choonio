@@ -79,7 +79,7 @@ export default function NavigationDrawer({ open, onClose }: NavigationDrawerProp
     }
 
     return (
-        <Drawer anchor='left' open={open} onClose={onClose} BackdropProps={{ style: { opacity: 0 } }}>
+        <Drawer anchor='left' open={open} onClose={onClose}>
             <div className={classes.root}>
                 <AppBar className={classes.appBar} elevation={0} position='relative'>
                     <Toolbar>
