@@ -28,3 +28,5 @@ node
 .project
 .settings
 
+cypress/videos
+
