@@ -23,4 +23,5 @@ export interface HighlightData {
     readonly message: string
     readonly mediaId: MediaIdentity
     readonly rgb: Array<number>
+    readonly timestamp: number
 }
