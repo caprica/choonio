@@ -89,8 +89,6 @@ export default function PositionControls({ className, timestamp }: PositionContr
 
     const { setPosition } = usePlayerControls()
 
-    if (timestamp == 0) console.log(timestamp)
-
     const classes = useStyles()
 
     const [active, setActive] = useState(false)
