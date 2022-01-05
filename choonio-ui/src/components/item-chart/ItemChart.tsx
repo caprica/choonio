@@ -72,7 +72,7 @@ export default function ItemChart<T>({ items, emptyCaption, renderItem, footer, 
             .catch(err => {
                 console.log(err)
             })
-    }, [ref])
+    }, [ref, filename])
 
     return (
         <div>

@@ -15,7 +15,6 @@
  * along with Choonio.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Dayjs } from 'dayjs'
 import { ArtSize } from '../api/model/art-model'
 import { MediaType } from '../api/model/identity-model'
 import { API_DATE_FORMAT } from '../lib/date-format/date-format'
