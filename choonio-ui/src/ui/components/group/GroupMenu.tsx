@@ -60,6 +60,7 @@ export default function GroupMenu<T extends string | number>({
             keepMounted
             open={Boolean(anchorEl)}
             onClose={onClose}
+            // BackdropProps={{ style: { opacity: 0 } }}
             TransitionProps={{ onExited: handleExit }}
             classes={{ list: classes.menu }}
         >
