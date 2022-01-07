@@ -55,26 +55,19 @@ export default function Highlights() {
 
     const { data: highlights } = useGetHighlights()
 
-    if (!highlights || highlights.length === 0) return null
-
-    const timestamp = highlights[0].timestamp
-
     return (
-        <AnimatePresence exitBeforeEnter>
-            <motion.div
-                key={timestamp}
-                className={classes.root}
-                variants={variants}
-                initial='hidden'
-                animate='show'
-                exit='hidden'
-            >
-                {highlights.map(highlight => (
-                    <motion.div key={highlight.id} variants={item}>
-                        <Highlight highlight={highlight} />
+        <>
+            {highlights && (
+                <AnimatePresence exitBeforeEnter>
+                    <motion.div className={classes.root} variants={variants} initial='hidden' animate='show' exit='hidden'>
+                        {highlights.map(highlight => (
+                            <motion.div key={highlight.id} variants={item}>
+                                <Highlight highlight={highlight} />
+                            </motion.div>
+                        ))}
                     </motion.div>
-                ))}
-            </motion.div>
-        </AnimatePresence>
+                </AnimatePresence>
+            )}
+        </>
     )
 }
