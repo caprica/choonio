@@ -123,7 +123,7 @@ public class ArtService implements Art.Service {
 
     @Override
     public Mono<Path> getArtistArtPath(String albumArtistName) {
-        log.info("getArtistArtPath(albumArtistName={}", albumArtistName);
+        log.info("getArtistArtPath(albumArtistName={})", albumArtistName);
         TypedAggregation<Album> aggregation = artistArtLocation(albumArtistName);
         return mongoTemplate.aggregate(aggregation, Location.class)
             .next()
