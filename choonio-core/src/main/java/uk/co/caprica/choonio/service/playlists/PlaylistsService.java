@@ -45,6 +45,7 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
@@ -185,15 +186,7 @@ public class PlaylistsService implements Playlists.Service {
     public Mono<List<AlbumTrack>> getPlaylistTracks(String playlistName) {
         log.info("getPlaylistTracks(playlistName={})", playlistName);
         return playlistsRepository.findByMediaIdPlaylistName(playlistName)
-            .map(Playlist::trackIds)
-            .map(LinkedHashSet::new)
-            .flatMap(trackIds -> albumsService.getTracks(trackIds)  // Order is effectively random
-                .collectMap(AlbumTrack::getMediaId)                 // So collect to a map
-                .map(map -> trackIds.stream()                       // Create a list based on the original order
-                    .map(map::get)
-                    .collect(toList())
-                )
-            );
+            .flatMap(this::playlistTracks);
     }
 
     private Mono<Void> addTracksToPlaylist(String playlistName, List<AlbumTrack> tracks) {
@@ -203,14 +196,35 @@ public class PlaylistsService implements Playlists.Service {
             .defaultIfEmpty(newPlaylist(new PlaylistId(playlistName), "My Playlist", now))
             .map(playlist -> playlist
                 .withUpdated(now)
-                .withDuration(tracks.stream()
-                    .map(AlbumTrack::getDuration)
-                    .reduce(0, Integer::sum)
+                .withItems(Stream.of(playlist.getItems(), playlistItems(tracks))
+                    .flatMap(List::stream)
+                    .collect(toList())
                 )
-                .withItems(Stream.of(playlist.getItems(), playlistItems(tracks)).flatMap(List::stream).collect(toList()))
             )
+            .flatMap(this::updatePlaylistDuration)
             .flatMap(playlistsRepository::save)
             .flatMap(unused -> playlistsChanged());
+    }
+
+    private Mono<Playlist> updatePlaylistDuration(Playlist playlist) {
+        log.info("updatePlaylistDuration(playlist={})", playlist);
+        return playlistTracks(playlist)
+            .map(albumTracks -> albumTracks.stream()
+                .map(AlbumTrack::getDuration)
+                .reduce(0, Integer::sum)
+            )
+            .map(playlist::withDuration);
+    }
+
+    private Mono<List<AlbumTrack>> playlistTracks(Playlist playlist) {
+        log.info("playlistTracks(playlist={})", playlist);
+        Set<TrackId> trackIds = new LinkedHashSet<>(playlist.trackIds());
+        return albumsService.getTracks(trackIds)  // Returned order is effectively random
+            .collectMap(AlbumTrack::getMediaId)   // So collect to a map
+            .map(map -> trackIds.stream()         // Create a list based on the original order
+                .map(map::get)
+                .collect(toList())
+            );
     }
 
     private List<PlaylistItem> playlistItems(List<AlbumTrack> tracks) {

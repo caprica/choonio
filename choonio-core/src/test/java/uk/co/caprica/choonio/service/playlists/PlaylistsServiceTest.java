@@ -125,22 +125,42 @@ class PlaylistsServiceTest {
     void itAddsArtistToPlaylist() {
         Playlist playlist = scenario();
 
+        AlbumTrack track1 = new AlbumTrack(
+            new TrackId("Neon Nox", "Last Stand", "Recon"),
+            1,
+            "Neon Nox",
+            236,
+            null,
+            null
+        );
+
+        AlbumTrack track2 = new AlbumTrack(
+            new TrackId("Ray Gun Hero", "Plethora", "Across the Grid"),
+            1,
+            "Ray Gun Hero",
+            319,
+            null,
+            null
+        );
+
+        AlbumTrack track3 = new AlbumTrack(
+            new TrackId("Destryur", "Panic", "Killing Demons"),
+            1,
+            "Destryur",
+            183,
+            null,
+            null
+        );
+
         when(albumsService.getArtistTracks(eq("Destryur")))
-            .thenReturn(Flux.fromIterable(List.of(
-                new AlbumTrack(
-                    new TrackId("Destryur", "Panic", "Killing Demons"),
-                    1,
-                    "Destryur",
-                    183,
-                    null,
-                    null
-                )
-            )));
+            .thenReturn(Flux.fromIterable(List.of(track3)));
 
         when(clockService.instant()).thenReturn(Instant.parse("2021-10-29T08:52:40.007Z"));
 
         when(playlistsRepository.findByMediaIdPlaylistName(eq("Synthwave")))
             .thenReturn(Mono.just(playlist));
+
+        when(albumsService.getTracks(any())).thenReturn(Flux.fromIterable(List.of(track1, track2, track3)));
 
         when(playlistsRepository.save(any())).thenReturn(Mono.just(playlist));
 
@@ -155,22 +175,42 @@ class PlaylistsServiceTest {
     void itAddsAlbumToPlaylist() {
         Playlist playlist = scenario();
 
+        AlbumTrack track1 = new AlbumTrack(
+            new TrackId("Neon Nox", "Last Stand", "Recon"),
+            1,
+            "Neon Nox",
+            236,
+            null,
+            null
+        );
+
+        AlbumTrack track2 = new AlbumTrack(
+            new TrackId("Ray Gun Hero", "Plethora", "Across the Grid"),
+            1,
+            "Ray Gun Hero",
+            319,
+            null,
+            null
+        );
+
+        AlbumTrack track3 = new AlbumTrack(
+            new TrackId("Destryur", "Panic", "Killing Demons"),
+            1,
+            "Destryur",
+            183,
+            null,
+            null
+        );
+
         when(albumsService.getAlbumTracks(eq("Destryur"), eq("Panic")))
-            .thenReturn(Flux.fromIterable(List.of(
-                new AlbumTrack(
-                    new TrackId("Destryur", "Panic", "Killing Demons"),
-                    1,
-                    "Destryur",
-                    183,
-                    null,
-                    null
-                )
-            )));
+            .thenReturn(Flux.fromIterable(List.of(track3)));
 
         when(clockService.instant()).thenReturn(Instant.parse("2021-10-29T08:52:40.007Z"));
 
         when(playlistsRepository.findByMediaIdPlaylistName(eq("Synthwave")))
             .thenReturn(Mono.just(playlist));
+
+        when(albumsService.getTracks(any())).thenReturn(Flux.fromIterable(List.of(track1, track2, track3)));
 
         when(playlistsRepository.save(any())).thenReturn(Mono.just(playlist));
 
@@ -185,22 +225,42 @@ class PlaylistsServiceTest {
     void itAddsTrackToPlaylist() {
         Playlist playlist = scenario();
 
+        AlbumTrack track1 = new AlbumTrack(
+            new TrackId("Neon Nox", "Last Stand", "Recon"),
+            1,
+            "Neon Nox",
+            236,
+            null,
+            null
+        );
+
+        AlbumTrack track2 = new AlbumTrack(
+            new TrackId("Ray Gun Hero", "Plethora", "Across the Grid"),
+            1,
+            "Ray Gun Hero",
+            319,
+            null,
+            null
+        );
+
+        AlbumTrack track3 = new AlbumTrack(
+            new TrackId("Destryur", "Panic", "Killing Demons"),
+            1,
+            "Destryur",
+            183,
+            null,
+            null
+        );
+
         when(albumsService.getAlbumTrack(eq("Destryur"), eq("Panic"), eq("Killing Demons")))
-            .thenReturn(Flux.fromIterable(List.of(
-                new AlbumTrack(
-                    new TrackId("Destryur", "Panic", "Killing Demons"),
-                    1,
-                    "Destryur",
-                    183,
-                    null,
-                    null
-                )
-            )));
+            .thenReturn(Flux.fromIterable(List.of(track3)));
 
         when(clockService.instant()).thenReturn(Instant.parse("2021-10-29T08:52:40.007Z"));
 
         when(playlistsRepository.findByMediaIdPlaylistName(eq("Synthwave")))
             .thenReturn(Mono.just(playlist));
+
+        when(albumsService.getTracks(any())).thenReturn(Flux.fromIterable(List.of(track1, track2, track3)));
 
         when(playlistsRepository.save(any())).thenReturn(Mono.just(playlist));
 
