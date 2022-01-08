@@ -177,8 +177,13 @@ public class PlaylistsService implements Playlists.Service {
     @Override
     public Mono<Void> removeFromPlaylist(String playlistName, String playlistItemId) {
         log.info("removeFromPlaylist(playlistName={}, playlistItemId={})", playlistName, playlistItemId);
-        // Maybe should load the playlist first to verify the item belongs to it
-        return playlistsRepository.deleteById(playlistItemId)
+        return playlistsRepository.findByMediaIdPlaylistName(playlistName)
+            .map(playlist -> playlist.withItems(playlist.getItems().stream()
+                .filter(playlistItem -> !playlistItem.getId().equals(playlistItemId))
+                .collect(toList())
+            ))
+            .flatMap(this::updatePlaylistDuration)
+            .flatMap(playlistsRepository::save)
             .then(playlistsChanged());
     }
 

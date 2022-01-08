@@ -278,10 +278,25 @@ class PlaylistsServiceTest {
 
     @Test
     void itRemovesFromPlaylist() {
-        when(playlistsRepository.deleteById(eq("12345")))
-            .thenReturn(Mono.create(MonoSink::success));
+        Playlist playlist = scenario();
 
-        Mono<Void> source = playlistsService.removeFromPlaylist("Synthwave", "12345");
+        AlbumTrack track2 = new AlbumTrack(
+            new TrackId("Ray Gun Hero", "Plethora", "Across the Grid"),
+            2,
+            "Ray Gun Hero",
+            318,
+            null,
+            null
+        );
+
+        when(playlistsRepository.findByMediaIdPlaylistName("Synthwave"))
+            .thenReturn(Mono.just(playlist));
+
+        when(albumsService.getTracks(any())).thenReturn(Flux.fromIterable(List.of(track2)));
+
+        when(playlistsRepository.save(any())).thenReturn(Mono.just(playlist));
+
+        Mono<Void> source = playlistsService.removeFromPlaylist("Synthwave", "11");
         StepVerifier.create(source)
             .verifyComplete();
 
