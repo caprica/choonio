@@ -165,7 +165,7 @@ After running `mvn install` as described above, a standalone jar file will be cr
 ./choonio/choonio-core/target/choonio-core-[VERSION].jar
 ```
 
-This jar can be executed directly, or converted into an operating service or whatever.
+This jar can be executed directly, or converted into an operating system service or whatever.
 
 To execute the jar:
 
@@ -314,7 +314,7 @@ With IntelliJ this will _not_ happen automatically - this means that when runnin
 application will fail to run (or update if you rebuild the frontend).
 
 You need to play around with the IntelliJ Maven life-cycle/plugins window to come up with a configuration that will work
-for your own workflow. In my case it is enough the configre the "generate-resources" lifecycle to run after every IDE
+for your own workflow. In my case it is enough the configure the "generate-resources" lifecycle to run after every IDE
 build command.
 
 <a href="https://github.com/caprica/choonio/blob/master/etc/doc/intellij-frontend-resources.png"><img alt="IntelliJ Maven resources build configuration" src="https://github.com/caprica/choonio/blob/master/etc/doc/intellij-frontend-resources.png?raw=true" width="180"></a>
