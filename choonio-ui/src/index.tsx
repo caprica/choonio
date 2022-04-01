@@ -28,8 +28,8 @@ import App from './App'
 
 import * as serviceWorker from './serviceWorker'
 
-const container = document.getElementById('app')
-if (!container) throw new Error("Failed to find container element with id 'app'")
+const container = document.getElementById('root')
+if (!container) throw new Error("Failed to find container element with id 'root'")
 const root = createRoot(container)
 
 root.render(
