@@ -1205,32 +1205,32 @@
   dependencies:
     tslib "^2.0.0"
 
-"@dnd-kit/core@^4.0.1":
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/@dnd-kit/core/-/core-4.0.3.tgz#49abe3c9b481b6e07909df1781e88b20f3dd25b0"
-  integrity sha512-uT1uHZxKx3iEkupmLfknMIvbykMJSetoXXmra6sGGvtWy+OMKrWm3axH2c90+JC/q6qaeKs2znd3Qs8GLnCa5Q==
+"@dnd-kit/core@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@dnd-kit/core/-/core-5.0.3.tgz#028d7e543e9fd3756f9cb857b34f818d73020810"
+  integrity sha512-IribcBLsaPqHdYLpc5xG0TqwYIaD+65offdEYxoKh38WDjzRxUjDmrt7hj9oa/ooUKL0epux20u+mBTd92i/zw==
   dependencies:
     "@dnd-kit/accessibility" "^3.0.0"
-    "@dnd-kit/utilities" "^3.0.1"
+    "@dnd-kit/utilities" "^3.1.0"
     tslib "^2.0.0"
 
-"@dnd-kit/modifiers@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@dnd-kit/modifiers/-/modifiers-4.0.0.tgz#d1577b806b2319f14a1a0a155f270e672cfca636"
-  integrity sha512-4OkNTamneH9u3YMJqG6yJ6cwFoEd/4yY9BF39TgmDh9vyMK2MoPZFVAV0vOEm193ZYsPczq3Af5tJFtJhR9jJQ==
+"@dnd-kit/modifiers@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@dnd-kit/modifiers/-/modifiers-5.0.0.tgz#c2ba0bfdb6bed994affcfc4c86834795b7a7f029"
+  integrity sha512-ZVOfa5dKmvAPBxjjnI4QTm8fHV4/gMdS6k0zY5Z8p/p9HkL/3QEHn2fYgqM2zVDpxf5maqrZ4MvqXILSPNQPMQ==
   dependencies:
-    "@dnd-kit/utilities" "^3.0.0"
+    "@dnd-kit/utilities" "^3.1.0"
     tslib "^2.0.0"
 
-"@dnd-kit/sortable@^5.0.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@dnd-kit/sortable/-/sortable-5.1.0.tgz#f30ec12c95ca5aa90e2e4d9ef3dbe16b3eb26d69"
-  integrity sha512-CPyiUHbTrSYzhddfgdeoX0ERg/dEyVKIWx9+4O6uqpoppo84SXCBHVFiFBRVpQ9wtpsXs7prtUAnAUTcvFQTZg==
+"@dnd-kit/sortable@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@dnd-kit/sortable/-/sortable-6.0.1.tgz#08d046efa85c546fd21979836b007d6fea1001f9"
+  integrity sha512-FGpRHBcflpwWpSP8bMJ4zNcDywDXssZDJBwGYuHd1RqUU/+JX43pEU0u0OHw06LabEZMOLBbyWoIaZJ0abCOEA==
   dependencies:
-    "@dnd-kit/utilities" "^3.0.0"
+    "@dnd-kit/utilities" "^3.1.0"
     tslib "^2.0.0"
 
-"@dnd-kit/utilities@^3.0.0", "@dnd-kit/utilities@^3.0.1":
+"@dnd-kit/utilities@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@dnd-kit/utilities/-/utilities-3.1.0.tgz#330ef24303da05f85ff20bb8f74b385c96caee58"
   integrity sha512-2JBdIgjJ7xjMRpKagdMuYKWJdDoVVw9Wc6lfMrLjrq8t4QlMEjtsab5JVUlzWvHgANn7w3Y3VhalFfbp4dQrKg==
@@ -4034,11 +4034,6 @@ dayjs@^1.10.3, dayjs@^1.10.4:
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.0.tgz#009bf7ef2e2ea2d5db2e6583d2d39a4b5061e805"
   integrity sha512-JLC809s6Y948/FuCZPm5IX8rRhQwOiyMb2TfVVQEixG7P8Lm/gt5S7yoQZmC8x1UehI9Pb7sksEt4xx14m+7Ug==
 
-debounce@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.2.1.tgz#38881d8f4166a5c5848020c11827b834bcb3e0a5"
-  integrity sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==
-
 debug@2.6.9, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -5150,16 +5145,14 @@ fraction.js@^4.2.0:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.2.0.tgz#448e5109a313a3527f5a3ab2119ec4cf0e0e2950"
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
 
-framer-motion@^5.5.5:
-  version "5.6.0"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-5.6.0.tgz#8203b5bc4e172265d43dfe67c3c41346c67a3940"
-  integrity sha512-Y4FtwUU+LUWLKSzoT6Sq538qluvhpe6izdQK8/xZeVjQZ/ORKGfZzyhzcUxNfscqnfEa3dUOA47s+dwrSipdGA==
+framer-motion@^6.2.8:
+  version "6.2.8"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-6.2.8.tgz#02abb529191af7e2df444185fe27e932215b715d"
+  integrity sha512-4PtBWFJ6NqR350zYVt9AsFDtISTqsdqna79FvSYPfYDXuuqFmiKtZdkTnYPslnsOMedTW0pEvaQ7eqjD+sA+HA==
   dependencies:
     framesync "6.0.1"
     hey-listen "^1.0.8"
     popmotion "11.0.3"
-    react-merge-refs "^1.1.0"
-    react-use-measure "^2.1.1"
     style-value-types "5.0.0"
     tslib "^2.1.0"
   optionalDependencies:
@@ -8429,11 +8422,6 @@ react-is@^17.0.1, react-is@^17.0.2:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-merge-refs@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-merge-refs/-/react-merge-refs-1.1.0.tgz#73d88b892c6c68cbb7a66e0800faa374f4c38b06"
-  integrity sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==
-
 react-moment@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-moment/-/react-moment-1.1.1.tgz#5fe9fb257039590c804e2b3aedfc3ceb0a6ffb16"
@@ -8559,13 +8547,6 @@ react-transition-group@^4.3.0, react-transition-group@^4.4.1, react-transition-g
     dom-helpers "^5.0.1"
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
-
-react-use-measure@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/react-use-measure/-/react-use-measure-2.1.1.tgz#5824537f4ee01c9469c45d5f7a8446177c6cc4ba"
-  integrity sha512-nocZhN26cproIiIduswYpV5y5lQpSQS1y/4KuvUCjSKmw7ZWIS/+g3aFnX3WdBkyuGUtTLif3UTqnLLhbDoQig==
-  dependencies:
-    debounce "^1.2.1"
 
 react@^18.0.0:
   version "18.0.0"
