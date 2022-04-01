@@ -113,17 +113,17 @@ final class PlayerComponentState {
         }
 
         @Override
-        public void error(MediaPlayer mediaPlayer) {
-            log.error("error()");
-            setStopped();
-        }
-
-        @Override
-        public void finished(MediaPlayer mediaPlayer) {
-            log.info("finished()");
+        public void stopping(MediaPlayer mediaPlayer) {
+            log.info("stopping()");
             setStopped();
             // Do not do this work on the native media player thread
             mediaPlayer.submit(PlayerComponentState.this::mediaFinished);
+        }
+
+        @Override
+        public void error(MediaPlayer mediaPlayer) {
+            log.error("error()");
+            setStopped();
         }
 
         @Override
