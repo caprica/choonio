@@ -16,7 +16,7 @@
  */
 
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { Route, BrowserRouter as Router } from 'react-router-dom'
 import ScrollToTop from './ui/lib/scroll-to-top/ScrollToTop'
 
@@ -28,14 +28,17 @@ import App from './App'
 
 import * as serviceWorker from './serviceWorker'
 
-ReactDOM.render(
+const container = document.getElementById('app')
+if (!container) throw new Error("Failed to find container element with id 'app'")
+const root = createRoot(container)
+
+root.render(
     <React.StrictMode>
         <Router>
             <ScrollToTop />
             <Route component={App} />
         </Router>
-    </React.StrictMode>,
-    document.getElementById('root')
+    </React.StrictMode>
 )
 
 // If you want your app to work offline and load faster, you can change
