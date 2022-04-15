@@ -37,7 +37,7 @@ const getRecentPlaylists = async () => {
 }
 
 export const useGetRecents = () => {
-    return useQuery<RecentData[], Error>(QUERY_ID, () => getRecents())
+    return useQuery<RecentData[], Error>([QUERY_ID], () => getRecents())
 }
 
 export const useDeleteRecent = () => {
@@ -51,5 +51,5 @@ export const useGetRecentPlaylists = () => {
 
 export const useInvalidateRecents = () => {
     const queryClient = useQueryClient()
-    queryClient.invalidateQueries(QUERY_ID)
+    queryClient.invalidateQueries([QUERY_ID])
 }

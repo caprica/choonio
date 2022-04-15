@@ -30,6 +30,7 @@ import { ArtSize } from '../../../api/model/art-model'
 import ArtistMeta from './ArtistMeta'
 import ArtistActions from './ArtistActions'
 import MediaViewHeader from '../../views/media-view/MediaViewHeader'
+import invariant from 'tiny-invariant'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -40,14 +41,11 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-interface ArtistParams {
-    artistName: string
-}
-
 export default function ArtistPage() {
     const classes = useStyles()
 
-    const { artistName } = useParams<ArtistParams>()
+    const { artistName } = useParams()
+    invariant(artistName)
 
     const { data } = useGetAlbums(artistName)
 

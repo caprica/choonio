@@ -33,7 +33,7 @@ const putConfiguration = async (configuration: ConfigurationData) => {
 }
 
 export const useGetConfiguration = () => {
-    return useQuery<ConfigurationData, Error>(QUERY_ID, () => getConfiguration())
+    return useQuery<ConfigurationData, Error>([QUERY_ID], () => getConfiguration())
 }
 
 export const useSetConfiguration = () => {
@@ -43,5 +43,5 @@ export const useSetConfiguration = () => {
 
 export const useInvalidateConfiguration = () => {
     const queryClient = useQueryClient()
-    queryClient.invalidateQueries(QUERY_ID)
+    queryClient.invalidateQueries([QUERY_ID])
 }

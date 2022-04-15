@@ -50,9 +50,9 @@ const DEFAULT_TOP_HOW_MANY = 10
 const DEFAULT_TOP_WHAT = TopWhat.Artists
 const DEFAULT_TOP_PERIOD = TopPeriod.AllTime
 
-const useTopHowManyState = createPersistedState('topHowMany')
-const useTopWhatState = createPersistedState('topWhat')
-const useTopPeriodState = createPersistedState('topPeriod')
+const useTopHowManyState = createPersistedState<number>('topHowMany')
+const useTopWhatState = createPersistedState<TopWhat>('topWhat')
+const useTopPeriodState = createPersistedState<TopPeriod>('topPeriod')
 
 export const useTopStatsSettings = () => {
     const [topHowMany, setTopHowMany] = useTopHowManyState(DEFAULT_TOP_HOW_MANY)

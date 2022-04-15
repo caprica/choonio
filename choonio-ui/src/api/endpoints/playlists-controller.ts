@@ -62,11 +62,11 @@ const deletePlaylist = async ({ playlistId, itemId }: { playlistId: string; item
 }
 
 export const useGetPlaylistNames = () => {
-    return useQuery<PlaylistName[]>('playlist-names', () => getPlaylistNames())
+    return useQuery<PlaylistName[]>(['playlist-names'], () => getPlaylistNames())
 }
 
 export const useGetPlaylists = () => {
-    return useQuery<PlaylistData[], Error>(QUERY_ID, () => getPlaylists())
+    return useQuery<PlaylistData[], Error>([QUERY_ID], () => getPlaylists())
 }
 
 export const useGetPlaylist = (playlistId: string) => {
@@ -99,5 +99,5 @@ export const useRemoveFromPlaylist = () => {
 
 export const useInvalidatePlaylists = () => {
     const queryClient = useQueryClient()
-    queryClient.invalidateQueries(QUERY_ID)
+    queryClient.invalidateQueries([QUERY_ID])
 }

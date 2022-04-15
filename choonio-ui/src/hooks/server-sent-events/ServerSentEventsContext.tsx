@@ -86,7 +86,7 @@ export function ServerSentEventsProvider({ children }: ServerSentEventsProviderP
 
     const collectionChanged = (event: CollectionChangedEvent) => {
         const collectionNames = collectionQueryCacheMap.get(event.name)
-        collectionNames?.forEach(collectionName => queryClient.invalidateQueries(collectionName))
+        collectionNames?.forEach(collectionName => queryClient.invalidateQueries([collectionName]))
     }
 
     const parseEventData = (event: Event) => {

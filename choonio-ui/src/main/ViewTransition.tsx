@@ -15,10 +15,15 @@
  * along with Choonio.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { ReactNode } from 'react'
 import { motion } from 'framer-motion'
 import { pageStyle, pageTransition, pageVariants } from './transition'
 
-export default function ViewTransition(props: any) {
+interface ViewTransitionProps {
+    view: ReactNode
+}
+
+export default function ViewTransition({ view }: ViewTransitionProps) {
     return (
         <motion.div
             style={pageStyle}
@@ -28,7 +33,7 @@ export default function ViewTransition(props: any) {
             variants={pageVariants}
             transition={pageTransition}
         >
-            {props.children}
+            {view}
         </motion.div>
     )
 }

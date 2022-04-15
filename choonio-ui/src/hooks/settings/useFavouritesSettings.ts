@@ -32,7 +32,7 @@ export const captionForFavouritesGrouping = (value: string) => captions.get(valu
 
 const DEFAULT_FAVOURITES_GROUP = FavouritesGrouping.ByDate
 
-const useFavouritesGroupState = createPersistedState('favouritesGroup')
+const useFavouritesGroupState = createPersistedState<FavouritesGrouping>('favouritesGroup')
 
 export const useFavouritesSettings = () => {
     const [favouritesGroup, setFavouritesGroup] = useFavouritesGroupState(DEFAULT_FAVOURITES_GROUP)

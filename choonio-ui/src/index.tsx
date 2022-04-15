@@ -17,7 +17,7 @@
 
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { Route, BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import ScrollToTop from './ui/lib/scroll-to-top/ScrollToTop'
 
 import 'typeface-roboto'
@@ -36,7 +36,7 @@ root.render(
     <React.StrictMode>
         <Router>
             <ScrollToTop />
-            <Route component={App} />
+            <App />
         </Router>
     </React.StrictMode>
 )

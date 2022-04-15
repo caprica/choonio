@@ -19,11 +19,11 @@ import { useParams } from 'react-router-dom'
 import { Breadcrumbs, Typography } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import { useNavigation } from '../../../../hooks/navigation/useNavigation'
-import { TopStatsPageParams } from './TopStatsPage'
 import { MouseEvent, useState } from 'react'
 import { captionForTopPeriod, TopPeriod, TopWhat, useTopStatsSettings } from '../../../../hooks/settings/useTopStatsSettings'
 import GroupMenu from '../../../components/group/GroupMenu'
 import TopStatsCrumb from './TopStatsCrumb'
+import invariant from 'tiny-invariant'
 
 const topHowManyOptions = [{ value: 10 }, { value: 20 }, { value: 50 }, { value: 100 }]
 
@@ -58,10 +58,19 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
+type ParamsType = {
+    top: string
+    period: TopPeriod
+    what: TopWhat
+}
+
 export default function TopStatsNav() {
     const classes = useStyles()
 
-    const { top, period, what } = useParams<TopStatsPageParams>()
+    const { top, period, what } = useParams<ParamsType>()
+    invariant(top)
+    invariant(period)
+    invariant(what)
 
     const { setTopHowMany, setTopWhat, setTopPeriod } = useTopStatsSettings()
 

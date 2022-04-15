@@ -42,7 +42,7 @@ const getEqualizerPresets = async () => {
 }
 
 export const useGetEqualizerState = () => {
-    return useQuery<EqualizerStateData, Error>(STATE_QUERY_ID, () => getEqualizerState())
+    return useQuery<EqualizerStateData, Error>([STATE_QUERY_ID], () => getEqualizerState())
 }
 
 export const useEnableEqualizer = () => {
@@ -57,10 +57,10 @@ export const useSetEqualizer = () => {
 }
 
 export const useGetEqualizerPresets = () => {
-    return useQuery<EqualizerPresetData[], Error>(PRESETS_QUERY_ID, () => getEqualizerPresets())
+    return useQuery<EqualizerPresetData[], Error>([PRESETS_QUERY_ID], () => getEqualizerPresets())
 }
 
 export const useInvalidateEqualizerState = () => {
     const queryClient = useQueryClient()
-    return () => queryClient.invalidateQueries(STATE_QUERY_ID)
+    return () => queryClient.invalidateQueries([STATE_QUERY_ID])
 }

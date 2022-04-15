@@ -16,6 +16,7 @@
  */
 
 import createPersistedState from 'use-persisted-state'
+import { PlaylistGrouping } from '../../lib/groups/playlist-groups'
 
 export enum PlaylistsGrouping {
     ByRecentlyCreated = 'by-recently-created',
@@ -34,7 +35,7 @@ export const captionForPlaylistsGrouping = (value: string) => captions.get(value
 
 const DEFAULT_PLAYLISTS_GROUP = PlaylistsGrouping.ByRecentlyCreated
 
-const usePlaylistsGroupState = createPersistedState('playlistsGroup')
+const usePlaylistsGroupState = createPersistedState<PlaylistsGrouping>('playlistsGroup')
 
 export const usePlaylistsSettings = () => {
     const [playlistsGroup, setPlaylistsGroup] = usePlaylistsGroupState(DEFAULT_PLAYLISTS_GROUP)

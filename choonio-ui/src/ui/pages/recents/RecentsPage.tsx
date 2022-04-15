@@ -17,13 +17,13 @@
 
 import makeStyles from '@mui/styles/makeStyles'
 import Container from '@mui/material/Container'
-import { Redirect, Route, Switch, useParams, useRouteMatch } from 'react-router-dom'
+import { Navigate, Route, Routes, useParams } from 'react-router-dom'
 import { getRecentGroups } from '../../../lib/groups/recent-groups'
 import RecentsNav from './RecentsNav'
-import TransitionRoute from '../../../main/TransitionRoute'
 import { RecentsGrouping, useRecentsSettings } from '../../../hooks/settings/useRecentsSettings'
 import RecentsGroup from './RecentsGroup'
 import { useGetRecents } from '../../../api/endpoints/recents-controller'
+import invariant from 'tiny-invariant'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -31,39 +31,37 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export interface RecentsPageParams {
-    grouping: string
-}
-
 export default function RecentsPage() {
     const classes = useStyles()
-    const match = useRouteMatch()
 
     const { recentsGroup } = useRecentsSettings()
 
     return (
         <Container maxWidth='xl' className={classes.root}>
-            <Route path={`${match.path}/:grouping`}>
-                <RecentsNav />
-            </Route>
-            <Switch>
-                <Route exact path={`${match.url}`}>
-                    <Redirect to={`/recent/${recentsGroup}`} />
-                </Route>
-                <TransitionRoute exact path={`${match.path}/:grouping`} component={Content} />
-            </Switch>
+            <Routes>
+                <Route path=':grouping' element={<RecentsNav />} />
+            </Routes>
+            <Routes>
+                <Route path='' element={<Navigate to={recentsGroup} />} />
+                <Route path=':grouping' element={<Content />} />
+            </Routes>
         </Container>
     )
 }
 
+type ParamsType = {
+    grouping: RecentsGrouping
+}
+
 const Content = () => {
-    const { grouping } = useParams<RecentsPageParams>()
+    const { grouping } = useParams<ParamsType>()
+    invariant(grouping)
 
     const { data: recents } = useGetRecents()
 
     if (!recents) return null
 
-    const groups = getRecentGroups(recents, grouping as RecentsGrouping)
+    const groups = getRecentGroups(recents, grouping)
     return (
         <div>
             {groups.map(group => (

@@ -15,7 +15,7 @@
  * along with Choonio.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import {
     AlbumIdentity,
     ArtistIdentity,
@@ -36,29 +36,29 @@ import { TopPeriod, TopWhat } from '../settings/useTopStatsSettings'
  * client-side routing changes.
  */
 export const useNavigation = () => {
-    const history = useHistory()
+    const navigate = useNavigate()
 
     // Top-level pages
-    const gotoHome = () => history.push('/home')
-    const gotoLibrary = () => history.push('/artists')
-    const gotoPlaylists = () => history.push('/playlists')
-    const gotoQueue = () => history.push('/queue')
-    const gotoRecent = () => history.push('/recent')
-    const gotoFavourites = () => history.push('/favourites')
-    const gotoGenres = () => history.push('/genres')
-    const gotoStatistics = () => history.push('/stats')
-    const gotoEqualizer = () => history.push('/equalizer')
-    const gotoVisualisation = () => history.push('/visualisation')
-    const gotoSettings = () => history.push('/settings')
-    const gotoAbout = () => history.push('/about')
+    const gotoHome = () => navigate('/home')
+    const gotoLibrary = () => navigate('/artists')
+    const gotoPlaylists = () => navigate('/playlists')
+    const gotoQueue = () => navigate('/queue')
+    const gotoRecent = () => navigate('/recent')
+    const gotoFavourites = () => navigate('/favourites')
+    const gotoGenres = () => navigate('genres')
+    const gotoStatistics = () => navigate('/stats')
+    const gotoEqualizer = () => navigate('/equalizer')
+    const gotoVisualisation = () => navigate('/visualisation')
+    const gotoSettings = () => navigate('/settings')
+    const gotoAbout = () => navigate('/about')
 
     // Detail pages
-    const gotoArtist = (artistId: ArtistIdentity) => history.push(`/albums/${artistId.artistName}`)
-    const gotoAlbum = (albumId: AlbumIdentity) => history.push(`/albums/${albumId.albumArtistName}/${albumId.albumName}`)
-    const gotoTrack = (trackId: TrackIdentity) => history.push(`/albums/${trackId.albumArtistName}/${trackId.albumName}`)
-    const gotoPlaylist = (playlistId: PlaylistIdentity) => history.push(`/playlist/${playlistId.playlistName}`)
-    const gotoGenre = (genreName: string) => history.push(`/genres/${encodeURIComponent(genreName)}`)
-    const gotoPlaylistEdit = (playlistId: PlaylistIdentity) => history.push(`/playlist/${playlistId.playlistName}/edit`)
+    const gotoArtist = (artistId: ArtistIdentity) => navigate(`/albums/${artistId.artistName}`)
+    const gotoAlbum = (albumId: AlbumIdentity) => navigate(`/albums/${albumId.albumArtistName}/${albumId.albumName}`)
+    const gotoTrack = (trackId: TrackIdentity) => navigate(`/albums/${trackId.albumArtistName}/${trackId.albumName}`)
+    const gotoPlaylist = (playlistId: PlaylistIdentity) => navigate(`/playlist/${playlistId.playlistName}`)
+    const gotoGenre = (genreName: string) => navigate(`/genres/${encodeURIComponent(genreName)}`)
+    const gotoPlaylistEdit = (playlistId: PlaylistIdentity) => navigate(`/playlist/${playlistId.playlistName}/edit`)
 
     const gotoMedia = (mediaId: MediaIdentity) => {
         switch (mediaId.type) {
@@ -77,14 +77,14 @@ export const useNavigation = () => {
         }
     }
 
-    const gotoFavouritesGroup = (group: FavouritesGrouping) => history.push(`/favourites/${group}`)
-    const gotoRecentsGroup = (group: RecentsGrouping) => history.push(`/recent/${group}`)
-    const gotoPlaylistsGroup = (group: PlaylistsGrouping) => history.push(`/playlists/${group}`)
-    const gotoTopStats = (what: TopWhat, top: number, period: TopPeriod) => history.push(`/stats/top/${top}/${what}/${period}`)
+    const gotoFavouritesGroup = (group: FavouritesGrouping) => navigate(`/favourites/${group}`)
+    const gotoRecentsGroup = (group: RecentsGrouping) => navigate(`/recent/${group}`)
+    const gotoPlaylistsGroup = (group: PlaylistsGrouping) => navigate(`/playlists/${group}`)
+    const gotoTopStats = (what: TopWhat, top: number, period: TopPeriod) => navigate(`/stats/top/${top}/${what}/${period}`)
 
-    const gotoQuickSearch = (searchTerm: string) => history.push(`/search/${searchTerm}`)
+    const gotoQuickSearch = (searchTerm: string) => navigate(`/search/${searchTerm}`)
 
-    const goBack = () => history.goBack()
+    const goBack = () => history.back()
 
     return {
         gotoHome,

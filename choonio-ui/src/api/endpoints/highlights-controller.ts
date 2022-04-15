@@ -32,7 +32,7 @@ const refreshHighlights = async () => {
 }
 
 export const useGetHighlights = () => {
-    return useQuery<HighlightData[], Error>(QUERY_ID, () => getHighlights())
+    return useQuery<HighlightData[], Error>([QUERY_ID], () => getHighlights())
 }
 
 export const useRefreshHighlights = () => {
@@ -42,5 +42,5 @@ export const useRefreshHighlights = () => {
 
 export const useInvalidateHighlights = () => {
     const queryClient = useQueryClient()
-    queryClient.invalidateQueries(QUERY_ID)
+    queryClient.invalidateQueries([QUERY_ID])
 }

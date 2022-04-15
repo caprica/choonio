@@ -32,6 +32,7 @@ import MediaViewList from '../../views/media-view/MediaViewList'
 import { MdAccessTime } from 'react-icons/md'
 import { MediaViewListHeader } from '../../views/media-view/MediaViewListHeaders'
 import MediaViewHeader from '../../views/media-view/MediaViewHeader'
+import invariant from 'tiny-invariant'
 
 const headers: Array<MediaViewListHeader> = [
     { id: 'drag-handle', caption: '', align: 'right' },
@@ -44,12 +45,9 @@ const headers: Array<MediaViewListHeader> = [
 
 const toPlaylistRequestItem = (item: PlaylistItemData): PlaylistRequestItemData => ({ trackId: item.track.mediaId })
 
-interface PlaylistParams {
-    playlistName: string
-}
-
 export default function EditPlaylistPage() {
-    const { playlistName } = useParams<PlaylistParams>()
+    const { playlistName } = useParams()
+    invariant(playlistName)
 
     const { playPlaylist } = usePlaylistActions()
 

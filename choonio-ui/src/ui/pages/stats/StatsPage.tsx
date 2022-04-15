@@ -15,22 +15,20 @@
  * along with Choonio.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { useTopStatsSettings } from '../../../hooks/settings/useTopStatsSettings'
 
 import TopStatsPage from './top/TopStatsPage'
 
 export default function StatsPage() {
-    const match = useRouteMatch()
-
     const { topHowMany } = useTopStatsSettings()
 
     return (
-        <Switch>
-            <Route exact path={`${match.url}`}>
-                <Redirect to={`${match.url}/top/${topHowMany}`} />
-            </Route>
-            <Route path={`${match.url}/top/:top`} component={TopStatsPage} />
-        </Switch>
+        <div>
+            <Routes>
+                <Route path='' element={<Navigate to={`top/${topHowMany}`} />} />
+                <Route path='top/:top/*' element={<TopStatsPage />} />
+            </Routes>
+        </div>
     )
 }
