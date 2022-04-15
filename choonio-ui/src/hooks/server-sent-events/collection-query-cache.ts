@@ -32,7 +32,7 @@ collectionQueryCacheMap.set(CollectionName.Plays, [
     'top-tracks'
 ])
 collectionQueryCacheMap.set(CollectionName.Queue, ['queue'])
-collectionQueryCacheMap.set(CollectionName.Ratings, ['albums', 'playlists'])
+collectionQueryCacheMap.set(CollectionName.Ratings, ['albums', 'playlists', 'queue'])
 collectionQueryCacheMap.set(CollectionName.Recents, ['recents', 'queue'])
 collectionQueryCacheMap.set(CollectionName.Configuration, ['configuration'])
 
