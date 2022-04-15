@@ -42,5 +42,5 @@ export const useGetAlbum = (artistName: string, albumName: string) => {
 
 export const useInvalidateAlbums = () => {
     const queryClient = useQueryClient()
-    queryClient.invalidateQueries(QUERY_ID)
+    queryClient.invalidateQueries([QUERY_ID])
 }

@@ -15,7 +15,7 @@
  * along with Choonio.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Redirect, Route, Switch } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { Container } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import SettingsTabs from './SettingsTabs'
@@ -36,12 +36,11 @@ export default function SettingsPage() {
 
     return (
         <Container className={classes.root} maxWidth='sm'>
-            <Switch>
-                <Route path='/settings/:settings'>
-                    <SettingsTabs />
-                </Route>
-                <Redirect to='/settings/scan' />
-            </Switch>
+            <Routes>
+                <Route path='/settings/:settings' element={<SettingsTabs />} />
+                {/* <Navigate to='/settings/scan' /> */}
+                <Route path='*' element={<Navigate to='/settings/scan' />} />
+            </Routes>
         </Container>
     )
 }

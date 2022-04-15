@@ -22,16 +22,13 @@ import SearchSummary from './results/SearchSummary'
 import { SearchProvider, useSearch } from '../../../hooks/search/SearchContext'
 import { useGetQuickSearchResults } from '../../../api/endpoints/search-controller'
 import SearchResults from './results/SearchResults'
+import invariant from 'tiny-invariant'
 
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(4, 8)
     }
 }))
-
-interface SearchParams {
-    query: string
-}
 
 // This needs a wrapper component because the hook in the content uses the provider/context
 export default function SearchPage() {
@@ -45,7 +42,8 @@ export default function SearchPage() {
 function SearchContent() {
     const classes = useStyles()
 
-    const { query } = useParams<SearchParams>()
+    const { query } = useParams()
+    invariant(query)
 
     const { data: searchResults } = useGetQuickSearchResults(query)
 

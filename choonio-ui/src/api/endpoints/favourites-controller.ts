@@ -39,7 +39,7 @@ const deleteFavourite = async (favouriteId: string) => {
 }
 
 export const useGetFavourites = () => {
-    return useQuery<FavouriteData[], Error>(QUERY_ID, () => getFavourites())
+    return useQuery<FavouriteData[], Error>([QUERY_ID], () => getFavourites())
 }
 
 export const useAddToFavourites = () => {
@@ -54,5 +54,5 @@ export const useDeleteFavourite = () => {
 
 export const useInvalidateFavourites = () => {
     const queryClient = useQueryClient()
-    queryClient.invalidateQueries(QUERY_ID)
+    queryClient.invalidateQueries([QUERY_ID])
 }

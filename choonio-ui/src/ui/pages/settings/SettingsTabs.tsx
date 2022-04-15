@@ -15,7 +15,7 @@
  * along with Choonio.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Link, Route, Switch, useLocation } from 'react-router-dom'
+import { Link, Route, Routes, useLocation } from 'react-router-dom'
 import { Paper, Tab, Tabs } from '@mui/material'
 import LibrarySettingsTab from './LibrarySettingsTab'
 import PlaybackSettingsTab from './PlaybackSettingsTab'
@@ -58,7 +58,7 @@ export default function SettingsTabs() {
                     <Tab label='Playback' component={Link} to='/settings/playback' value='/settings/playback' />
                 </Tabs>
             </Paper>
-            <Switch>
+            <Routes>
                 <Route path='/settings/scan'>
                     <ScanSettingsTab />
                 </Route>
@@ -68,7 +68,7 @@ export default function SettingsTabs() {
                 <Route path='/settings/playback'>
                     <PlaybackSettingsTab configuration={configuration} onSaveConfiguration={handleSaveConfiguration} />
                 </Route>
-            </Switch>
+            </Routes>
         </>
     )
 }

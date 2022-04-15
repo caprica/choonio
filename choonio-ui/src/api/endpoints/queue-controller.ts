@@ -38,7 +38,7 @@ const deleteQueue = async (itemId: string) => {
 }
 
 export const useGetQueue = () => {
-    return useQuery<PlaylistData, Error>(QUERY_ID, () => getQueue())
+    return useQuery<PlaylistData, Error>([QUERY_ID], () => getQueue())
 }
 
 export const useAddToQueue = () => {
@@ -53,5 +53,5 @@ export const useRemoveFromQueue = () => {
 
 export const useInvalidateQueue = () => {
     const queryClient = useQueryClient()
-    queryClient.invalidateQueries(QUERY_ID)
+    queryClient.invalidateQueries([QUERY_ID])
 }

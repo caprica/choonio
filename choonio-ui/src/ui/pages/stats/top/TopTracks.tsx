@@ -19,18 +19,20 @@ import { useParams } from 'react-router-dom'
 import TrackListensRenderer from '../../../../components/renderers/item-chart/track/TrackListensRenderer'
 import { useNavigation } from '../../../../hooks/navigation/useNavigation'
 
-import { TopStatsPageParams } from './TopStatsPage'
 import ItemChart from '../../../../components/item-chart/ItemChart'
 import { dateRangeForPeriod } from '../../../../lib/date-ranges/date-ranges'
 import { useGetTopTrackPlays } from '../../../../api/endpoints/plays-controller'
 import { TrackPlaysData } from '../../../../api/model/plays-model'
 import RangeFooter from './RangeFooter'
 import { keyForMediaId } from '../../../../api/model/identity-model'
+import invariant from 'tiny-invariant'
 
 export default function TopTracks() {
     const { gotoTrack } = useNavigation()
 
-    const { top, period } = useParams<TopStatsPageParams>()
+    const { top, period } = useParams()
+    invariant(top)
+    invariant(period)
 
     const dateRange = dateRangeForPeriod(period)
 

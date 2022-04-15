@@ -18,7 +18,6 @@
 import { useParams } from 'react-router-dom'
 import { useNavigation } from '../../../../hooks/navigation/useNavigation'
 
-import { TopStatsPageParams } from './TopStatsPage'
 import ItemChart from '../../../../components/item-chart/ItemChart'
 import ArtistListensRenderer from '../../../../components/renderers/item-chart/artist/ArtistListensRenderer'
 import { dateRangeForPeriod } from '../../../../lib/date-ranges/date-ranges'
@@ -26,11 +25,14 @@ import { useGetTopArtistPlays } from '../../../../api/endpoints/plays-controller
 import { ArtistPlaysData } from '../../../../api/model/plays-model'
 import RangeFooter from './RangeFooter'
 import { keyForMediaId } from '../../../../api/model/identity-model'
+import invariant from 'tiny-invariant'
 
 export default function TopArtists() {
     const { gotoArtist } = useNavigation()
 
-    const { top, period } = useParams<TopStatsPageParams>()
+    const { top, period } = useParams()
+    invariant(top)
+    invariant(period)
 
     const dateRange = dateRangeForPeriod(period)
 

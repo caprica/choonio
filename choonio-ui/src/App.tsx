@@ -31,13 +31,12 @@ import { QueryClient } from 'react-query'
 import { ServerSentEventsProvider } from './hooks/server-sent-events/ServerSentEventsContext'
 
 import StatusInterstitial from './main/StatusInterstitial'
-import { Redirect, Route, Switch, useLocation } from 'react-router'
-import TransitionRoute from './main/TransitionRoute'
-import ExpoPage from './ui/pages/expo/ExpoPage'
 import MainPageTemplate from './main/MainPageTemplate'
-import VisualisationPage from './ui/pages/visualisation/VisualisationPage'
 import { useHotkeys } from 'react-hotkeys-hook'
 import { useNavigation } from './hooks/navigation/useNavigation'
+import { Route, Routes } from 'react-router-dom'
+import ExpoPage from './ui/pages/expo/ExpoPage'
+import VisualisationPage from './ui/pages/visualisation/VisualisationPage'
 
 declare module '@mui/styles/defaultTheme' {
     // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -55,8 +54,6 @@ const useStyles = makeStyles({
 
 function App() {
     const classes = useStyles()
-
-    const location = useLocation()
 
     const { gotoFavourites, gotoHome, gotoLibrary, gotoPlaylists, gotoQueue, gotoRecent, gotoVisualisation } = useNavigation()
 
@@ -84,14 +81,11 @@ function App() {
                     >
                         <ServerSentEventsProvider>
                             <StatusInterstitial>
-                                <Switch location={location} key={location.pathname}>
-                                    <Route exact path='/'>
-                                        <Redirect to='/home' />
-                                    </Route>
-                                    <TransitionRoute exact path='/expo' component={ExpoPage} />
-                                    <TransitionRoute exact path='/visualisation' component={VisualisationPage} />
-                                    <MainPageTemplate />
-                                </Switch>
+                                <Routes>
+                                    <Route path='/expo' element={<ExpoPage />} />
+                                    <Route path='/visualisation' element={<VisualisationPage />} />
+                                    <Route path='*' element={<MainPageTemplate />} />
+                                </Routes>
                             </StatusInterstitial>
                         </ServerSentEventsProvider>
                     </SnackbarProvider>

@@ -15,7 +15,7 @@
  * along with Choonio.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { Container } from '@mui/material'
 
@@ -25,8 +25,7 @@ import TopArtists from './TopArtists'
 import TopAlbums from './TopAlbums'
 import TopTracks from './TopTracks'
 import TopStatsNav from './TopStatsNav'
-import TransitionRoute from '../../../../main/TransitionRoute'
-import { TopPeriod, TopWhat, useTopStatsSettings } from '../../../../hooks/settings/useTopStatsSettings'
+import { useTopStatsSettings } from '../../../../hooks/settings/useTopStatsSettings'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -40,41 +39,25 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export interface TopStatsPageParams {
-    top: string
-    what: TopWhat
-    period: TopPeriod
-}
-
 export default function TopStatsPage() {
     const classes = useStyles()
 
-    const { topHowMany, topWhat, topPeriod } = useTopStatsSettings()
-
-    const match = useRouteMatch()
+    const { topWhat, topPeriod } = useTopStatsSettings()
 
     return (
         <Container className={classes.root} maxWidth='sm'>
-            <Route path={`${match.path}/:what/:period`}>
-                <TopStatsNav />
-            </Route>
-            <Switch>
-                <Route exact path={`${match.url}`}>
-                    <Redirect to={`/stats/top/${topHowMany}/${topWhat}/${topPeriod}`} />
-                </Route>
-                <Route exact path='/stats/top/:top/artists'>
-                    <Redirect to={`/stats/top/${topHowMany}/artists/${topPeriod}`} />
-                </Route>
-                <Route exact path='/stats/top/:top/albums'>
-                    <Redirect to={`/stats/top/${topHowMany}/albums/${topPeriod}`} />
-                </Route>
-                <Route exact path='/stats/top/:top/tracks'>
-                    <Redirect to={`/stats/top/${topHowMany}/tracks/${topPeriod}`} />
-                </Route>
-                <TransitionRoute exact path={`${match.path}/artists/:period`} component={TopArtists} />
-                <TransitionRoute exact path={`${match.path}/albums/:period`} component={TopAlbums} />
-                <TransitionRoute exact path={`${match.path}/tracks/:period`} component={TopTracks} />
-            </Switch>
+            <Routes>
+                <Route path=':what/:period' element={<TopStatsNav />} />
+            </Routes>
+            <Routes>
+                <Route path='' element={<Navigate to={`${topWhat}/${topPeriod}`} />} />
+                <Route path=':top/artists' element={<Navigate to={`artists/${topPeriod}`} />} />
+                <Route path=':top/albums' element={<Navigate to={`albums/${topPeriod}`} />} />
+                <Route path=':top/tracks' element={<Navigate to={`tracks/${topPeriod}`} />} />
+                <Route path='artists/:period' element={<TopArtists />} />
+                <Route path='albums/:period' element={<TopAlbums />} />
+                <Route path='tracks/:period' element={<TopTracks />} />
+            </Routes>
         </Container>
     )
 }

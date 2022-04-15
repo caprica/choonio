@@ -15,9 +15,7 @@
  * along with Choonio.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Redirect, Route, Switch, useLocation } from 'react-router-dom'
-
-import TransitionRoute from './TransitionRoute'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 import AboutPage from '../ui/pages/about/AboutPage'
 import AlbumPage from '../ui/pages/album/AlbumPage'
@@ -25,7 +23,6 @@ import ArtistPage from '../ui/pages/artist/ArtistPage'
 import ArtistsPage from '../ui/pages/artists/ArtistsPage'
 import EditPlaylistPage from '../ui/pages/playlist-edit/EditPlaylistPage'
 import EqualizerPage from '../ui/pages/equalizer/EqualizerPage'
-import ExpoPage from '../ui/pages/expo/ExpoPage'
 import FavouritesPage from '../ui/pages/favourites/FavouritesPage'
 import HomePage from '../ui/pages/home/HomePage'
 import NotFoundPage from '../ui/pages/not-found/NotFoundPage'
@@ -36,32 +33,30 @@ import RecentsPage from '../ui/pages/recents/RecentsPage'
 import SearchPage from '../ui/pages/search/SearchPage'
 import SettingsPage from '../ui/pages/settings/SettingsPage'
 import StatsPage from '../ui/pages/stats/StatsPage'
+import ViewTransition from './ViewTransition'
 
 export default function MainContent() {
     const location = useLocation()
 
     return (
-        <Switch location={location} key={location.pathname}>
-            <Route exact path='/'>
-                <Redirect to='/home' />
-            </Route>
-            <TransitionRoute exact path='/home' component={HomePage} />
-            <TransitionRoute exact path='/expo' component={ExpoPage} />
-            <TransitionRoute exact path='/artists' component={ArtistsPage} />
-            <TransitionRoute exact path='/albums/:artistName' component={ArtistPage} />
-            <TransitionRoute exact path='/albums/:artistName/:albumName' component={AlbumPage} />
-            <TransitionRoute exact path='/playlist/:playlistName' component={PlaylistPage} />
-            <TransitionRoute exact path='/playlist/:playlistName/edit' component={EditPlaylistPage} />
-            <TransitionRoute exact path='/queue' component={QueuePage} />
-            <TransitionRoute exact path='/search/:query' component={SearchPage} />
-            <TransitionRoute exact path='/about' component={AboutPage} />
-            <TransitionRoute path='/settings' component={SettingsPage} />
-            <TransitionRoute path='/stats' component={StatsPage} />
-            <TransitionRoute path='/favourites' component={FavouritesPage} />
-            <TransitionRoute path='/playlists' component={PlaylistsPage} />
-            <TransitionRoute path='/recent' component={RecentsPage} />
-            <TransitionRoute path='/equalizer' component={EqualizerPage} />
-            <TransitionRoute component={NotFoundPage} />
-        </Switch>
+        <Routes location={location} key={location.pathname}>
+            <Route path='/' element={<Navigate to='/home' />} />
+            <Route path='/home' element={<ViewTransition view={<HomePage />} />} />
+            <Route path='/artists' element={<ViewTransition view={<ArtistsPage />} />} />
+            <Route path='/albums/:artistName' element={<ViewTransition view={<ArtistPage />} />} />
+            <Route path='/albums/:artistName/:albumName' element={<ViewTransition view={<AlbumPage />} />} />
+            <Route path='/playlist/:playlistName' element={<ViewTransition view={<PlaylistPage />} />} />
+            <Route path='/playlist/:playlistName/edit' element={<ViewTransition view={<EditPlaylistPage />} />} />
+            <Route path='/queue' element={<ViewTransition view={<QueuePage />} />} />
+            <Route path='/search/:query' element={<ViewTransition view={<SearchPage />} />} />
+            <Route path='/about' element={<ViewTransition view={<AboutPage />} />} />
+            <Route path='/settings' element={<ViewTransition view={<SettingsPage />} />} />
+            <Route path='/stats/*' element={<ViewTransition view={<StatsPage />} />} />
+            <Route path='/favourites/*' element={<ViewTransition view={<ViewTransition view={<FavouritesPage />} />} />} />
+            <Route path='/playlists/*' element={<ViewTransition view={<PlaylistsPage />} />} />
+            <Route path='/recent/*' element={<ViewTransition view={<RecentsPage />} />} />
+            <Route path='/equalizer' element={<ViewTransition view={<EqualizerPage />} />} />
+            <Route path='*' element={<ViewTransition view={<NotFoundPage />} />} />
+        </Routes>
     )
 }

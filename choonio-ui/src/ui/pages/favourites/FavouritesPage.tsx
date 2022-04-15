@@ -18,14 +18,14 @@
 import makeStyles from '@mui/styles/makeStyles'
 import Container from '@mui/material/Container'
 
-import { Redirect, Route, Switch, useParams, useRouteMatch } from 'react-router-dom'
+import { Navigate, Route, Routes, useParams } from 'react-router-dom'
 import { FavouritesGrouping, useFavouritesSettings } from '../../../hooks/settings/useFavouritesSettings'
-import TransitionRoute from '../../../main/TransitionRoute'
 import FavouritesNav from './FavouritesNav'
 
 import FavouritesGroup from './FavouritesGroup'
 import { getFavouriteGroups } from '../../../lib/groups/favourite-groups'
 import { useGetFavourites } from '../../../api/endpoints/favourites-controller'
+import invariant from 'tiny-invariant'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -33,41 +33,37 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export interface FavouritesParams {
-    // grouping: FavouritesGroup
-    grouping: string
-}
-
 export default function FavouritesPage() {
     const classes = useStyles()
-
-    const match = useRouteMatch()
 
     const { favouritesGroup } = useFavouritesSettings()
 
     return (
         <Container maxWidth='xl' className={classes.root}>
-            <Route path={`${match.path}/:grouping`}>
-                <FavouritesNav />
-            </Route>
-            <Switch>
-                <Route exact path={`${match.url}`}>
-                    <Redirect to={`/favourites/${favouritesGroup}`} />
-                </Route>
-                <TransitionRoute exact path={`${match.path}/:grouping`} component={Content} />
-            </Switch>
+            <Routes>
+                <Route path=':grouping' element={<FavouritesNav />} />
+            </Routes>
+            <Routes>
+                <Route path='' element={<Navigate to={favouritesGroup} />} />
+                <Route path=':grouping' element={<Content />} />
+            </Routes>
         </Container>
     )
 }
 
+type ParamTypes = {
+    grouping: FavouritesGrouping
+}
+
 const Content = () => {
-    const { grouping } = useParams<FavouritesParams>()
+    const { grouping } = useParams<ParamTypes>()
+    invariant(grouping)
 
     const { data: favourites } = useGetFavourites()
 
     if (!favourites) return null
 
-    const groups = getFavouriteGroups(favourites, grouping as FavouritesGrouping)
+    const groups = getFavouriteGroups(favourites, grouping)
     return (
         <div>
             {groups.map(group => (

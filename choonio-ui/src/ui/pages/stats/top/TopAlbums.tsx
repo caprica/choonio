@@ -18,7 +18,6 @@
 import { useParams } from 'react-router-dom'
 import { useNavigation } from '../../../../hooks/navigation/useNavigation'
 
-import { TopStatsPageParams } from './TopStatsPage'
 import ItemChart from '../../../../components/item-chart/ItemChart'
 import AlbumListensRenderer from '../../../../components/renderers/item-chart/album/AlbumListensRenderer'
 import { dateRangeForPeriod } from '../../../../lib/date-ranges/date-ranges'
@@ -26,11 +25,14 @@ import { useGetTopAlbumPlays } from '../../../../api/endpoints/plays-controller'
 import { AlbumPlaysData } from '../../../../api/model/plays-model'
 import RangeFooter from './RangeFooter'
 import { keyForMediaId } from '../../../../api/model/identity-model'
+import invariant from 'tiny-invariant'
 
 export default function TopAlbums() {
     const { gotoAlbum } = useNavigation()
 
-    const { top, period } = useParams<TopStatsPageParams>()
+    const { top, period } = useParams()
+    invariant(top)
+    invariant(period)
 
     const dateRange = dateRangeForPeriod(period)
 

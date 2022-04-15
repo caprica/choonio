@@ -34,6 +34,7 @@ import { MediaViewListHeader } from '../../views/media-view/MediaViewListHeaders
 import { MdAccessTime, MdMusicNote, MdThumbsUpDown } from 'react-icons/md'
 import AlbumItem from './AlbumItem'
 import MediaViewHeader from '../../views/media-view/MediaViewHeader'
+import invariant from 'tiny-invariant'
 
 const headers: Array<MediaViewListHeader> = [
     { id: 'number', caption: '#', align: 'right' },
@@ -52,13 +53,10 @@ const artistHeaders: Array<MediaViewListHeader> = [
     { id: 'rating', icon: <MdThumbsUpDown />, align: 'center' }
 ]
 
-interface AlbumPageParams {
-    artistName: string
-    albumName: string
-}
-
 export default function AlbumPage() {
-    const { artistName, albumName } = useParams<AlbumPageParams>()
+    const { artistName, albumName } = useParams()
+    invariant(artistName)
+    invariant(albumName)
 
     const { data } = useGetAlbum(artistName, albumName)
 

@@ -40,5 +40,5 @@ export const useGetListensByArtist = (minimumListens: number, fromDateInclusive?
 
 export const useListensByArtist = () => {
     const queryClient = useQueryClient()
-    queryClient.invalidateQueries(LISTENS_BY_ARTIST_QUERY_ID)
+    queryClient.invalidateQueries([LISTENS_BY_ARTIST_QUERY_ID])
 }

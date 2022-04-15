@@ -35,6 +35,7 @@ import MediaViewList from '../../views/media-view/MediaViewList'
 import PlaylistItem from './PlaylistItem'
 import { MediaViewListHeader } from '../../views/media-view/MediaViewListHeaders'
 import MediaViewHeader from '../../views/media-view/MediaViewHeader'
+import invariant from 'tiny-invariant'
 
 const headers: Array<MediaViewListHeader> = [
     { id: 'number', caption: '#', align: 'right' },
@@ -46,18 +47,15 @@ const headers: Array<MediaViewListHeader> = [
     { id: 'rating', icon: <MdThumbsUpDown />, align: 'center' }
 ]
 
-interface PlaylistParams {
-    playlistName: string
-}
-
 export default function PlaylistPage() {
-    const params = useParams<PlaylistParams>()
+    const { playlistName } = useParams()
+    invariant(playlistName)
 
     const { playPlaylist } = usePlaylistActions()
 
     const { openTrackMenu } = useTrackMenu()
 
-    const { data: playlist } = useGetPlaylist(params.playlistName)
+    const { data: playlist } = useGetPlaylist(playlistName)
 
     if (!playlist) return null
 

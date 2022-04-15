@@ -21,6 +21,7 @@ import makeStyles from '@mui/styles/makeStyles'
 import { MouseEvent, useState } from 'react'
 import { GroupOption } from './group-options'
 import GroupMenu from '../../components/group/GroupMenu'
+import invariant from 'tiny-invariant'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -52,10 +53,6 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-interface GroupingParams {
-    grouping: string
-}
-
 interface GroupNavProps<T extends string | number> {
     caption: string
     options: Array<GroupOption<T>>
@@ -65,7 +62,8 @@ interface GroupNavProps<T extends string | number> {
 export default function GroupNav<T extends string | number>({ caption, options, onSelected }: GroupNavProps<T>) {
     const classes = useStyles()
 
-    const { grouping } = useParams<GroupingParams>()
+    const { grouping } = useParams()
+    invariant(grouping)
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 

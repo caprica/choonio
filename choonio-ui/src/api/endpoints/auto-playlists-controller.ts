@@ -38,11 +38,11 @@ const getAutoPlaylist = async (autoPlaylistId: string) => {
 }
 
 export const useGetAutoPlaylistNames = () => {
-    return useQuery<PlaylistName[]>('auto-playlist-names', () => getAutoPlaylistNames())
+    return useQuery<PlaylistName[]>(['auto-playlist-names'], () => getAutoPlaylistNames())
 }
 
 export const useGetAutoPlaylists = () => {
-    return useQuery<PlaylistData[], Error>(QUERY_ID, () => getAutoPlaylists())
+    return useQuery<PlaylistData[], Error>([QUERY_ID], () => getAutoPlaylists())
 }
 
 export const useGetAutoPlaylist = (autoPlaylistId: string) => {
@@ -51,5 +51,5 @@ export const useGetAutoPlaylist = (autoPlaylistId: string) => {
 
 export const useInvalidateAutoPlaylists = () => {
     const queryClient = useQueryClient()
-    queryClient.invalidateQueries(QUERY_ID)
+    queryClient.invalidateQueries([QUERY_ID])
 }

@@ -28,10 +28,10 @@ const fetchArtists = async (): Promise<ArtistData[]> => {
 }
 
 export const useGetArtists = () => {
-    return useQuery<ArtistData[], Error>(QUERY_ID, () => fetchArtists())
+    return useQuery<ArtistData[], Error>([QUERY_ID], () => fetchArtists())
 }
 
 export const useInvalidateArtists = () => {
     const queryClient = useQueryClient()
-    queryClient.invalidateQueries(QUERY_ID)
+    queryClient.invalidateQueries([QUERY_ID])
 }

@@ -34,7 +34,7 @@ export const captionForRecentsGrouping = (value: string) => captions.get(value)
 
 const DEFAULT_RECENTS_GROUP = RecentsGrouping.ByDate
 
-const useRecentsGroupState = createPersistedState('recentsGroup')
+const useRecentsGroupState = createPersistedState<RecentsGrouping>('recentsGroup')
 
 export const useRecentsSettings = () => {
     const [recentsGroup, setRecentsGroup] = useRecentsGroupState(DEFAULT_RECENTS_GROUP)

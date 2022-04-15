@@ -16,7 +16,7 @@
  */
 
 import { useSnackbar } from 'notistack'
-import { useRouteMatch } from 'react-router-dom'
+import { useMatch } from 'react-router-dom'
 import { useAddToFavourites } from '../../api/endpoints/favourites-controller'
 import { useDeletePlaylist } from '../../api/endpoints/playlists-controller'
 import { useAddToQueue } from '../../api/endpoints/queue-controller'
@@ -36,7 +36,7 @@ export const usePlaylistActions = () => {
     // const removeMediaFromPlaylist = useRemoveMediaFromPlaylist()
     const { enqueueSnackbar } = useSnackbar()
 
-    const match = useRouteMatch<PlaylistNameParams>('/playlist/:playlistName')
+    const match = useMatch('/playlist/:playlistName')
 
     const addPlaylistToFavourites = (mediaId: PlaylistIdentity) =>
         addToFavourites(mediaId, () =>

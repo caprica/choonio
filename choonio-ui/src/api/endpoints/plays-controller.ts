@@ -54,7 +54,7 @@ export const useGetTopTrackPlays = (top: number, range?: DateRange) => {
 
 export const useInvalidateTopPlays = () => {
     const queryClient = useQueryClient()
-    queryClient.invalidateQueries(TOP_ARTISTS_QUERY_ID)
-    queryClient.invalidateQueries(TOP_ALBUMS_QUERY_ID)
-    queryClient.invalidateQueries(TOP_TRACKS_QUERY_ID)
+    queryClient.invalidateQueries([TOP_ARTISTS_QUERY_ID])
+    queryClient.invalidateQueries([TOP_ALBUMS_QUERY_ID])
+    queryClient.invalidateQueries([TOP_TRACKS_QUERY_ID])
 }

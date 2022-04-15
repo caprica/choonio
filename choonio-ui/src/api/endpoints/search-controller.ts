@@ -28,5 +28,5 @@ const getQuickSearchResults = async (query: string): Promise<CombinedSearchResul
 }
 
 export const useGetQuickSearchResults = (query: string) => {
-    return useQuery<CombinedSearchResultsData, Error>(SEARCH_QUERY_ID, () => getQuickSearchResults(query))
+    return useQuery<CombinedSearchResultsData, Error>([SEARCH_QUERY_ID], () => getQuickSearchResults(query))
 }

@@ -18,13 +18,13 @@
 import makeStyles from '@mui/styles/makeStyles'
 import Container from '@mui/material/Container'
 
-import { Redirect, Route, Switch, useParams, useRouteMatch } from 'react-router-dom'
+import { Navigate, Route, Routes, useParams } from 'react-router-dom'
 import PlaylistsNav from '../../../ui/pages/playlists/PlaylistsNav'
 import { PlaylistsGrouping, usePlaylistsSettings } from '../../../hooks/settings/usePlaylistsSettings'
 import { useGetPlaylists } from '../../../api/endpoints/playlists-controller'
-import TransitionRoute from '../../../main/TransitionRoute'
 import { getPlaylistGroups } from '../../../lib/groups/playlist-groups'
 import PlaylistsGroup from './PlaylistsGroup'
+import invariant from 'tiny-invariant'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -39,33 +39,34 @@ export interface PlaylistsParams {
 export default function PlaylistsPage() {
     const classes = useStyles()
 
-    const match = useRouteMatch()
-
     const { playlistsGroup } = usePlaylistsSettings()
 
     return (
         <Container maxWidth='xl' className={classes.root}>
-            <Route path={`${match.path}/:grouping`}>
-                <PlaylistsNav />
-            </Route>
-            <Switch>
-                <Route exact path={`${match.url}`}>
-                    <Redirect to={`/playlists/${playlistsGroup}`} />
-                </Route>
-                <TransitionRoute exact path={`${match.path}/:grouping`} component={Content} />
-            </Switch>
+            <Routes>
+                <Route path=':grouping' element={<PlaylistsNav />} />
+            </Routes>
+            <Routes>
+                <Route path='' element={<Navigate to={playlistsGroup} />} />
+                <Route path=':grouping' element={<Content />} />
+            </Routes>
         </Container>
     )
 }
 
+type ParamTypes = {
+    grouping: PlaylistsGrouping
+}
+
 const Content = () => {
-    const { grouping } = useParams<PlaylistsParams>()
+    const { grouping } = useParams<ParamTypes>()
+    invariant(grouping)
 
     const { data: playlists } = useGetPlaylists()
 
     if (!playlists) return null
 
-    const groups = getPlaylistGroups(playlists, grouping as PlaylistsGrouping)
+    const groups = getPlaylistGroups(playlists, grouping)
     return (
         <div>
             {groups.map(group => (
