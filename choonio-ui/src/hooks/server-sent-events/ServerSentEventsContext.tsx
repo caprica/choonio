@@ -23,7 +23,6 @@ import { collectionQueryCacheMap } from './collection-query-cache'
 import {
     ApplicationStatus,
     CollectionChangedEvent,
-    CollectionName,
     NowPlayingData,
     PlayerStateData,
     RepeatMode,
