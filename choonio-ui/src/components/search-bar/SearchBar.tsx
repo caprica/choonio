@@ -170,7 +170,7 @@ const SearchBar = (/*{ className }*/) => {
 
     const getOptionKey = (option: string | SearchResultData) => {
         if (isString(option)) {
-            return `string|${option}`
+            return `${option}|string`
         } else {
             return keyForMediaId(option.mediaId)
         }
