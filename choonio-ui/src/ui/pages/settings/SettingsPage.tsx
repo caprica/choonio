@@ -37,9 +37,8 @@ export default function SettingsPage() {
     return (
         <Container className={classes.root} maxWidth='sm'>
             <Routes>
-                <Route path='/settings/:settings' element={<SettingsTabs />} />
-                {/* <Navigate to='/settings/scan' /> */}
-                <Route path='*' element={<Navigate to='/settings/scan' />} />
+                <Route path='' element={<Navigate to='scan' />} />
+                <Route path='*' element={<SettingsTabs />} />
             </Routes>
         </Container>
     )

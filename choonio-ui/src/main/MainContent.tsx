@@ -50,7 +50,7 @@ export default function MainContent() {
             <Route path='/queue' element={<ViewTransition view={<QueuePage />} />} />
             <Route path='/search/:query' element={<ViewTransition view={<SearchPage />} />} />
             <Route path='/about' element={<ViewTransition view={<AboutPage />} />} />
-            <Route path='/settings' element={<ViewTransition view={<SettingsPage />} />} />
+            <Route path='/settings/*' element={<ViewTransition view={<SettingsPage />} />} />
             <Route path='/stats/*' element={<ViewTransition view={<StatsPage />} />} />
             <Route path='/favourites/*' element={<ViewTransition view={<ViewTransition view={<FavouritesPage />} />} />} />
             <Route path='/playlists/*' element={<ViewTransition view={<PlaylistsPage />} />} />

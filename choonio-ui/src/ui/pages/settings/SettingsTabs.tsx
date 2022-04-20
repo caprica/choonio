@@ -59,15 +59,15 @@ export default function SettingsTabs() {
                 </Tabs>
             </Paper>
             <Routes>
-                <Route path='/settings/scan'>
-                    <ScanSettingsTab />
-                </Route>
-                <Route path='/settings/library'>
-                    <LibrarySettingsTab configuration={configuration} onSaveConfiguration={handleSaveConfiguration} />
-                </Route>
-                <Route path='/settings/playback'>
-                    <PlaybackSettingsTab configuration={configuration} onSaveConfiguration={handleSaveConfiguration} />
-                </Route>
+                <Route path='scan' element={<ScanSettingsTab />} />
+                <Route
+                    path='library'
+                    element={<LibrarySettingsTab configuration={configuration} onSaveConfiguration={handleSaveConfiguration} />}
+                />
+                <Route
+                    path='playback'
+                    element={<PlaybackSettingsTab configuration={configuration} onSaveConfiguration={handleSaveConfiguration} />}
+                />
             </Routes>
         </>
     )
