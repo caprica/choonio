@@ -25,11 +25,11 @@ import Autocomplete from '@mui/material/Autocomplete'
 
 import SearchBarInput from './input/SearchBarInput'
 import SearchBarPaper from './paper/SearchBarPaper'
-import { throttle } from 'lodash'
+import { isString, throttle } from 'lodash'
 import axios from 'axios'
 
 import { useNavigation } from '../../hooks/navigation/useNavigation'
-import { captionForMediaId, MediaIdentity, MediaType } from '../../api/model/identity-model'
+import { captionForMediaId, keyForMediaId, MediaIdentity, MediaType } from '../../api/model/identity-model'
 import { useArtistActions } from '../../hooks/actions/useArtistActions'
 import { useAlbumActions } from '../../hooks/actions/useAlbumActions'
 import { SearchResultData, CombinedSearchResultsData } from '../../api/model/search-model'
@@ -157,12 +157,24 @@ const SearchBar = (/*{ className }*/) => {
         }
     }
 
-    const xxx = (option: any) => {
-        return captionForMediaId(option.mediaId || 'dunno, mate')
-    }
-
     // FIXME still have to fix the delete/clear button being inactive
     //       still have to consider the "k" attribute
+
+    const getOptionLabel = (option: string | SearchResultData) => {
+        if (isString(option)) {
+            return option
+        } else {
+            return captionForMediaId(option.mediaId)
+        }
+    }
+
+    const getOptionKey = (option: string | SearchResultData) => {
+        if (isString(option)) {
+            return `${option}|string`
+        } else {
+            return keyForMediaId(option.mediaId)
+        }
+    }
 
     return (
         <div className={classes.search}>
@@ -173,12 +185,11 @@ const SearchBar = (/*{ className }*/) => {
                 freeSolo
                 PaperComponent={SearchBarPaper}
                 options={options}
-                // getOptionLabel={(option: SearchResultData) => captionForMediaId(option.mediaId)}
-                getOptionLabel={(option: SearchResultData) => JSON.stringify(option.mediaId)}
+                getOptionLabel={getOptionLabel}
                 noOptionsText='No results'
                 filterOptions={x => x} // Required for "search as you type"
                 renderOption={(props, option) => (
-                    <Box component='li' sx={{ '& > img': { mr: 0, flexShrink: 0 } }} {...props}>
+                    <Box component='li' sx={{ '& > img': { mr: 0, flexShrink: 0 } }} {...props} key={getOptionKey(option)}>
                         <MediaIdSearchBarOption mediaId={option.mediaId} onClickPlay={handleClickPlaySearchOption} />
                     </Box>
                 )}
