@@ -12,7 +12,7 @@
         "@mui/lab": "^5.0.0-alpha.78",
         "@mui/material": "^5.6.2",
         "@mui/styles": "^5.6.2",
-        "axios": "^0.26.1",
+        "axios": "^0.27.1",
         "dayjs": "^1.11.1",
         "fontfaceobserver": "^2.1.0",
         "framer-motion": "^6.3.1",
