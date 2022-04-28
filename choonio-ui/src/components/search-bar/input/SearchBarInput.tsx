@@ -30,7 +30,8 @@ const useStyles = makeStyles(theme => ({
     root: {},
     inputRoot: {
         outline: 'none',
-        backgroundColor: '#f5f5f5'
+        backgroundColor: '#f5f5f5',
+        width: '100%'
     },
     inputInput: {
         borderRadius: '2px',
@@ -40,10 +41,17 @@ const useStyles = makeStyles(theme => ({
         // vertical padding + font size from searchIcon
         paddingLeft: `calc(2em + ${theme.spacing(4)})`,
         paddingRight: `calc(2em + ${theme.spacing(4)})`,
-        // transition: theme.transitions.create('width'),
+        transition: theme.transitions.create('width'),
+        width: '23ch',
         [theme.breakpoints.up('md')]: {
             width: '70ch'
         },
+        // [theme.breakpoints.up('md')]: {
+        //     width: '20ch',
+        //     '&:focus': {
+        //         width: '70ch'
+        //     }
+        // },
         maxWidth: 800
     },
     searchIcon: {
