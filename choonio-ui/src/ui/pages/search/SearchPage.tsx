@@ -23,6 +23,7 @@ import { SearchProvider, useSearch } from '../../../hooks/search/SearchContext'
 import { useGetQuickSearchResults } from '../../../api/endpoints/search-controller'
 import SearchResults from './results/SearchResults'
 import invariant from 'tiny-invariant'
+import { useEffect } from 'react'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -51,7 +52,9 @@ function SearchContent() {
 
     // Store the search results in context so that the nested renderers can use those results to, for example, provide
     // highiighted text
-    setSearchResults(searchResults)
+    useEffect(() => {
+        setSearchResults(searchResults)
+    }, [searchResults, setSearchResults])
 
     if (!searchResults) return null
 
