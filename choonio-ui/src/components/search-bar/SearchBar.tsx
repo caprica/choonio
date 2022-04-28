@@ -80,21 +80,12 @@ const SearchBar = (/*{ className }*/) => {
 
     const { gotoQuickSearch, gotoMedia } = useNavigation()
 
-    const fetch = useMemo(
-        () =>
-            throttle((request, callback) => {
-                callService(request, callback)
-            }, 200),
-        []
-    )
-
-    const [k, setK] = useState(new Date().toISOString())
+    const fetch = useMemo(() => throttle((request, callback) => callService(request, callback), 200), [])
 
     useEffect(() => {
         let active = true
 
         if (inputValue === '') {
-            // setOptions(value ? [value] : [])
             setOptions([])
             return undefined
         }
@@ -126,9 +117,7 @@ const SearchBar = (/*{ className }*/) => {
                 case 'selectOption':
                     gotoMedia((value as SearchResultData).mediaId)
                     setValue(null)
-                    // setInputValue(null)
                     setInputValue('')
-                    setK(new Date().toISOString()) // some sort of workaround for not being able to clear when using hooks for the values
                     break
                 case 'createOption':
                     gotoQuickSearch(value as string)
@@ -157,9 +146,6 @@ const SearchBar = (/*{ className }*/) => {
         }
     }
 
-    // FIXME still have to fix the delete/clear button being inactive
-    //       still have to consider the "k" attribute
-
     const getOptionLabel = (option: string | SearchResultData) => {
         if (isString(option)) {
             return option
@@ -176,12 +162,16 @@ const SearchBar = (/*{ className }*/) => {
         }
     }
 
+    const handleClear = () => {
+        setInputValue('')
+        setOptions([])
+    }
+
     return (
         <div className={classes.search}>
             <Autocomplete
                 classes={{ option: classes.option }}
                 id='search-term'
-                // sx={{ width: 300 }}
                 freeSolo
                 PaperComponent={SearchBarPaper}
                 options={options}
@@ -193,52 +183,16 @@ const SearchBar = (/*{ className }*/) => {
                         <MediaIdSearchBarOption mediaId={option.mediaId} onClickPlay={handleClickPlaySearchOption} />
                     </Box>
                 )}
+                renderInput={params => <SearchBarInput {...params} onClear={handleClear} />}
                 onInputChange={(_event, newInputValue) => {
                     setInputValue(newInputValue)
                 }}
                 onChange={handleChange}
                 value={value}
-                renderInput={params => <SearchBarInput {...params} />}
+                inputValue={inputValue}
+                clearOnBlur
+                clearOnEscape
             />
-            {/* <Autocomplete
-                key={k}
-                classes={{ option: classes.option }}
-                options={options}
-                filterOptions={x => x} // why?
-                autoComplete
-                includeInputInList
-                // disableClearable
-                // debug
-                filterSelectedOptions
-                freeSolo
-                clearOnBlur={false}
-                fullWidth
-                // ListboxComponent='div'
-                noOptionsText='No results'
-                value={value}
-                // onChange={(event, newValue) => {
-                //     setOptions(newValue ? [newValue, ...options] : options)
-                //     setValue(newValue)
-                // }}
-                onInputChange={(_event, newInputValue) => {
-                    setInputValue(newInputValue)
-                }}
-                // getOptionLabel={(option: any) => captionForMediaId(option.mediaId || 'dunno, mate')}
-                // here option will be the Search result type, or annoyingly maybe string
-                getOptionLabel={(option: any) => xxx(option)}
-                renderInput={params => <SearchBarInput {...params} />}
-                renderOption={(props, option) => (
-                    <SearchBarOption
-                        {...props}
-                        mediaId={option.mediaId}
-                        onClickPlay={handleClickPlaySearchOption}
-                        key={JSON.stringify(option.mediaId)}
-                    />
-                )}
-                PaperComponent={SearchBarPaper}
-                onChange={handleChange}
-                // onKeyDown={handleKeyDown}
-            /> */}
         </div>
     )
 }

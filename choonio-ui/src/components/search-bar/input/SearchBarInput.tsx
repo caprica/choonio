@@ -27,13 +27,9 @@ import { MdClear as ClearIcon } from 'react-icons/md'
 
 // can't get the height to 48 properly
 const useStyles = makeStyles(theme => ({
-    root: {
-        // for clear icon
-        display: 'inline-block'
-    },
+    root: {},
     inputRoot: {
         outline: 'none',
-        display: 'inline-block',
         backgroundColor: '#f5f5f5'
     },
     inputInput: {
@@ -43,12 +39,12 @@ const useStyles = makeStyles(theme => ({
         padding: '10px 12px',
         // vertical padding + font size from searchIcon
         paddingLeft: `calc(2em + ${theme.spacing(4)})`,
+        paddingRight: `calc(2em + ${theme.spacing(4)})`,
         // transition: theme.transitions.create('width'),
-        width: '100%',
         [theme.breakpoints.up('md')]: {
             width: '70ch'
-        }
-        //maxWidth: 800,
+        },
+        maxWidth: 800
     },
     searchIcon: {
         padding: theme.spacing(0, 2),
@@ -58,14 +54,12 @@ const useStyles = makeStyles(theme => ({
         pointerEvents: 'none',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
-        zIndex: 1 // why?
+        justifyContent: 'center'
     },
     clearIcon: {
         padding: theme.spacing(0, 2, 0, 0),
         fontSize: '24px',
         height: '100%',
-        pointerEvents: 'none',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -84,38 +78,32 @@ export default function SearchBarInput(params: any) {
 
     const [focus, setFocus] = useState(false)
 
-    const handleFocusInput = (_evt: any) => {
-        setFocus(true)
-    }
+    const handleFocusInput = (_evt: any) => setFocus(true)
 
-    const handleBlurInput = (_evt: any) => {
-        setFocus(false)
-    }
+    const handleBlurInput = (_evt: any) => setFocus(false)
 
-    const handleClickClear = (_evt: any) => {
-        console.log('Clear')
-    }
-
-    // {clsx(classes.root, {[classes.active]: focus})}
+    const handleClickClear = (_evt: any) => params.onClear()
 
     return (
         <Paper className={classes.root} square elevation={focus ? 6 : 0}>
-            <div className={classes.searchIcon}>
-                <SearchIcon />
-            </div>
             <InputBase
                 onFocus={handleFocusInput}
                 onBlur={handleBlurInput}
-                style={{ width: '38em' }} // without the width, the popper won't appear correctly, it will be slightly too wide and slightly misaligned - the 100% width is somehow wrong
                 ref={params.InputProps.ref}
                 placeholder='Search'
                 classes={{ root: clsx(classes.inputRoot, { [classes.active]: focus }), input: classes.inputInput }}
                 inputProps={{ ...params.inputProps }}
+                startAdornment={
+                    <div className={classes.searchIcon}>
+                        <SearchIcon />
+                    </div>
+                }
+                endAdornment={
+                    <div className={classes.clearIcon} onClick={handleClickClear}>
+                        <ClearIcon />
+                    </div>
+                }
             />
-            {/* can use position absolute, right 0, but also need to adjust the editor margin or padding */}
-            <div className={classes.clearIcon} onClick={handleClickClear}>
-                <ClearIcon />
-            </div>
         </Paper>
     )
 }
