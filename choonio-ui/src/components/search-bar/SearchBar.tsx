@@ -64,10 +64,7 @@ const callService = async (req: any, cb: any): Promise<CombinedSearchResultsData
     return data // why???
 }
 
-// FIXME react error on search results
-//  Warning: Cannot update a component (`SearchProvider`) while rendering a different component (`SearchContent`). To locate the bad setState() call inside `SearchContent`, follow the stack trace as described
-
-const SearchBar = (/*{ className }*/) => {
+const SearchBar = () => {
     const classes = useStyles()
 
     const [value, setValue] = useState<SearchResultData | null>(null)
