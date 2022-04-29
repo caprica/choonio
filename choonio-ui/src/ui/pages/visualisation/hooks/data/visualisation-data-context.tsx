@@ -13,6 +13,8 @@
  *
  * You should have received a copy of the GNU Affero General Public License
  * along with Choonio.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * Copyright 2021-2022 Caprica Software Limited
  */
 
 import { createContext, ReactNode, useContext } from 'react'
