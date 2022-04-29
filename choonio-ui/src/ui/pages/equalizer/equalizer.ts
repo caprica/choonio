@@ -13,6 +13,8 @@
  *
  * You should have received a copy of the GNU Affero General Public License
  * along with Choonio.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * Copyright 2021-2022 Caprica Software Limited
  */
 
 export const equalizerBandNames = ['60 Hz', '170 Hz', '310 Hz', '600 Hz', '1 KHz', '3 KHz', '6 KHz', '12 Khz', '14 Khz', '16 KHz']
