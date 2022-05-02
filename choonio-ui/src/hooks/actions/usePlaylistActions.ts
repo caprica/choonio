@@ -26,10 +26,6 @@ import { captionForMediaId, PlaylistIdentity } from '../../api/model/identity-mo
 import { QueueMode } from '../../api/model/queue-model'
 import { useNavigation } from '../navigation/useNavigation'
 
-interface PlaylistNameParams {
-    playlistName: string
-}
-
 export const usePlaylistActions = () => {
     const addToFavourites = useAddToFavourites()
     const addToQueue = useAddToQueue()

@@ -19,7 +19,7 @@
 
 import { DragOverlay } from '@dnd-kit/core'
 import { arrayMove } from '@dnd-kit/sortable'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import PlaylistItem from './PlaylistItem'
 import { PlaylistItemDragOverlay } from './PlaylistItemDragOverlay'
 import { PlaylistItemData } from '../../../api/model/playlists-model'

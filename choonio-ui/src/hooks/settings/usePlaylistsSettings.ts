@@ -18,7 +18,6 @@
  */
 
 import createPersistedState from 'use-persisted-state'
-import { PlaylistGrouping } from '../../lib/groups/playlist-groups'
 
 export enum PlaylistsGrouping {
     ByRecentlyCreated = 'by-recently-created',
