@@ -18,6 +18,7 @@
  */
 
 import { render } from '@testing-library/react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { AlbumTrackData } from '../../../../../api/model/albums-model'
 import { MediaType } from '../../../../../api/model/identity-model'
 import { RatingType } from '../../../../../api/model/ratings-model'
@@ -41,8 +42,13 @@ it('renders track name', () => {
     }
 
     const tr = document.createElement('tr')
-    const { container } = render(<ArtistCell track={track} />, {
-        container: document.body.appendChild(tr)
-    })
+    const { container } = render(
+        <Router>
+            <ArtistCell track={track} />
+        </Router>,
+        {
+            container: document.body.appendChild(tr)
+        }
+    )
     expect(container).toHaveTextContent('STRNGR & Destryur')
 })
