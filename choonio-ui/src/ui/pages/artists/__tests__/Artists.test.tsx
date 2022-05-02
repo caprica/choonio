@@ -18,6 +18,7 @@
  */
 
 import { render, screen } from '@testing-library/react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { ArtistData } from '../../../../api/model/artists-model'
 import { MediaType } from '../../../../api/model/identity-model'
 import Artists from '../Artists'
@@ -37,7 +38,11 @@ it('Renders artists', () => {
         }
     ]
 
-    render(<Artists artists={artists} />)
+    render(
+        <Router>
+            <Artists artists={artists} />
+        </Router>
+    )
     const text = screen.getByText('Neon Nox')
     expect(text).toBeInTheDocument()
 })

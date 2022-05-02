@@ -260,7 +260,7 @@ describe('Listens by artist endpoints', () => {
     })
 
     it('returns listens by artist for period endpoint', () => {
-        expect(listensByArtistUrl(5, dayjs('2021-11-13'), dayjs('2021-11-14'))).toBe(
+        expect(listensByArtistUrl(5, '2021-11-13', '2021-11-14')).toBe(
             '/api/statistics/listens/by-artist?min=5&from=2021-11-13&to=2021-11-14'
         )
     })

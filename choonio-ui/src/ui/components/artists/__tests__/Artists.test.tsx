@@ -18,12 +18,17 @@
  */
 
 import { render, screen } from '@testing-library/react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import Artists from '../Artists'
 
 const artists: Array<string> = ['Neon Nox', 'STRNGR & Destryur', 'Ray Gun Hero']
 
 it('renders artists', () => {
-    render(<Artists artists={artists} />)
+    render(
+        <Router>
+            <Artists artists={artists} />
+        </Router>
+    )
     expect(screen.getByText('Neon Nox')).toBeInTheDocument()
     expect(screen.getByText('STRNGR & Destryur')).toBeInTheDocument()
     expect(screen.getByText('Ray Gun Hero')).toBeInTheDocument()
