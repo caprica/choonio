@@ -35,6 +35,10 @@
     <artifactId>choonio-ui</artifactId>
     <version>0.1.0-SNAPSHOT</version>
 
+    <properties>
+        <java.version>17</java.version>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -76,6 +80,14 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                    <release>${java.version}</release>
                 </configuration>
             </plugin>
         </plugins>
