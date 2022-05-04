@@ -17,9 +17,8 @@
  * Copyright 2021-2022 Caprica Software Limited
  */
 
-import { Box, Divider, Fade, Modal, Typography } from '@mui/material'
+import { Box, Divider, Modal, Typography } from '@mui/material'
 import { makeStyles } from '@mui/styles'
-import theme from '../../../config/theme'
 
 const useStyles = makeStyles(theme => ({
     root: {

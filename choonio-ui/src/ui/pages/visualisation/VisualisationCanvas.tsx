@@ -17,7 +17,7 @@
  * Copyright 2021-2022 Caprica Software Limited
  */
 
-import { Box, Fade, IconButton, Typography } from '@mui/material'
+import { IconButton } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import dayjs from 'dayjs'
 import { toPng } from 'html-to-image'
