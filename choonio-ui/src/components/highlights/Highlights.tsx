@@ -19,9 +19,7 @@
 
 import makeStyles from '@mui/styles/makeStyles'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
 import { useGetHighlights } from '../../api/endpoints/highlights-controller'
-import { increment } from '../../lib/numbers/increment'
 
 import Highlight from './Highlight'
 
@@ -59,22 +57,11 @@ export default function Highlights() {
 
     const { data: highlights } = useGetHighlights()
 
-    const [key, setKey] = useState(0)
-
-    useEffect(() => setKey(key => increment(key)), [highlights])
-
     return (
         <>
             {highlights && (
                 <AnimatePresence exitBeforeEnter>
-                    <motion.div
-                        key={key}
-                        className={classes.root}
-                        variants={variants}
-                        initial='hidden'
-                        animate='show'
-                        exit='hidden'
-                    >
+                    <motion.div className={classes.root} variants={variants} initial='hidden' animate='show' exit='hidden'>
                         {highlights.map(highlight => (
                             <motion.div key={highlight.id} variants={item}>
                                 <Highlight highlight={highlight} />
