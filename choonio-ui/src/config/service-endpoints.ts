@@ -186,4 +186,4 @@ export function listensByArtistUrl(minimumListens: number, fromDateInclusive?: s
     return url
 }
 
-export const eventsUrl = () => 'http://localhost:8080/api/events'
+export const eventsUrl = () => `${window.location.protocol}//${window.location.hostname}:8080/api/events`
