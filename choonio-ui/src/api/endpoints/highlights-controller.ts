@@ -34,7 +34,7 @@ const refreshHighlights = async () => {
 }
 
 export const useGetHighlights = () => {
-    return useQuery<HighlightData[], Error>([QUERY_ID], () => getHighlights(), { refetchOnWindowFocus: false })
+    return useQuery<HighlightData[], Error>([QUERY_ID], () => getHighlights())
 }
 
 export const useRefreshHighlights = () => {
