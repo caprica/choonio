@@ -1,0 +1,56 @@
+type Query {
+    artists: [Artist]
+
+    album(artistName: String, albumName: String): Album
+    albums: [Album]
+    albumsByArtist(artistName: String): [Album]
+}
+
+type ArtistId {
+    artistName: String
+}
+
+type AlbumId {
+    albumArtistName: String
+    albumName: String
+}
+
+type TrackId {
+    albumArtistName: String
+    albumName: String
+    trackName: String
+}
+
+type Artist {
+    mediaId: ArtistId
+    name: String
+}
+
+type Album {
+    mediaId: AlbumId
+    year: Int
+    genre: String
+    tracks: [AlbumTrack]
+    duration: Int
+    name: String
+    albumArtistName: String
+}
+
+type AlbumTrack {
+    mediaId: TrackId,
+    number: Int
+    artistName: String
+    duration: Int
+    stats: TrackStats
+}
+
+type TrackStats {
+    listens: Int
+    rating: Rating
+}
+
+enum Rating {
+    NEUTRAL
+    THUMBS_UP
+    THUMBS_DOWN
+}
