@@ -20,6 +20,11 @@
 spring:
 ##  cache:
 ##    type: none
+  # http://localhost:8080/graphql/schema
+  graphql:
+    schema:
+      printer:
+        enabled: true
   output:
     ansi:
       enabled: ALWAYS
