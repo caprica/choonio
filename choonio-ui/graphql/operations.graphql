@@ -1,0 +1,34 @@
+query GetArtists {
+    artists {
+        mediaId {
+            artistName
+        }
+    }
+}
+
+query GetAlbumsByArtist ($artistName: String) {
+    albumsByArtist(artistName: $artistName) {
+        mediaId {
+            albumArtistName
+            albumName
+        }
+        name
+        year
+        genre
+        duration
+        tracks {
+            number
+            mediaId {
+                albumArtistName
+                albumName
+                trackName
+            }
+            artistName
+            duration
+            stats {
+                listens
+                rating
+            }
+        }
+    }
+}
