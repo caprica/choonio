@@ -61,6 +61,12 @@ for my day job:
  * Typescript
  * Docker
 
+In the [feature/graphql](https://github.com/caprica/choonio/tree/feature/graphql) branch there is an early experimental
+implementation of a GraphQL server endpoint together with some simple GraphQL queries in the frontend. It uses
+code-generation to create custom hooks for react-query to provide access to the defined GraphQL operations.
+
+The GraphQL UI is accessible at `http://localhost:8080/query`, there is no link to it in the UI presently.
+
 ## Current status
 
 This is a fully functional media player that I use for hours every day. Things are mostly complete, and what is there
