@@ -19,9 +19,12 @@
 
 package uk.co.caprica.choonio.config;
 
+import io.netty.handler.codec.http.cors.CorsConfig;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.method.HandlerTypePredicate;
+import org.springframework.web.reactive.config.CorsRegistry;
 import org.springframework.web.reactive.config.PathMatchConfigurer;
 import org.springframework.web.reactive.config.WebFluxConfigurer;
 
@@ -47,5 +50,20 @@ public class WebConfig implements WebFluxConfigurer {
             .setUseCaseSensitiveMatch(true)
             .setUseTrailingSlashMatch(false)
             .addPathPrefix(API_PATH, HandlerTypePredicate.forAnnotation(RestController.class));
+    }
+
+    @Override
+    /**
+     * Disable CORS for the graphql endpoint.
+     * <p>
+     * Ordinarily this configuration would only be enabled for a locally running or development profile, but since this
+     * project only uses local running we can just enable it all the time.
+     */
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/graphql/**")
+            .exposedHeaders(CorsConfiguration.ALL)
+            .allowedOrigins(CorsConfiguration.ALL)
+            .allowedHeaders(CorsConfiguration.ALL)
+            .allowedMethods(CorsConfiguration.ALL);
     }
 }
