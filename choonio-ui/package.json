@@ -16,6 +16,7 @@
         "dayjs": "^1.11.1",
         "fontfaceobserver": "^2.1.0",
         "framer-motion": "^6.3.3",
+        "graphql": "^16.5.0",
         "html-to-image": "^1.9.0",
         "lodash": "^4.17.21",
         "moment": "^2.29.3",
@@ -68,14 +69,21 @@
         "eslint-plugin-react": "^7.29.4",
         "eslint-plugin-react-hooks": "^4.5.0",
         "mockdate": "^3.0.5",
-        "react-scripts": "5.0.1"
+        "react-scripts": "5.0.1",
+        "@graphql-codegen/typescript": "2.4.11",
+        "@graphql-codegen/cli": "2.6.2",
+        "@graphql-codegen/typescript-operations": "2.4.0",
+        "@graphql-codegen/typescript-react-query": "^3.5.12"
     },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "prettier": "prettylint --check src/**/*.{js,jsx,css,json}"
+        "prettier": "prettylint --check src/**/*.{js,jsx,css,json}",
+        "generate": "graphql-codegen --config codegen.yaml",
+        "prestart": "yarn generate",
+        "prebuild": "yarn generate"
     },
     "eslintConfig": {
         "extends": "react-app"
