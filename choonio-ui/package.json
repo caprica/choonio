@@ -83,7 +83,7 @@
         "prettier": "prettylint --check src/**/*.{js,jsx,css,json}",
         "generate": "graphql-codegen --config codegen.yaml",
         "prestart": "yarn generate",
-        "prebuild": "yarn generate"
+        "prebuild": "if [ -z \"$CI\" ]; then yarn generate; fi"
     },
     "eslintConfig": {
         "extends": "react-app"
