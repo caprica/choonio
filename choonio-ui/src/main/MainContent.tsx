@@ -30,6 +30,7 @@ import HomePage from '../ui/pages/home/HomePage'
 import NotFoundPage from '../ui/pages/not-found/NotFoundPage'
 import PlaylistsPage from '../ui/pages/playlists/PlaylistsPage'
 import PlaylistPage from '../ui/pages/playlist/PlaylistPage'
+import QueryPage from '../ui/pages/query/QueryPage'
 import QueuePage from '../ui/pages/queue/QueuePage'
 import RecentsPage from '../ui/pages/recents/RecentsPage'
 import SearchPage from '../ui/pages/search/SearchPage'
@@ -58,6 +59,7 @@ export default function MainContent() {
             <Route path='/playlists/*' element={<ViewTransition view={<PlaylistsPage />} />} />
             <Route path='/recent/*' element={<ViewTransition view={<RecentsPage />} />} />
             <Route path='/equalizer' element={<ViewTransition view={<EqualizerPage />} />} />
+            <Route path='/query' element={<ViewTransition view={<QueryPage />} />} />
             <Route path='*' element={<ViewTransition view={<NotFoundPage />} />} />
         </Routes>
     )
