@@ -2857,9 +2857,9 @@ ajv@^8.0.0, ajv@^8.6.0, ajv@^8.8.0:
     uri-js "^4.2.2"
 
 ansi-colors@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-4.1.1.tgz#cbb9ae256bf750af1eab344f229aa27fe94ba348"
-  integrity sha512-JoX0apGbHaUJBNl6yF+p6JAFYZ666/hhCGKN5t9QFjbJQKUU/g8MNbFDbvfrgKXvI1QpZplPOnwIo99lX/AAmA==
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-4.1.2.tgz#e33debb85260fbe4ed8f00f1e0c282516109795e"
+  integrity sha512-cEG18jjLG0O74o/33eEfnmtXYDEY196ZjL0eQEISULF+Imi7vr25l6ntGYmqS5lIrQIEeze+CqUtPVItywE7ZQ==
 
 ansi-escapes@^4.2.1, ansi-escapes@^4.3.0, ansi-escapes@^4.3.1:
   version "4.3.2"
@@ -8552,15 +8552,15 @@ react-moment@^1.1.2:
   integrity sha512-lfb+shYXI2tXlQrNUpNr05/1D/kzFj8Isbfp89DQrpZk0fs2JIAnLHWETR0hQS9zvtzwLWlVv0wKLffbue5HoA==
 
 react-query@^4.0.0-beta.9:
-  version "4.0.0-beta.11"
-  resolved "https://registry.yarnpkg.com/react-query/-/react-query-4.0.0-beta.11.tgz#77c591cd2bb7f789d9cd7c8d8b67f06e294696d6"
-  integrity sha512-+FYwBYzp24xU4iJsrzyAiJ14fS59Ek9BVgQ/KjM2gHDvmdquuiin6rHVbCd+OHTfhhu/9i1sEQ75oG9lHwSwtg==
+  version "4.0.0-beta.12"
+  resolved "https://registry.yarnpkg.com/react-query/-/react-query-4.0.0-beta.12.tgz#479299c6691e55294e6481ee49131ac6aadf0a0e"
+  integrity sha512-PAeGKj/SlIvxShJVBbyKojUYUK78yK/W9nS9Uw78e40wjhuHiFMqbQWjtAQTBCbliZ5p1VkSHCAtpEVrr5GOvQ==
   dependencies:
     "@babel/runtime" "^7.17.9"
     "@types/use-sync-external-store" "^0.0.3"
     broadcast-channel "^3.4.1"
     match-sorter "^6.0.2"
-    use-sync-external-store "^1.0.0"
+    use-sync-external-store "^1.1.0"
 
 react-refresh@^0.11.0:
   version "0.11.0"
@@ -9954,7 +9954,7 @@ use-persisted-state@^0.3.3:
   dependencies:
     "@use-it/event-listener" "^0.1.2"
 
-use-sync-external-store@^1.0.0:
+use-sync-external-store@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.1.0.tgz#3343c3fe7f7e404db70f8c687adf5c1652d34e82"
   integrity sha512-SEnieB2FPKEVne66NpXPd1Np4R1lTNKfjuy3XdIoPQKYBAFdzbzSZlSn1KJZUiihQLQC5Znot4SBz1EOTBwQAQ==
