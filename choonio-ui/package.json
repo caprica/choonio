@@ -44,6 +44,10 @@
         "use-persisted-state": "^0.3.3"
     },
     "devDependencies": {
+        "@graphql-codegen/cli": "2.6.2",
+        "@graphql-codegen/typescript": "2.4.11",
+        "@graphql-codegen/typescript-operations": "2.4.0",
+        "@graphql-codegen/typescript-react-query": "^3.5.12",
         "@testing-library/jest-dom": "^5.16.4",
         "@testing-library/react": "^13.1.1",
         "@testing-library/user-event": "^14.1.1",
@@ -69,11 +73,7 @@
         "eslint-plugin-react": "^7.29.4",
         "eslint-plugin-react-hooks": "^4.5.0",
         "mockdate": "^3.0.5",
-        "react-scripts": "5.0.1",
-        "@graphql-codegen/typescript": "2.4.11",
-        "@graphql-codegen/cli": "2.6.2",
-        "@graphql-codegen/typescript-operations": "2.4.0",
-        "@graphql-codegen/typescript-react-query": "^3.5.12"
+        "react-scripts": "5.0.1"
     },
     "scripts": {
         "start": "react-scripts start",
