@@ -18,7 +18,7 @@
  */
 
 import axios from 'axios'
-import { useMutation, useQuery, useQueryClient } from 'react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { playlistsUrl, playlistsNamesUrl } from '../../config/service-endpoints'
 import { MediaIdentity } from '../model/identity-model'
 import { AddToPlaylistRequest, PlaylistData, PlaylistName } from '../model/playlists-model'

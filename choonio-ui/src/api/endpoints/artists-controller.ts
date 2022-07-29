@@ -18,7 +18,7 @@
  */
 
 import axios from 'axios'
-import { useQuery, useQueryClient } from 'react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { artistsUrl } from '../../config/service-endpoints'
 import { ArtistData } from '../model/artists-model'
 

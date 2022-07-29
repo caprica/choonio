@@ -18,7 +18,7 @@
  */
 
 import axios from 'axios'
-import { useMutation, useQuery, useQueryClient } from 'react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { recentPlaylistsUrl, recentsUrl } from '../../config/service-endpoints'
 import { RecentData } from '../model/recents-model'
 

@@ -18,7 +18,7 @@
  */
 
 import axios from 'axios'
-import { useMutation } from 'react-query'
+import { useMutation } from '@tanstack/react-query'
 import { rateTrackUrl } from '../../config/service-endpoints'
 import { TrackIdentity } from '../model/identity-model'
 import { RatingRequest } from '../model/ratings-model'

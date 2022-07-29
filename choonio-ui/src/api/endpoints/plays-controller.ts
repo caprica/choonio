@@ -18,7 +18,7 @@
  */
 
 import axios from 'axios'
-import { useQuery, useQueryClient } from 'react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { topAlbumsUrl, topArtistsUrl, topTracksUrl } from '../../config/service-endpoints'
 import { DateRange } from '../../lib/date-ranges/date-ranges'
 import { AlbumPlaysData, ArtistPlaysData, TrackPlaysData } from '../model/plays-model'

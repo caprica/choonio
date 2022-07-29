@@ -18,7 +18,7 @@
  */
 
 import axios from 'axios'
-import { useMutation, useQuery, useQueryClient } from 'react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { favouritesUrl } from '../../config/service-endpoints'
 import { FavouriteData } from '../model/favourites-model'
 import { MediaIdentity } from '../model/identity-model'
