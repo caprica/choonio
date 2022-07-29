@@ -27,8 +27,7 @@ import theme from './config/theme'
 import { SnackbarProvider } from 'notistack'
 import { QueryClientProvider } from '@tanstack/react-query'
 
-import { QueryCache } from '@tanstack/react-query'
-import { QueryClient } from '@tanstack/react-query'
+import { QueryCache, QueryClient } from '@tanstack/react-query'
 
 import { ServerSentEventsProvider } from './hooks/server-sent-events/ServerSentEventsContext'
 
