@@ -18,7 +18,7 @@
  */
 
 import axios from 'axios'
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import { quickSearchUrl } from '../../config/service-endpoints'
 import { CombinedSearchResultsData } from '../model/search-model'
 

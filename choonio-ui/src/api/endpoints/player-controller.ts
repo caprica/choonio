@@ -18,7 +18,7 @@
  */
 
 import axios from 'axios'
-import { useMutation } from 'react-query'
+import { useMutation } from '@tanstack/react-query'
 import { playerControlsUrl } from '../../config/service-endpoints'
 import { PlayerActionRequest } from '../model/player-model'
 

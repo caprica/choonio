@@ -18,7 +18,7 @@
  */
 
 import axios from 'axios'
-import { useQuery, useQueryClient } from 'react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { listensByArtistUrl } from '../../config/service-endpoints'
 import { ArtistListenStatsResult } from '../model/statistics-model'
 

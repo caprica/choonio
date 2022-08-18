@@ -25,10 +25,9 @@ import makeStyles from '@mui/styles/makeStyles'
 
 import theme from './config/theme'
 import { SnackbarProvider } from 'notistack'
-import { QueryClientProvider } from 'react-query'
+import { QueryClientProvider } from '@tanstack/react-query'
 
-import { QueryCache } from 'react-query'
-import { QueryClient } from 'react-query'
+import { QueryCache, QueryClient } from '@tanstack/react-query'
 
 import { ServerSentEventsProvider } from './hooks/server-sent-events/ServerSentEventsContext'
 

@@ -28,7 +28,7 @@ public class PlayerState {
     boolean playing;
     long duration;
     long time;
-    float position;
+    double position;
     int volume;
     RepeatMode repeat;
     ShuffleMode shuffle;

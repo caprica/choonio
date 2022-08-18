@@ -58,7 +58,7 @@ final class PlayerComponentState {
     private volatile boolean playing;
     private volatile long duration;
     private volatile long time;
-    private volatile float position;
+    private volatile double position;
     private volatile int volume;
 
     PlayerComponentState(MediaPlayer mediaPlayer, Clock.Service clockService, ServerSentEventManager serverSentEventManager, Runnable onMediaFinished) {
@@ -136,7 +136,7 @@ final class PlayerComponentState {
         }
 
         @Override
-        public void positionChanged(MediaPlayer mediaPlayer, float newPosition) {
+        public void positionChanged(MediaPlayer mediaPlayer, double newPosition) {
             log.trace("positionChanged(newPosition={})", newPosition);
             setPosition(newPosition);
         }
@@ -190,7 +190,7 @@ final class PlayerComponentState {
         notifyState();
     }
 
-    private void setPosition(float newPosition) {
+    private void setPosition(double newPosition) {
         log.trace("setPosition(newPosition={})", newPosition);
         this.position = newPosition;
         notifyState();

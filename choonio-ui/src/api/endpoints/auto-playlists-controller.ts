@@ -18,7 +18,7 @@
  */
 
 import axios from 'axios'
-import { useQuery, useQueryClient } from 'react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { autoPlaylistsUrl, autoPlaylistsNamesUrl } from '../../config/service-endpoints'
 import { PlaylistData, PlaylistName } from '../model/playlists-model'
 

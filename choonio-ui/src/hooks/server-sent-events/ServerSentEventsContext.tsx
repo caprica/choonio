@@ -18,7 +18,7 @@
  */
 
 import { ReactNode, createContext, useEffect, useState } from 'react'
-import { useQueryClient } from 'react-query'
+import { useQueryClient } from '@tanstack/react-query'
 import { eventsUrl } from '../../config/service-endpoints'
 import { collectionQueryCacheMap } from './collection-query-cache'
 

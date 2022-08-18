@@ -18,7 +18,7 @@
  */
 
 import axios from 'axios'
-import { useMutation, useQuery, useQueryClient } from 'react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { equalizerPresetsUrl, equalizerAmpsUrl, equalizerUrl } from '../../config/service-endpoints'
 import { EnableEqualizerRequest, EqualizerPresetData, EqualizerStateData, SetEqualizerRequest } from '../model/equalizer-model'
 
