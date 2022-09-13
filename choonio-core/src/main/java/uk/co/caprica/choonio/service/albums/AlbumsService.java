@@ -37,6 +37,7 @@ import static java.util.stream.Collectors.toSet;
 import static uk.co.caprica.choonio.database.aggregations.AlbumAggregations.albumTrack;
 import static uk.co.caprica.choonio.database.aggregations.AlbumAggregations.albumTracks;
 import static uk.co.caprica.choonio.database.aggregations.AlbumAggregations.artistTracks;
+import static uk.co.caprica.choonio.database.aggregations.AlbumAggregations.randomAlbumTracks;
 
 @Service
 @RequiredArgsConstructor
@@ -100,5 +101,11 @@ public class AlbumsService implements Albums.Service {
         return albumsRepository.findAllByMediaIdIn(albumIds)
             .flatMapIterable(Album::getTracks)
             .filter(albumTrack -> trackIds.contains(albumTrack.getMediaId()));
+    }
+
+    @Override
+    public Flux<AlbumTrack> getRandomTracks(int howMany) {
+        log.info("getRandomTracks(howMany={})", howMany);
+        return mongoTemplate.aggregate(randomAlbumTracks(howMany), AlbumTrack.class);
     }
 }
