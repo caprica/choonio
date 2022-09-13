@@ -33,5 +33,6 @@ public interface Queue {
         Mono<Playlist> getQueue();
         Mono<Void> clearQueue();
         Mono<Void> addToQueue(MediaId mediaId, QueueMode queueMode, boolean shuffle);
+        Mono<Void> randomise(int howMany);
     }
 }

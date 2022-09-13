@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 import uk.co.caprica.choonio.api.model.playlists.Playlist;
@@ -56,5 +57,11 @@ public class QueueController {
     public Mono<Void> clearQueue() {
         log.info("clearQueue()");
         return queueService.clearQueue();
+    }
+
+    @PutMapping("randomise")
+    public Mono<Void> randomise(@RequestParam("howMany") int howMany) {
+        log.info("randomise(howMany={})", howMany);
+        return queueService.randomise(howMany);
     }
 }

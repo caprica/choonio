@@ -26,6 +26,7 @@ import uk.co.caprica.choonio.api.model.albums.Album;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.match;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.replaceRoot;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.sample;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.sort;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.unwind;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
@@ -76,6 +77,15 @@ public final class AlbumAggregations {
                 where("mediaId.trackName")
                     .is(trackName)
             )
+        );
+    }
+
+    public static TypedAggregation<Album> randomAlbumTracks(int howMany) {
+        return newAggregation(
+            Album.class,
+            unwind("tracks"),
+            replaceRoot("tracks"),
+            sample(howMany)
         );
     }
 

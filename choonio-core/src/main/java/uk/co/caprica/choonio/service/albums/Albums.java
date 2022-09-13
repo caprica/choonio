@@ -38,5 +38,6 @@ public interface Albums {
         Flux<AlbumTrack> getAlbumTrack(String artistName, String albumName, String trackName);
         Mono<Void> deleteAlbums();
         Flux<AlbumTrack> getTracks(Set<TrackId> trackIds);
+        Flux<AlbumTrack> getRandomTracks(int howMany);
     }
 }
