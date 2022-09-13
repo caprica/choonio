@@ -39,6 +39,10 @@ const deleteQueue = async (itemId: string) => {
     axios.delete(queueUrl(itemId))
 }
 
+const randomQueue = async () => {
+    axios.put(queueUrl('randomise?howMany=20'))
+}
+
 export const useGetQueue = () => {
     return useQuery<PlaylistData, Error>([QUERY_ID], () => getQueue())
 }
@@ -51,6 +55,11 @@ export const useAddToQueue = () => {
 export const useRemoveFromQueue = () => {
     const mutator = useMutation(deleteQueue)
     return (itemId: string) => mutator.mutate(itemId)
+}
+
+export const useRandomQueue = () => {
+    const mutator = useMutation(randomQueue)
+    return () => mutator.mutate()
 }
 
 export const useInvalidateQueue = () => {
