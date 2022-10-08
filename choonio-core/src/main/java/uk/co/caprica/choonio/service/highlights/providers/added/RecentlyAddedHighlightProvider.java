@@ -53,7 +53,7 @@ public class RecentlyAddedHighlightProvider implements HighlightProvider {
 
     private final ReactiveMongoTemplate mongoTemplate;
 
-    @Value("${app.highlights.providers.added.days:14}")
+    @Value("${app.highlights.providers.added.days:30}")
     private int days;
 
     @Override
