@@ -64,7 +64,7 @@ app:
     providers:
       added:
         enabled: true
-        days: 14
+        days: 30
       dayOfWeek:
         albumEnabled: true
         artistEnabled: true
