@@ -17,7 +17,7 @@
  * Copyright 2021-2022 Caprica Software Limited
  */
 
-import React, { ReactNode } from 'react'
+import React, { PropsWithChildren, ReactElement, ReactNode } from 'react'
 import { useState } from 'react'
 import clsx from 'clsx'
 
@@ -45,9 +45,14 @@ const useStyles = makeStyles({
     }
 })
 
+interface ActiveProp {
+    active?: boolean
+}
+
 const cloneChild = (child: ReactNode, active: boolean) => {
     if (React.isValidElement(child)) {
-        return React.cloneElement(child, { active })
+        const element = child as ReactElement<PropsWithChildren<ActiveProp>>
+        return React.cloneElement(element, { active })
     }
 }
 
