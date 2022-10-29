@@ -24,6 +24,8 @@ import uk.co.caprica.choonio.api.model.identity.MediaId;
 import uk.co.caprica.choonio.api.model.playlists.Playlist;
 import uk.co.caprica.choonio.api.model.queue.QueueMode;
 
+import java.util.List;
+
 /**
  * Global play-queue component specification.
  */
@@ -34,5 +36,6 @@ public interface Queue {
         Mono<Void> clearQueue();
         Mono<Void> addToQueue(MediaId mediaId, QueueMode queueMode, boolean shuffle);
         Mono<Void> randomise(int howMany);
+        Mono<Void> randomise(List<String> artistNames, long duration);
     }
 }

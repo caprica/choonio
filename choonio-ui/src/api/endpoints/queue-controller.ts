@@ -21,7 +21,7 @@ import axios from 'axios'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { queueUrl } from '../../config/service-endpoints'
 import { PlaylistData } from '../model/playlists-model'
-import { AddToQueueRequest } from '../model/queue-model'
+import { AddToQueueRequest, GeneratePlaylistRequest } from '../model/queue-model'
 
 const QUERY_ID = 'queue'
 
@@ -43,6 +43,10 @@ const randomQueue = async () => {
     axios.put(queueUrl('randomise?howMany=20'))
 }
 
+const generatePlaylist = async (generatePlaylistRequest: GeneratePlaylistRequest) => {
+    axios.put(queueUrl('generate-playlist'), generatePlaylistRequest)
+}
+
 export const useGetQueue = () => {
     return useQuery<PlaylistData, Error>([QUERY_ID], () => getQueue())
 }
@@ -60,6 +64,12 @@ export const useRemoveFromQueue = () => {
 export const useRandomQueue = () => {
     const mutator = useMutation(randomQueue)
     return () => mutator.mutate()
+}
+
+export const useGeneratePlaylist = () => {
+    const mutator = useMutation(generatePlaylist)
+    return (generatePlaylistRequest: GeneratePlaylistRequest, onSuccess?: () => void) =>
+        mutator.mutate(generatePlaylistRequest, { onSuccess })
 }
 
 export const useInvalidateQueue = () => {

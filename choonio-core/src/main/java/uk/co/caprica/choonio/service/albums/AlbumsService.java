@@ -31,11 +31,15 @@ import uk.co.caprica.choonio.api.model.identity.AlbumId;
 import uk.co.caprica.choonio.api.model.identity.TrackId;
 import uk.co.caprica.choonio.database.repositories.AlbumsRepository;
 
+import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicLong;
 
+import static java.util.Collections.shuffle;
 import static java.util.stream.Collectors.toSet;
 import static uk.co.caprica.choonio.database.aggregations.AlbumAggregations.albumTrack;
 import static uk.co.caprica.choonio.database.aggregations.AlbumAggregations.albumTracks;
+import static uk.co.caprica.choonio.database.aggregations.AlbumAggregations.albumTracksByArtists;
 import static uk.co.caprica.choonio.database.aggregations.AlbumAggregations.artistTracks;
 import static uk.co.caprica.choonio.database.aggregations.AlbumAggregations.randomAlbumTracks;
 
@@ -107,5 +111,24 @@ public class AlbumsService implements Albums.Service {
     public Flux<AlbumTrack> getRandomTracks(int howMany) {
         log.info("getRandomTracks(howMany={})", howMany);
         return mongoTemplate.aggregate(randomAlbumTracks(howMany), AlbumTrack.class);
+    }
+
+    @Override
+    public Flux<AlbumTrack> getRandomTracks(List<String> artistNames, long duration) {
+        log.info("getRandomTracks(artistNames={}, duration={})", artistNames, duration);
+        AtomicLong totalDuration = new AtomicLong(0L);
+        return mongoTemplate.aggregate(albumTracksByArtists(artistNames), AlbumTrack.class)
+            .collectList()
+            .map(list -> {
+                shuffle(list);
+                return list;
+            })
+            .flatMapMany(Flux::fromIterable)
+            .takeUntil(
+                albumTrack -> totalDuration.updateAndGet(value -> value < duration ?
+                    value + albumTrack.getDuration() :
+                    value
+                ) >= duration
+            );
     }
 }

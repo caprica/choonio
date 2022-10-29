@@ -59,6 +59,7 @@ import static uk.co.caprica.choonio.api.model.playlists.Playlist.newPlaylist;
 public class PlaylistsService implements Playlists.Service {
 
     private final Albums.Service albumsService;
+
     private final Clock.Service clockService;
 
     private final PlaylistEnrichment playlistEnrichment;

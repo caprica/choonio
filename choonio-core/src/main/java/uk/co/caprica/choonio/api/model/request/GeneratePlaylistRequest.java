@@ -17,24 +17,20 @@
  * Copyright 2021-2022 Caprica Software Limited
  */
 
-import { MediaIdentity } from './identity-model'
+package uk.co.caprica.choonio.api.model.request;
 
-export interface AddToQueueRequest {
-    readonly mediaId: MediaIdentity
-    readonly queueMode: QueueMode
-    readonly shuffle?: boolean
-}
+import lombok.Value;
 
-export interface GeneratePlaylistRequest {
-    readonly artists: Array<string>
-    readonly duration: number
-}
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
-export enum QueueMode {
-    // Play immediately
-    Play = 'PLAY',
-    // If playing, drop anything queued after the playing item then add to queue, start playing immediately if not playing already
-    PlayNext = 'PLAY_NEXT',
-    // Add to queue
-    Add = 'ADD'
+@Value
+public class GeneratePlaylistRequest {
+    @NotNull
+    @NotEmpty
+    List<String> artists;
+    @Min(1)
+    int duration;
 }

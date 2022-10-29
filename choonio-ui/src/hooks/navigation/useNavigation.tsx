@@ -49,6 +49,7 @@ export const useNavigation = () => {
     const gotoFavourites = () => navigate('/favourites')
     const gotoGenres = () => navigate('genres')
     const gotoStatistics = () => navigate('/stats')
+    const gotoPlaylistGenerator = () => navigate('/playlist-generator')
     const gotoEqualizer = () => navigate('/equalizer')
     const gotoVisualisation = () => navigate('/visualisation')
     const gotoSettings = () => navigate('/settings')
@@ -98,6 +99,7 @@ export const useNavigation = () => {
         gotoGenres,
         gotoMedia,
         gotoStatistics,
+        gotoPlaylistGenerator,
         gotoEqualizer,
         gotoVisualisation,
         gotoSettings,

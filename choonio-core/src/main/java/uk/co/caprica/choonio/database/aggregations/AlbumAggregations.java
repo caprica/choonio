@@ -23,6 +23,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.aggregation.TypedAggregation;
 import uk.co.caprica.choonio.api.model.albums.Album;
 
+import java.util.List;
+
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.match;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.replaceRoot;
@@ -86,6 +88,18 @@ public final class AlbumAggregations {
             unwind("tracks"),
             replaceRoot("tracks"),
             sample(howMany)
+        );
+    }
+
+    public static TypedAggregation<Album> albumTracksByArtists(List<String> artistNames) {
+        return newAggregation(
+            Album.class,
+            match(
+                where("mediaId.albumArtistName")
+                    .in(artistNames)
+            ),
+            unwind("tracks"),
+            replaceRoot("tracks")
         );
     }
 
