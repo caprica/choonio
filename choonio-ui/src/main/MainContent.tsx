@@ -30,6 +30,7 @@ import HomePage from '../ui/pages/home/HomePage'
 import NotFoundPage from '../ui/pages/not-found/NotFoundPage'
 import PlaylistsPage from '../ui/pages/playlists/PlaylistsPage'
 import PlaylistPage from '../ui/pages/playlist/PlaylistPage'
+import PlaylistGeneratorPage from '../ui/pages/playlist-generator/PlaylistGeneratorPage'
 import QueuePage from '../ui/pages/queue/QueuePage'
 import RecentsPage from '../ui/pages/recents/RecentsPage'
 import SearchPage from '../ui/pages/search/SearchPage'
@@ -49,6 +50,7 @@ export default function MainContent() {
             <Route path='/albums/:artistName/:albumName' element={<ViewTransition view={<AlbumPage />} />} />
             <Route path='/playlist/:playlistName' element={<ViewTransition view={<PlaylistPage />} />} />
             <Route path='/playlist/:playlistName/edit' element={<ViewTransition view={<EditPlaylistPage />} />} />
+            <Route path='/playlist-generator' element={<ViewTransition view={<PlaylistGeneratorPage />} />} />
             <Route path='/queue' element={<ViewTransition view={<QueuePage />} />} />
             <Route path='/search/:query' element={<ViewTransition view={<SearchPage />} />} />
             <Route path='/about' element={<ViewTransition view={<AboutPage />} />} />

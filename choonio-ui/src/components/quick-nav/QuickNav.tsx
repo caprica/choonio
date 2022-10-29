@@ -18,7 +18,7 @@
  */
 
 import makeStyles from '@mui/styles/makeStyles'
-import { MdFavorite, MdHistory, MdHome, MdLibraryMusic, MdStar, MdViewList } from 'react-icons/md'
+import { MdFavorite, MdHistory, MdHome, MdLibraryMusic, MdPlaylistAdd, MdStar, MdViewList } from 'react-icons/md'
 import { useRandomQueue } from '../../api/endpoints/queue-controller'
 import { useNavigation } from '../../hooks/navigation/useNavigation'
 import DiceIcon from '../dice-icon/DiceIcon'
@@ -35,7 +35,8 @@ const useStyles = makeStyles({
 export default function QuickNav() {
     const classes = useStyles()
 
-    const { gotoHome, gotoLibrary, gotoPlaylists, gotoRecent, gotoFavourites, gotoStatistics } = useNavigation()
+    const { gotoHome, gotoLibrary, gotoPlaylists, gotoRecent, gotoFavourites, gotoStatistics, gotoPlaylistGenerator } =
+        useNavigation()
 
     const randomQueue = useRandomQueue()
 
@@ -50,6 +51,7 @@ export default function QuickNav() {
             <QuickNavItem icon={<MdViewList />} label='Playlists' onClick={gotoPlaylists} />
             <QuickNavItem icon={<MdStar />} label='Top charts' onClick={gotoStatistics} />
             <QuickNavItem icon={<DiceIcon />} label='Feeling lucky' onClick={handleRandom} />
+            <QuickNavItem icon={<MdPlaylistAdd />} label='Generate playlist' onClick={gotoPlaylistGenerator} />
         </div>
     )
 }

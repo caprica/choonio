@@ -25,6 +25,11 @@ export interface AddToQueueRequest {
     readonly shuffle?: boolean
 }
 
+export interface GeneratePlaylistRequest {
+    readonly artists: Array<string>
+    readonly duration: number
+}
+
 export enum QueueMode {
     // Play immediately
     Play = 'PLAY',
