@@ -98,7 +98,6 @@ export default function PlaylistGeneratorPage() {
                             multiple
                             options={artistOptions}
                             autoHighlight
-                            // getOptionLabel={option => option}
                             renderInput={params => (
                                 <TextField
                                     {...params}
