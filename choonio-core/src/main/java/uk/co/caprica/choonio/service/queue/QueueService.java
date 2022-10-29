@@ -101,6 +101,14 @@ public class QueueService implements Queue.Service {
             .flatMap(tracks -> addTracks(tracks, QueueMode.PLAY, false));
     }
 
+    @Override
+    public Mono<Void> randomise(List<String> artistNames, long duration) {
+        log.info("randomise(artistNames={}, duration={})", artistNames, duration);
+        return albumsService.getRandomTracks(artistNames, duration)
+            .collectList()
+            .flatMap(tracks -> addTracks(tracks, QueueMode.PLAY, false));
+    }
+
     /**
      * Add all the tracks associated with a particular artist to the global play queue.
      *

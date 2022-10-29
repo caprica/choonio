@@ -31,7 +31,10 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 import uk.co.caprica.choonio.api.model.playlists.Playlist;
 import uk.co.caprica.choonio.api.model.request.AddToQueueRequest;
+import uk.co.caprica.choonio.api.model.request.GeneratePlaylistRequest;
 import uk.co.caprica.choonio.service.queue.Queue;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("queue")
@@ -63,5 +66,11 @@ public class QueueController {
     public Mono<Void> randomise(@RequestParam("howMany") int howMany) {
         log.info("randomise(howMany={})", howMany);
         return queueService.randomise(howMany);
+    }
+
+    @PutMapping("generate-playlist")
+    public Mono<Void> generatePlaylist(@Valid @RequestBody GeneratePlaylistRequest generatePlaylistRequest) {
+        log.info("randomise(generatePlaylistRequest={})", generatePlaylistRequest);
+        return queueService.randomise(generatePlaylistRequest.getArtists(), generatePlaylistRequest.getDuration() * 60L);
     }
 }

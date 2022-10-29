@@ -17,25 +17,20 @@
  * Copyright 2021-2022 Caprica Software Limited
  */
 
-package uk.co.caprica.choonio.service.queue;
+package uk.co.caprica.choonio.api.model.request;
 
-import reactor.core.publisher.Mono;
-import uk.co.caprica.choonio.api.model.identity.MediaId;
-import uk.co.caprica.choonio.api.model.playlists.Playlist;
-import uk.co.caprica.choonio.api.model.queue.QueueMode;
+import lombok.Value;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
-/**
- * Global play-queue component specification.
- */
-public interface Queue {
-
-    interface Service {
-        Mono<Playlist> getQueue();
-        Mono<Void> clearQueue();
-        Mono<Void> addToQueue(MediaId mediaId, QueueMode queueMode, boolean shuffle);
-        Mono<Void> randomise(int howMany);
-        Mono<Void> randomise(List<String> artistNames, long duration);
-    }
+@Value
+public class GeneratePlaylistRequest {
+    @NotNull
+    @NotEmpty
+    List<String> artists;
+    @Min(1)
+    int duration;
 }

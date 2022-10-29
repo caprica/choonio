@@ -25,6 +25,7 @@ import uk.co.caprica.choonio.api.model.albums.Album;
 import uk.co.caprica.choonio.api.model.albums.AlbumTrack;
 import uk.co.caprica.choonio.api.model.identity.TrackId;
 
+import java.util.List;
 import java.util.Set;
 
 public interface Albums {
@@ -39,5 +40,6 @@ public interface Albums {
         Mono<Void> deleteAlbums();
         Flux<AlbumTrack> getTracks(Set<TrackId> trackIds);
         Flux<AlbumTrack> getRandomTracks(int howMany);
+        Flux<AlbumTrack> getRandomTracks(List<String> artistNames, long duration);
     }
 }
