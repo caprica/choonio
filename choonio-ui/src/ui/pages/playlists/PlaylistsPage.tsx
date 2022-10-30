@@ -49,7 +49,7 @@ export default function PlaylistsPage() {
                 <Route path=':grouping' element={<PlaylistsNav />} />
             </Routes>
             <Routes>
-                <Route path='' element={<Navigate to={playlistsGroup} />} />
+                <Route path='' element={<Navigate to={playlistsGroup} replace />} />
                 <Route path=':grouping' element={<Content />} />
             </Routes>
         </Container>

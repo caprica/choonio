@@ -44,7 +44,7 @@ export default function RecentsPage() {
                 <Route path=':grouping' element={<RecentsNav />} />
             </Routes>
             <Routes>
-                <Route path='' element={<Navigate to={recentsGroup} />} />
+                <Route path='' element={<Navigate to={recentsGroup} replace />} />
                 <Route path=':grouping' element={<Content />} />
             </Routes>
         </Container>
