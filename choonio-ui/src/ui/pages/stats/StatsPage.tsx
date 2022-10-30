@@ -28,7 +28,7 @@ export default function StatsPage() {
     return (
         <div>
             <Routes>
-                <Route path='' element={<Navigate to={`top/${topHowMany}`} />} />
+                <Route path='' element={<Navigate to={`top/${topHowMany}`} replace />} />
                 <Route path='top/:top/*' element={<TopStatsPage />} />
             </Routes>
         </div>

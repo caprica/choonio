@@ -52,7 +52,7 @@ export default function TopStatsPage() {
                 <Route path=':what/:period' element={<TopStatsNav />} />
             </Routes>
             <Routes>
-                <Route path='' element={<Navigate to={`${topWhat}/${topPeriod}`} />} />
+                <Route path='' element={<Navigate to={`${topWhat}/${topPeriod}`} replace />} />
                 <Route path=':top/artists' element={<Navigate to={`artists/${topPeriod}`} />} />
                 <Route path=':top/albums' element={<Navigate to={`albums/${topPeriod}`} />} />
                 <Route path=':top/tracks' element={<Navigate to={`tracks/${topPeriod}`} />} />

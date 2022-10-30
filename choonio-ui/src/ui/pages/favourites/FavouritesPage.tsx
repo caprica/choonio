@@ -46,7 +46,7 @@ export default function FavouritesPage() {
                 <Route path=':grouping' element={<FavouritesNav />} />
             </Routes>
             <Routes>
-                <Route path='' element={<Navigate to={favouritesGroup} />} />
+                <Route path='' element={<Navigate to={favouritesGroup} replace />} />
                 <Route path=':grouping' element={<Content />} />
             </Routes>
         </Container>
