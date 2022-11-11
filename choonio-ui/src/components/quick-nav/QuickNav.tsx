@@ -51,7 +51,7 @@ export default function QuickNav() {
             <QuickNavItem icon={<MdViewList />} label='Playlists' onClick={gotoPlaylists} />
             <QuickNavItem icon={<MdStar />} label='Top charts' onClick={gotoStatistics} />
             <QuickNavItem icon={<DiceIcon />} label='Feeling lucky' onClick={handleRandom} />
-            <QuickNavItem icon={<MdPlaylistAdd />} label='Generate playlist' onClick={gotoPlaylistGenerator} />
+            <QuickNavItem icon={<MdPlaylistAdd />} label='Ad-hoc playlist' onClick={gotoPlaylistGenerator} />
         </div>
     )
 }
