@@ -88,7 +88,7 @@ export default function PlaylistGeneratorPage() {
             <GroupHeading caption='Playlist Generator' />
             <Paper className={classes.content}>
                 <Typography variant='body2'>
-                    Generate a random playlist for one oe more artists with an approximate minimum duration.
+                    Generate a random playlist for one or more artists with an approximate minimum duration.
                 </Typography>
                 <Box className={classes.container}>
                     <FormControl variant='outlined' fullWidth>
