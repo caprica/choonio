@@ -60,7 +60,7 @@ export default function Highlights() {
     return (
         <>
             {highlights && (
-                <AnimatePresence exitBeforeEnter>
+                <AnimatePresence mode='wait'>
                     <motion.div className={classes.root} variants={variants} initial='hidden' animate='show' exit='hidden'>
                         {highlights.map(highlight => (
                             <motion.div key={highlight.id} variants={item}>
